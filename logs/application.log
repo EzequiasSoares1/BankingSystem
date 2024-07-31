@@ -1,0 +1,373 @@
+2024-07-31 18:20:09.370 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-07-31 18:20:09.428 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 18172 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 18:20:09.434 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 18:20:09.505 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-31 18:20:09.509 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-31 18:20:11.046 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 18:20:11.069 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 JPA repository interfaces.
+2024-07-31 18:20:11.857 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 18:20:11.867 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:20:11.868 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 18:20:11.869 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 18:20:11.919 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 18:20:11.920 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2410 ms
+2024-07-31 18:20:16.635 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 18:20:19.461 [restartedMain] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:01.249s)
+2024-07-31 18:20:21.910 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: 1
+2024-07-31 18:20:22.089 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `bank-accenture` is up to date. No migration necessary.
+2024-07-31 18:20:23.400 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-31 18:20:23.528 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-31 18:20:23.573 [restartedMain] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-31 18:20:23.827 [restartedMain] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-31 18:20:23.851 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-07-31 18:20:25.941 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5d312a26
+2024-07-31 18:20:25.942 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-07-31 18:20:26.319 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-31 18:20:26.992 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-31 18:20:27.549 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:20:28.343 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-07-31 18:20:28.350 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2024-07-31 18:20:28.403 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:20:28.416 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-07-31 18:20:28.431 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Started BankingSystemApplication in 19.397 seconds (process running for 20.432)
+2024-07-31 18:20:46.994 [File Watcher] INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 7 class path changes (0 additions, 6 deletions, 1 modification)
+2024-07-31 18:20:46.998 [Thread-5] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:20:47.158 [Thread-5] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:20:47.161 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-07-31 18:20:49.008 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-07-31 18:20:49.144 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 18172 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 18:20:49.146 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 18:20:49.685 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 18:20:49.688 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2024-07-31 18:20:49.978 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 18:20:49.980 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:20:49.982 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 18:20:49.983 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 18:20:50.015 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 18:20:50.015 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 867 ms
+2024-07-31 18:20:54.451 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 18:20:57.442 [restartedMain] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:01.308s)
+2024-07-31 18:21:00.097 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: 1
+2024-07-31 18:21:00.284 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `bank-accenture` is up to date. No migration necessary.
+2024-07-31 18:21:01.612 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-31 18:21:01.615 [restartedMain] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-31 18:21:01.624 [restartedMain] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-31 18:21:01.625 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-07-31 18:21:03.836 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4779607b
+2024-07-31 18:21:03.836 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-07-31 18:21:04.010 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-31 18:21:04.047 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-31 18:21:04.404 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:21:04.878 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-07-31 18:21:04.883 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2024-07-31 18:21:04.907 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:21:04.911 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-07-31 18:21:04.921 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Started BankingSystemApplication in 15.835 seconds (process running for 56.923)
+2024-07-31 18:21:04.923 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-07-31 18:21:06.294 [File Watcher] INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 6 class path changes (6 additions, 0 deletions, 0 modifications)
+2024-07-31 18:21:06.295 [Thread-7] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:21:06.442 [Thread-7] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:21:06.443 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2024-07-31 18:21:07.806 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2024-07-31 18:21:07.886 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 18172 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 18:21:07.886 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 18:21:08.102 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 18:21:08.104 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-07-31 18:21:08.194 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 18:21:08.195 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:21:08.195 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 18:21:08.195 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 18:21:08.210 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 18:21:08.211 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 324 ms
+2024-07-31 18:21:12.379 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 18:21:15.143 [restartedMain] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:01.211s)
+2024-07-31 18:21:17.560 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: 1
+2024-07-31 18:21:17.736 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `bank-accenture` is up to date. No migration necessary.
+2024-07-31 18:21:18.975 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-31 18:21:18.977 [restartedMain] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-31 18:21:18.982 [restartedMain] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-31 18:21:18.983 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2024-07-31 18:21:21.069 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18ebdd82
+2024-07-31 18:21:21.069 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2024-07-31 18:21:21.243 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-31 18:21:21.270 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-31 18:21:21.623 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:21:21.985 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-07-31 18:21:21.989 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2024-07-31 18:21:22.009 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:21:22.011 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-07-31 18:21:22.020 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Started BankingSystemApplication in 14.166 seconds (process running for 74.022)
+2024-07-31 18:21:22.022 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-07-31 18:24:03.632 [File Watcher] INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-07-31 18:24:03.681 [Thread-11] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:24:03.879 [Thread-11] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:24:03.886 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2024-07-31 18:24:05.724 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2024-07-31 18:24:05.851 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 18172 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 18:24:05.851 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 18:24:06.243 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 18:24:06.245 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-07-31 18:24:06.361 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 18:24:06.361 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:24:06.362 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 18:24:06.362 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 18:24:06.378 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 18:24:06.378 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 525 ms
+2024-07-31 18:24:10.535 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 18:24:13.496 [restartedMain] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:01.294s)
+2024-07-31 18:24:16.085 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: 1
+2024-07-31 18:24:16.270 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `bank-accenture` is up to date. No migration necessary.
+2024-07-31 18:24:17.579 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-31 18:24:17.581 [restartedMain] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-31 18:24:17.586 [restartedMain] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-31 18:24:17.586 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2024-07-31 18:24:19.647 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@744f52e9
+2024-07-31 18:24:19.647 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2024-07-31 18:24:19.818 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-31 18:24:19.853 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-31 18:24:20.201 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:24:20.557 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-07-31 18:24:20.561 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2024-07-31 18:24:20.588 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:24:20.590 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-07-31 18:24:20.599 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Started BankingSystemApplication in 14.791 seconds (process running for 252.601)
+2024-07-31 18:24:20.601 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-07-31 18:26:40.292 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:26:40.310 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2024-07-31 18:26:42.173 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2024-07-31 18:26:47.371 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-07-31 18:26:47.399 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 3808 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 18:26:47.402 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 18:26:47.434 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-31 18:26:47.434 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-31 18:26:48.234 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 18:26:48.249 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2024-07-31 18:26:48.869 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 18:26:48.878 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:26:48.880 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 18:26:48.880 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 18:26:48.927 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 18:26:48.927 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1492 ms
+2024-07-31 18:26:53.573 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 18:26:56.618 [restartedMain] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:01.340s)
+2024-07-31 18:26:59.260 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: 1
+2024-07-31 18:26:59.453 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `bank-accenture` is up to date. No migration necessary.
+2024-07-31 18:27:00.956 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-31 18:27:01.070 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-31 18:27:01.130 [restartedMain] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-31 18:27:01.759 [restartedMain] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-31 18:27:01.795 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-07-31 18:27:04.002 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52c19d8c
+2024-07-31 18:27:04.004 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-07-31 18:27:04.386 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-31 18:27:05.210 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-31 18:27:05.765 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:27:06.665 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-07-31 18:27:06.676 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2024-07-31 18:27:06.747 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:27:06.762 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-07-31 18:27:06.776 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Started BankingSystemApplication in 19.647 seconds (process running for 20.821)
+2024-07-31 18:27:55.705 [File Watcher] INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 7 class path changes (0 additions, 6 deletions, 1 modification)
+2024-07-31 18:27:55.710 [Thread-5] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:27:55.905 [Thread-5] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:27:55.909 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-07-31 18:27:57.765 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-07-31 18:27:57.873 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 3808 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 18:27:57.874 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 18:27:58.138 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 18:27:58.139 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-07-31 18:27:58.246 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 18:27:58.246 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:27:58.247 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 18:27:58.247 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 18:27:58.264 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 18:27:58.264 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 387 ms
+2024-07-31 18:27:59.414 [main] INFO  org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.accenture.academico.bankingsystem.BankingSystemApplicationTests]: BankingSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-07-31 18:27:59.499 [main] INFO  org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.accenture.academico.bankingsystem.BankingSystemApplication for test class com.accenture.academico.bankingsystem.BankingSystemApplicationTests
+2024-07-31 18:27:59.625 [main] INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2024-07-31 18:27:59.813 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-07-31 18:27:59.832 [main] INFO  com.accenture.academico.bankingsystem.BankingSystemApplicationTests - Starting BankingSystemApplicationTests using Java 17.0.10 with PID 12224 (started by ezequ in D:\PROGRAMA��O\BankingSystem)
+2024-07-31 18:27:59.836 [main] INFO  com.accenture.academico.bankingsystem.BankingSystemApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 18:28:00.698 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 18:28:00.727 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+2024-07-31 18:28:02.290 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 18:28:05.060 [restartedMain] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:01.212s)
+2024-07-31 18:28:05.984 [main] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 18:28:07.480 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: 1
+2024-07-31 18:28:07.654 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `bank-accenture` is up to date. No migration necessary.
+2024-07-31 18:28:08.880 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-31 18:28:08.882 [restartedMain] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-31 18:28:08.890 [restartedMain] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-31 18:28:08.891 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-07-31 18:28:09.011 [main] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:01.329s)
+2024-07-31 18:28:11.138 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5c16a2d5
+2024-07-31 18:28:11.139 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-07-31 18:28:11.326 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-31 18:28:11.356 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-31 18:28:11.642 [main] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: 1
+2024-07-31 18:28:11.739 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:28:11.832 [main] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `bank-accenture` is up to date. No migration necessary.
+2024-07-31 18:28:12.102 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-07-31 18:28:12.106 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2024-07-31 18:28:12.126 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:28:12.129 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-07-31 18:28:12.138 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Started BankingSystemApplication in 14.306 seconds (process running for 86.183)
+2024-07-31 18:28:12.140 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-07-31 18:28:13.236 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-31 18:28:13.313 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-31 18:28:13.357 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-31 18:28:13.525 [File Watcher] INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 6 class path changes (6 additions, 0 deletions, 0 modifications)
+2024-07-31 18:28:13.527 [Thread-7] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:28:13.729 [Thread-7] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:28:13.731 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2024-07-31 18:28:13.752 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-31 18:28:13.783 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-07-31 18:28:15.005 [Thread-7] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2024-07-31 18:28:15.080 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 3808 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 18:28:15.080 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 18:28:15.290 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 18:28:15.292 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-07-31 18:28:15.386 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 18:28:15.386 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:28:15.386 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 18:28:15.387 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 18:28:15.403 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 18:28:15.403 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 322 ms
+2024-07-31 18:28:15.892 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@988c126
+2024-07-31 18:28:15.894 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-07-31 18:28:16.274 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-31 18:28:16.975 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-31 18:28:17.528 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:28:18.738 [main] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2024-07-31 18:28:18.815 [main] INFO  com.accenture.academico.bankingsystem.BankingSystemApplicationTests - Started BankingSystemApplicationTests in 19.201 seconds (process running for 20.365)
+2024-07-31 18:28:19.308 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:28:19.312 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-07-31 18:28:19.603 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 18:28:19.894 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-07-31 18:28:22.807 [restartedMain] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:01.401s)
+2024-07-31 18:28:25.616 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: 1
+2024-07-31 18:28:25.817 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `bank-accenture` is up to date. No migration necessary.
+2024-07-31 18:28:27.240 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-31 18:28:27.241 [restartedMain] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-31 18:28:27.247 [restartedMain] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-31 18:28:27.247 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2024-07-31 18:28:29.465 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@46e2cdfb
+2024-07-31 18:28:29.465 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2024-07-31 18:28:29.649 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-31 18:28:29.677 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-31 18:28:30.051 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:28:30.421 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-07-31 18:28:30.425 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2024-07-31 18:28:30.446 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:28:30.448 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-07-31 18:28:30.458 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Started BankingSystemApplication in 15.407 seconds (process running for 104.502)
+2024-07-31 18:28:30.459 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-07-31 18:28:48.071 [File Watcher] INFO  org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 9 class path changes (0 additions, 9 deletions, 0 modifications)
+2024-07-31 18:28:48.072 [Thread-11] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:28:48.215 [Thread-11] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:28:48.215 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2024-07-31 18:28:50.097 [Thread-11] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2024-07-31 18:30:46.818 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 3808 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 18:30:46.819 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 18:30:47.416 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 18:30:47.421 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2024-07-31 18:30:47.660 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 18:30:47.664 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 18:30:47.664 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 18:30:47.689 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 18:30:47.689 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 865 ms
+2024-07-31 18:30:52.478 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 18:30:55.686 [restartedMain] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:01.402s)
+2024-07-31 18:30:58.490 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: 1
+2024-07-31 18:30:58.691 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema `bank-accenture` is up to date. No migration necessary.
+2024-07-31 18:31:00.119 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-31 18:31:00.122 [restartedMain] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-07-31 18:31:00.135 [restartedMain] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-31 18:31:00.136 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2024-07-31 18:31:02.227 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@128430a3
+2024-07-31 18:31:02.227 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2024-07-31 18:31:02.407 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-31 18:31:02.452 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-31 18:31:02.854 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:31:03.289 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-07-31 18:31:03.293 [restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2024-07-31 18:31:03.312 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-07-31 18:31:03.315 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-07-31 18:31:03.324 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Started BankingSystemApplication in 16.629 seconds (process running for 257.368)
+2024-07-31 18:31:03.330 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   WebMvcAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.springframework.web.servlet.DispatcherServlet', 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration#formContentFilter matched:
+      - @ConditionalOnProperty (spring.mvc.formcontent.filter.enabled) matched (OnPropertyCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.web.filter.FormContentFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.EnableWebMvcConfiguration#flashMapManager matched:
+      - @ConditionalOnMissingBean (names: flashMapManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.EnableWebMvcConfiguration#localeResolver matched:
+      - @ConditionalOnMissingBean (names: localeResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.EnableWebMvcConfiguration#themeResolver matched:
+      - @ConditionalOnMissingBean (names: themeResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#defaultViewResolver matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.servlet.view.InternalResourceViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#requestContextFilter matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.context.request.RequestContextListener,org.springframework.web.filter.RequestContextFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#viewResolver matched:
+      - @ConditionalOnBean (types: org.springframework.web.servlet.ViewResolver; SearchStrategy: all) found beans 'defaultViewResolver', 'beanNameViewResolver', 'mvcViewResolver'; @ConditionalOnMissingBean (names: viewResolver types: org.springframework.web.servlet.view.ContentNegotiatingViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+   AuditAutoConfiguration:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.boot.actuate.audit.AuditEventRepository; SearchStrategy: all) did not find any beans of type org.springframework.boot.actuate.audit.AuditEventRepository (OnBeanCondition)
+      Matched:
+         - @ConditionalOnProperty (management.auditevents.enabled) matched (OnPropertyCondition)
+
+   AuditEventsEndpointAutoConfiguration#auditEventsEndpoint:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.boot.actuate.audit.AuditEventRepository; SearchStrategy: all) did not find any beans of type org.springframework.boot.actuate.audit.AuditEventRepository (OnBeanCondition)
+
+   WebMvcAutoConfiguration#hiddenHttpMethodFilter:
+      Did not match:
+         - @ConditionalOnProperty (spring.mvc.hiddenmethod.filter.enabled) did not find property 'enabled' (OnPropertyCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#beanNameViewResolver:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.web.servlet.view.BeanNameViewResolver; SearchStrategy: all) found beans of type 'org.springframework.web.servlet.view.BeanNameViewResolver' beanNameViewResolver (OnBeanCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2024-07-31 18:31:09.318 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-31 18:31:09.318 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2024-07-31 18:31:10.214 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
