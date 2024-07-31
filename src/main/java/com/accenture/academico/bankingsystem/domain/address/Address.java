@@ -3,6 +3,8 @@ package com.accenture.academico.bankingsystem.domain.address;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "address")
 @Getter
@@ -11,9 +13,8 @@ import lombok.*;
 @NoArgsConstructor
 public class Address {
     @Id
-    @Column(nullable = false, length = 255)
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @Column(nullable = false, length = 10)
     private String cep;
     @Column(nullable = false, length = 10)
