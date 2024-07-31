@@ -546,14 +546,14 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 2024-07-31 18:45:09.858 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: << Empty Schema >>
 2024-07-31 18:45:10.804 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema `bank-accenture` to version "1 - create-table-address"
 2024-07-31 18:45:12.219 [restartedMain] ERROR org.flywaydb.core.internal.command.DbMigrate - Migration of schema `bank-accenture` to version "1 - create-table-address" failed! Please restore backups and roll back database and code!
-2024-07-31 18:45:15.793 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+2024-07-31 18:45:15.793 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 8
 Statement  : CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
@@ -569,14 +569,14 @@ Statement  : CREATE TABLE users
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
 2024-07-31 18:45:15.826 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 8
 Statement  : CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
@@ -603,14 +603,14 @@ Statement  : CREATE TABLE users
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.3.2.jar:3.3.2]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 8
 Statement  : CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
@@ -630,14 +630,14 @@ Statement  : CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 8
 Statement  : CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
@@ -673,14 +673,14 @@ Statement  : CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 8
 Statement  : CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
@@ -931,14 +931,14 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 2024-07-31 18:47:23.917 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: << Empty Schema >>
 2024-07-31 18:47:24.865 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema `bank-accenture` to version "1 - create-table-address"
 2024-07-31 18:47:25.818 [restartedMain] ERROR org.flywaydb.core.internal.command.DbMigrate - Migration of schema `bank-accenture` to version "1 - create-table-address" failed! Please restore backups and roll back database and code!
-2024-07-31 18:47:29.413 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+2024-07-31 18:47:29.413 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) ' at line 9
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -962,14 +962,14 @@ CREATE TABLE users
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
 2024-07-31 18:47:29.444 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) ' at line 9
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1004,14 +1004,14 @@ CREATE TABLE users
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.3.2.jar:3.3.2]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) ' at line 9
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1039,14 +1039,14 @@ CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) ' at line 9
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1090,14 +1090,14 @@ CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE TABLE users
 (    id uuid NOT NULL PRIMARY KEY,
      email VARCHAR(255) ' at line 9
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1293,7 +1293,7 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 2024-07-31 18:49:14.625 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: << Empty Schema >>
 2024-07-31 18:49:15.636 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema `bank-accenture` to version "1 - create-table-address"
 2024-07-31 18:49:16.651 [restartedMain] ERROR org.flywaydb.core.internal.command.DbMigrate - Migration of schema `bank-accenture` to version "1 - create-table-address" failed! Please restore backups and roll back database and code!
-2024-07-31 18:49:20.500 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+2024-07-31 18:49:20.500 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
@@ -1302,7 +1302,7 @@ Message    : You have an error in your SQL syntax; check the manual that corresp
 CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
      email VARCHAR(' at line 7
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1415,7 +1415,7 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 2024-07-31 18:50:02.130 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: << Empty Schema >>
 2024-07-31 18:50:03.046 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema `bank-accenture` to version "1 - create-table-address"
 2024-07-31 18:50:03.921 [restartedMain] ERROR org.flywaydb.core.internal.command.DbMigrate - Migration of schema `bank-accenture` to version "1 - create-table-address" failed! Please restore backups and roll back database and code!
-2024-07-31 18:50:07.216 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+2024-07-31 18:50:07.216 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
@@ -1424,7 +1424,7 @@ Message    : You have an error in your SQL syntax; check the manual that corresp
 CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
      email VARCHAR(' at line 7
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1448,7 +1448,7 @@ CREATE TABLE users
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
 2024-07-31 18:50:07.256 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
@@ -1457,7 +1457,7 @@ Message    : You have an error in your SQL syntax; check the manual that corresp
 CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
      email VARCHAR(' at line 7
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1492,7 +1492,7 @@ CREATE TABLE users
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.3.2.jar:3.3.2]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
@@ -1501,7 +1501,7 @@ Message    : You have an error in your SQL syntax; check the manual that corresp
 CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
      email VARCHAR(' at line 7
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1529,7 +1529,7 @@ CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
@@ -1538,7 +1538,7 @@ Message    : You have an error in your SQL syntax; check the manual that corresp
 CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
      email VARCHAR(' at line 7
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1582,7 +1582,7 @@ CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
@@ -1591,7 +1591,7 @@ Message    : You have an error in your SQL syntax; check the manual that corresp
 CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
      email VARCHAR(' at line 7
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 1
 Statement  : CREATE TABLE address (
     id VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -1778,14 +1778,14 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 2024-07-31 18:51:04.247 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: << Empty Schema >>
 2024-07-31 18:51:05.176 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema `bank-accenture` to version "1 - create-table-address"
 2024-07-31 18:51:06.511 [restartedMain] ERROR org.flywaydb.core.internal.command.DbMigrate - Migration of schema `bank-accenture` to version "1 - create-table-address" failed! Please restore backups and roll back database and code!
-2024-07-31 18:51:10.035 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+2024-07-31 18:51:10.035 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UUID NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
@@ -1801,14 +1801,14 @@ Statement  : CREATE TABLE users
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
 2024-07-31 18:51:10.086 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UUID NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
@@ -1835,14 +1835,14 @@ Statement  : CREATE TABLE users
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.3.2.jar:3.3.2]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UUID NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
@@ -1862,14 +1862,14 @@ Statement  : CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UUID NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
@@ -1905,14 +1905,14 @@ Statement  : CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UUID NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
      password VAR' at line 2
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (    id UUID NOT NULL PRIMARY KEY,
@@ -2183,12 +2183,12 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 2024-07-31 18:56:16.155 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema `bank-accenture`: << Empty Schema >>
 2024-07-31 18:56:17.025 [restartedMain] INFO  org.flywaydb.core.internal.command.DbMigrate - Migrating schema `bank-accenture` to version "1 - create-table-address"
 2024-07-31 18:56:18.273 [restartedMain] ERROR org.flywaydb.core.internal.command.DbMigrate - Migration of schema `bank-accenture` to version "1 - create-table-address" failed! Please restore backups and roll back database and code!
-2024-07-31 18:56:21.578 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+2024-07-31 18:56:21.578 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '::text = ANY (ARRAY['ADMIN'::character varying, 'CLIENT'::character varying]::te' at line 8
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (
@@ -2205,12 +2205,12 @@ Statement  : CREATE TABLE users
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
 2024-07-31 18:56:21.610 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '::text = ANY (ARRAY['ADMIN'::character varying, 'CLIENT'::character varying]::te' at line 8
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (
@@ -2238,12 +2238,12 @@ Statement  : CREATE TABLE users
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.3.2.jar:3.3.2]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-table-address.sql failed
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '::text = ANY (ARRAY['ADMIN'::character varying, 'CLIENT'::character varying]::te' at line 8
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (
@@ -2264,12 +2264,12 @@ Statement  : CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.command.DbMigrate$FlywayMigrateException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '::text = ANY (ARRAY['ADMIN'::character varying, 'CLIENT'::character varying]::te' at line 8
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (
@@ -2306,12 +2306,12 @@ Statement  : CREATE TABLE users
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
 	... 15 more
-Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-table-address.sql failed
+Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Migration V1__create-tables.sql failed
 ---------------------------------------------
 SQL State  : 42000
 Error Code : 1064
 Message    : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '::text = ANY (ARRAY['ADMIN'::character varying, 'CLIENT'::character varying]::te' at line 8
-Location   : db/migration/V1__create-table-address.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-table-address.sql)
+Location   : db/migration/V1__create-tables.sql (D:\PROGRAMAÇÂO\BankingSystem\target\classes\db\migration\V1__create-tables.sql)
 Line       : 10
 Statement  : CREATE TABLE users
 (
@@ -2505,3 +2505,167 @@ Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
 2024-07-31 19:00:41.980 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-07-31 19:00:41.983 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2024-07-31 19:00:43.879 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-07-31 19:03:17.399 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-07-31 19:03:17.426 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 5936 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 19:03:17.429 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 19:03:17.461 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-31 19:03:17.462 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-31 19:03:18.286 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 19:03:18.302 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 JPA repository interfaces.
+2024-07-31 19:03:18.853 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 19:03:18.861 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-31 19:03:18.862 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 19:03:18.863 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 19:03:18.904 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 19:03:18.905 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1443 ms
+2024-07-31 19:03:23.614 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 19:03:27.668 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Validate failed: Migrations have failed validation
+Migration checksum mismatch for migration version 1
+-> Applied to database : -1899538820
+-> Resolved locally    : -420657162
+Either revert the changes to the migration, or run repair to update the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+2024-07-31 19:03:27.670 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2024-07-31 19:03:27.687 [restartedMain] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-31 19:03:27.705 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Validate failed: Migrations have failed validation
+Migration checksum mismatch for migration version 1
+-> Applied to database : -1899538820
+-> Resolved locally    : -420657162
+Either revert the changes to the migration, or run repair to update the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.11.jar:6.1.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.11.jar:6.1.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) [spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) [spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) [spring-boot-3.3.2.jar:3.3.2]
+	at com.accenture.academico.bankingsystem.BankingSystemApplication.main(BankingSystemApplication.java:10) [classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.3.2.jar:3.3.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Validate failed: Migrations have failed validation
+Migration checksum mismatch for migration version 1
+-> Applied to database : -1899538820
+-> Resolved locally    : -420657162
+Either revert the changes to the migration, or run repair to update the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
+	... 15 more
+Caused by: org.flywaydb.core.api.exception.FlywayValidateException: Validate failed: Migrations have failed validation
+Migration checksum mismatch for migration version 1
+-> Applied to database : -1899538820
+-> Resolved locally    : -420657162
+Either revert the changes to the migration, or run repair to update the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:160) ~[flyway-core-10.10.0.jar:?]
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:205) ~[flyway-core-10.10.0.jar:?]
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:147) ~[flyway-core-10.10.0.jar:?]
+	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:66) ~[spring-boot-autoconfigure-3.3.2.jar:3.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
+	... 15 more
+2024-07-31 19:07:07.789 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-07-31 19:07:07.816 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - Starting BankingSystemApplication using Java 17.0.10 with PID 17288 (D:\PROGRAMAÇÂO\BankingSystem\target\classes started by ezequ in D:\PROGRAMAÇÂO\BankingSystem)
+2024-07-31 19:07:07.819 [restartedMain] INFO  com.accenture.academico.bankingsystem.BankingSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2024-07-31 19:07:07.847 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-07-31 19:07:07.847 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-07-31 19:07:08.552 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-31 19:07:08.567 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2024-07-31 19:07:09.088 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-07-31 19:07:09.099 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-31 19:07:09.100 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-07-31 19:07:09.100 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-07-31 19:07:09.140 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-07-31 19:07:09.141 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1294 ms
+2024-07-31 19:07:13.708 [restartedMain] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://bank-accenture.cze60i860gfk.us-west-1.rds.amazonaws.com/bank-accenture (MySQL 8.0)
+2024-07-31 19:07:17.690 [restartedMain] WARN  org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Validate failed: Migrations have failed validation
+Migration description mismatch for migration version 1
+-> Applied to database : create-table-address
+-> Resolved locally    : create-tables
+Either revert the changes to the migration, or run repair to update the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+2024-07-31 19:07:17.692 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2024-07-31 19:07:17.709 [restartedMain] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-07-31 19:07:17.730 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Validate failed: Migrations have failed validation
+Migration description mismatch for migration version 1
+-> Applied to database : create-table-address
+-> Resolved locally    : create-tables
+Either revert the changes to the migration, or run repair to update the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.11.jar:6.1.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.11.jar:6.1.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) [spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) [spring-boot-3.3.2.jar:3.3.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) [spring-boot-3.3.2.jar:3.3.2]
+	at com.accenture.academico.bankingsystem.BankingSystemApplication.main(BankingSystemApplication.java:10) [classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.3.2.jar:3.3.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Validate failed: Migrations have failed validation
+Migration description mismatch for migration version 1
+-> Applied to database : create-table-address
+-> Resolved locally    : create-tables
+Either revert the changes to the migration, or run repair to update the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
+	... 15 more
+Caused by: org.flywaydb.core.api.exception.FlywayValidateException: Validate failed: Migrations have failed validation
+Migration description mismatch for migration version 1
+-> Applied to database : create-table-address
+-> Resolved locally    : create-tables
+Either revert the changes to the migration, or run repair to update the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.flywaydb.core.Flyway.lambda$migrate$0(Flyway.java:160) ~[flyway-core-10.10.0.jar:?]
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:205) ~[flyway-core-10.10.0.jar:?]
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:147) ~[flyway-core-10.10.0.jar:?]
+	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:66) ~[spring-boot-autoconfigure-3.3.2.jar:3.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.11.jar:6.1.11]
+	... 15 more

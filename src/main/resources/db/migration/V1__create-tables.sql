@@ -7,7 +7,7 @@ CREATE TABLE address
     district VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE users
+CREATE TABLE user
 (
      id CHAR(36) NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
