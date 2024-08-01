@@ -5,6 +5,7 @@ import com.accenture.academico.bankingsystem.domain.address.Address;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -28,5 +29,5 @@ public class Client {
     private Address address;
     @OneToMany
     @JoinColumn(name = "account_id", nullable = false)
-    private Account account;
+    private List<Account> account;
 }
