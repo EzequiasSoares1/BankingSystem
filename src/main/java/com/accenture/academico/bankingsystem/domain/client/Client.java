@@ -27,7 +27,4 @@ public class Client {
     @OneToOne
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
-    @OneToMany
-    @JoinColumn(name = "account_id", nullable = false)
-    private List<Account> account;
 }

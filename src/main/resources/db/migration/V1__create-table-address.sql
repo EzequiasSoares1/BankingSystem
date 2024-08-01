@@ -7,3 +7,5 @@ CREATE TABLE address
     district VARCHAR(100) NOT NULL
 );
 
+
+

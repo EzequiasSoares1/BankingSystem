@@ -26,4 +26,7 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "agency_id", nullable = false)
     private Agency agency;
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 }
