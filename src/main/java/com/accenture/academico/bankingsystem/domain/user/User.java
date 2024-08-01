@@ -1,37 +1,36 @@
 package com.accenture.academico.bankingsystem.domain.user;
+
+import com.accenture.academico.bankingsystem.domain.client.Client;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import java.util.UUID;
+import lombok.Setter;
 
-@Data
 @Entity
+@Table(name = "user")
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class User{
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
+    private String id;
     @NotBlank
     @Email(message = "Invalid email")
+    @Column(nullable = false, length = 100)
     private String email;
-
-    public User(UUID id, String email, Role role, String password) {
-        this.email = email;
-        this.id = id;
-        this.role = role;
-        this.password = password;
-    }
-
     @NotNull
     @Enumerated(EnumType.STRING)
     private Role role;
+    @Column(nullable = false, length = 100)
     private String password;
-    private String client_id;
-
+    @OneToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 }
