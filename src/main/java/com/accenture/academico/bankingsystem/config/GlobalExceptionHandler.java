@@ -1,5 +1,5 @@
 package com.accenture.academico.bankingsystem.config;
-
+import com.accenture.academico.bankingsystem.exception.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
@@ -104,4 +104,32 @@ public class GlobalExceptionHandler {
         }
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<String> handleNotFoundException(NotFoundException ex) {
+        log.warn("Resource not found: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+    @ExceptionHandler(InternalLogicException.class)
+    public ResponseEntity<String> handleInternalLogicException(InternalLogicException ex) {
+        log.error("Internal logic exception occurred", ex);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<String> handleConflictException(ConflictException ex) {
+        log.warn("Conflict: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(NotAuthorizeException.class)
+    public ResponseEntity<String> handleNotAuthorizeException(NotAuthorizeException ex) {
+        log.warn("Not authorized: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(InternalErrorException.class)
+    public ResponseEntity<String> handleInternalErrorException(InternalErrorException ex) {
+        log.error("Internal error occurred", ex);
+        return  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
 }
