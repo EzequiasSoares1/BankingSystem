@@ -16,13 +16,17 @@ import java.util.UUID;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
+
     @Column(nullable = false, length = 10)
     private String cep;
+
     @Column(nullable = false, length = 10)
     private String number;
+
     @Column(nullable = false, length = 100)
     private String street;
+
     @Column(nullable = false, length = 100)
     private String district;
 }
