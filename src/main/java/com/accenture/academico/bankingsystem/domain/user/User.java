@@ -1,6 +1,4 @@
 package com.accenture.academico.bankingsystem.domain.user;
-
-import com.accenture.academico.bankingsystem.domain.client.Client;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -17,12 +15,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Getter
 @Builder
 @Setter
-@NoArgsConstructor
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -44,6 +42,9 @@ public class User implements UserDetails {
         this.email = email;
         this.role = role;
         this.password = password;
+    }
+
+    public User() {
     }
 
     @Override
