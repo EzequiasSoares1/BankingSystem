@@ -31,6 +31,6 @@ public class Client {
     private Address address;
 
     @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "bank_user_id", nullable = false)
     private User user;
 }

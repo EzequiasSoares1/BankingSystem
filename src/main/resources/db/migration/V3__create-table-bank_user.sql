@@ -1,4 +1,5 @@
-CREATE TABLE users
+CREATE TABLE bank_user
+
 (
      id BINARY(16) NOT NULL PRIMARY KEY,
      email VARCHAR(255) NOT NULL,
