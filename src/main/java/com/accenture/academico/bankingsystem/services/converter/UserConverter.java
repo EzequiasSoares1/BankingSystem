@@ -17,8 +17,7 @@ public class UserConverter {
                 registrerDTO.id(),
                 registrerDTO.email(),
                 converterRole(registrerDTO.role()),
-                registrerDTO.password(),
-                null
+                registrerDTO.password()
         );
     }
 
@@ -26,7 +25,7 @@ public class UserConverter {
         return new UserDTO(
                 user.getId(),
                 user.getEmail(),
-                null,
+                user.getPassword(),
                 user.getRole().toString()
         );
     }

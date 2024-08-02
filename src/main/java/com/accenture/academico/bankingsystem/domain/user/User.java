@@ -39,16 +39,11 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 100)
     private String password;
 
-    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
-    @JoinColumn(name = "client_id")
-    private Client client;
-
-    public User(UUID id, String email, Role role, String password, Client client) {
+    public User(UUID id, String email, Role role, String password) {
         this.id = id;
         this.email = email;
         this.role = role;
         this.password = password;
-        this.client = client;
     }
 
     @Override
@@ -64,6 +59,11 @@ public class User implements UserDetails {
         }
 
         return authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     @Override

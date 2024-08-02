@@ -1,11 +1,9 @@
 package com.accenture.academico.bankingsystem.domain.client;
 
-import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.address.Address;
+import com.accenture.academico.bankingsystem.domain.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -31,4 +29,8 @@ public class Client {
     @OneToOne
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
