@@ -1,5 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.service;
 
+import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.dto.address.AddressRequestDTO;
 import com.accenture.academico.bankingsystem.dto.address.AddressResponseDTO;
@@ -7,110 +8,99 @@ import com.accenture.academico.bankingsystem.exception.NotFoundException;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
 import com.accenture.academico.bankingsystem.services.general.AddressService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+public class AddressServiceTest implements ConfigSpringTest {
 
-public class AddressServiceTest {
-    @Mock
-    private AddressRepository addressRepository;
-
-    @InjectMocks
+    @Autowired
     private AddressService addressService;
 
+    @Autowired
+    private AddressRepository addressRepository;
+
+    private Address address;
+
     @BeforeEach
-    void setup(){
-        MockitoAnnotations.initMocks(this);
+    void setUp() {
+        address = new Address(UUID.randomUUID(), "58700-010", "872", "Rua do Prado", "Centro");
+        address = addressRepository.save(address);
     }
+
     @Test
+
     void getAllAddress() {
-        List<Address> addressList = Arrays.asList(
-                new Address(UUID.randomUUID(), "58700-010", "872", "Rua do Prado", "Centro"),
-                new Address(UUID.randomUUID(), "58703-000", "877", "Rua do Prado", "Liberdade")
-        );
-
-        when(addressRepository.findAll()).thenReturn(addressList);
-
         List<AddressResponseDTO> addressResponseDTOList = addressService.getAllAddress();
 
-        assertEquals(2, addressResponseDTOList.size());
-        assertEquals("58700-010", addressResponseDTOList.get(0).cep());
-        assertEquals("58703-000", addressResponseDTOList.get(1).cep());
+        Assertions.assertFalse(addressResponseDTOList.isEmpty());
+        Assertions.assertEquals("58700-010", addressResponseDTOList.get(0).cep());
     }
 
     @Test
+    @Order(1)
     void create() {
-        AddressRequestDTO request = new AddressRequestDTO("58700-010", "872", "Rua do Prado", "Centro");
-        Address savedAddress = new Address(UUID.randomUUID(), request.cep(), request.number(), request.street(), request.district());
+        AddressRequestDTO request = new AddressRequestDTO("58703-000", "877", "Rua do Prado", "Liberdade");
 
-        when(addressRepository.save(any())).thenReturn(savedAddress);
+        AddressResponseDTO response = addressService.create(request);
 
-        addressService.create(request);
-
-        verify(addressRepository, times(1)).save(any());
+        Assertions.assertNotNull(response.id());
+        Assertions.assertEquals(request.cep(), response.cep());
+        Assertions.assertEquals(request.number(), response.number());
+        Assertions.assertEquals(request.street(), response.street());
+        Assertions.assertEquals(request.district(), response.district());
     }
 
     @Test
+    @Order(2)
     void update() {
-        UUID uuid = UUID.randomUUID();
-        Address address = new Address(uuid, "58700-010", "872", "Rua do Prado", "Centro");
-        AddressRequestDTO request = new AddressRequestDTO("58700-011", "873", "Rua Nova", "Centro Novo");
+        AddressRequestDTO request = new AddressRequestDTO("58703-001", "878", "Rua Nova", "Liberdade Nova");
 
-        when(addressRepository.findById(uuid)).thenReturn(java.util.Optional.of(address));
+        AddressResponseDTO response = addressService.update(address.getId(), request);
 
-        addressService.update(uuid, request);
-
-        verify(addressRepository, times(1)).save(any());
+        Assertions.assertEquals(request.cep(), response.cep());
+        Assertions.assertEquals(request.number(), response.number());
+        Assertions.assertEquals(request.street(), response.street());
+        Assertions.assertEquals(request.district(), response.district());
     }
 
     @Test
-    void updateAddressNotFound(){
-        UUID uuid = UUID.randomUUID();
+    @Order(3)
+    void updateAddressNotFound() {
+        UUID invalidId = UUID.randomUUID();
+        AddressRequestDTO request = new AddressRequestDTO("58703-001", "878", "Rua Nova", "Liberdade Nova");
 
-        when(addressRepository.findById(uuid)).thenReturn(java.util.Optional.empty());
-
-        NotFoundException exception = assertThrows(NotFoundException.class, () -> {
-            addressService.delete(uuid);
+        NotFoundException exception = Assertions.assertThrows(NotFoundException.class, () -> {
+            addressService.update(invalidId, request);
         });
 
-        assertEquals("Address not found with ID:" + uuid, exception.getMessage());
-
-        verify(addressRepository, times(0)).save(any());
+        Assertions.assertEquals("Address not found with ID:" + invalidId, exception.getMessage());
     }
 
     @Test
+    @Order(4)
     void delete() {
-        UUID uuid = UUID.randomUUID();
-        Address address = new Address(uuid, "58700-010", "872", "Rua do Prado", "Centro");
+        addressService.delete(address.getId());
 
-        when(addressRepository.findById(uuid)).thenReturn(java.util.Optional.of(address));
+        NotFoundException exception = Assertions.assertThrows(NotFoundException.class, () -> {
+            addressService.delete(address.getId());
+        });
 
-        addressService.delete(uuid);
-
-        verify(addressRepository, times(1)).delete(any());
+        Assertions.assertEquals("Address not found with ID:" + address.getId(), exception.getMessage());
     }
 
     @Test
-    void deleteAddressNotFound(){
-        UUID uuid = UUID.randomUUID();
+    @Order(5)
+    void deleteAddressNotFound() {
+        UUID invalidId = UUID.randomUUID();
 
-        when(addressRepository.findById(uuid)).thenReturn(java.util.Optional.empty());
-
-        NotFoundException exception = assertThrows(NotFoundException.class, () -> {
-            addressService.delete(uuid);
+        NotFoundException exception = Assertions.assertThrows(NotFoundException.class, () -> {
+            addressService.delete(invalidId);
         });
 
-        assertEquals("Address not found with ID:" + uuid, exception.getMessage());
-
-        verify(addressRepository, times(0)).delete(any());
+        Assertions.assertEquals("Address not found with ID:" + invalidId, exception.getMessage());
     }
 }
