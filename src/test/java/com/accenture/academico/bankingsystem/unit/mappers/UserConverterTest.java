@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.unit.converter;
+package com.accenture.academico.bankingsystem.unit.mappers;
 
 
 import com.accenture.academico.bankingsystem.domain.enums.Role;

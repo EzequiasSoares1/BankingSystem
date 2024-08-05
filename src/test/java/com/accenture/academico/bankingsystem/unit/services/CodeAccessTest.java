@@ -1,5 +1,4 @@
-package com.accenture.academico.bankingsystem.unit.service;
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+package com.accenture.academico.bankingsystem.unit.services;
 import com.accenture.academico.bankingsystem.security.CodeAccess;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

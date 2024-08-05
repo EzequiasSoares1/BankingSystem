@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.unit.model;
+package com.accenture.academico.bankingsystem.unit.domain;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.unit.middleware;
+package com.accenture.academico.bankingsystem.unit.middlewares;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.middlewares.UserTools;
 import org.junit.jupiter.api.BeforeEach;

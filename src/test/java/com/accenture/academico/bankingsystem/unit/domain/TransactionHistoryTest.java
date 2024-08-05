@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.unit.model;
+package com.accenture.academico.bankingsystem.unit.domain;
 
 import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.enums.TransactionType;
