@@ -2,7 +2,7 @@ package com.accenture.academico.bankingsystem.integrate.security;
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.user.User;
-import com.accenture.academico.bankingsystem.dto.ResponseToken;
+import com.accenture.academico.bankingsystem.dto.ResponseTokenDTO;
 import com.accenture.academico.bankingsystem.repositories.UserRepository;
 import com.accenture.academico.bankingsystem.security.TokenService;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ public class TokenServiceTest implements ConfigSpringTest {
     @Transactional
     void testGenerateToken() {
         User user = createUser("test@example.com", "password");
-        ResponseToken token = tokenService.generateToken(user);
+        ResponseTokenDTO token = tokenService.generateToken(user);
 
         assertNotNull(token);
         assertFalse(token.token().isEmpty());
@@ -38,7 +38,7 @@ public class TokenServiceTest implements ConfigSpringTest {
     @Transactional
     void testValidateToken() {
         User user = createUser("test@example.com", "password");
-        ResponseToken token = tokenService.generateToken(user);
+        ResponseTokenDTO token = tokenService.generateToken(user);
         assertNotNull(tokenService.validateToken(token.token()));
     }
 
@@ -46,7 +46,7 @@ public class TokenServiceTest implements ConfigSpringTest {
     @Transactional
     void testIsValidToken() {
         User user = createUser("test@example.com", "password");
-        ResponseToken tokenResponse = tokenService.generateToken(user);
+        ResponseTokenDTO tokenResponse = tokenService.generateToken(user);
 
         assertTrue(tokenService.isValidToken(tokenResponse.token()));
     }
@@ -55,7 +55,7 @@ public class TokenServiceTest implements ConfigSpringTest {
     @Transactional
     void testGenNewToken() {
         User user = createUser("test@example.com", "password");
-        ResponseToken tokenResponse = tokenService.generateToken(user);
+        ResponseTokenDTO tokenResponse = tokenService.generateToken(user);
         assertNotNull(tokenResponse.tokenRefresh(), tokenResponse.token());
     }
 

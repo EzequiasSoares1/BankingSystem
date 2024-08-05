@@ -13,7 +13,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class UserConverterTest implements ConfigSpringTest {
+public class UserConverterTest {
 
     @Test
     void testConvertToUser() {

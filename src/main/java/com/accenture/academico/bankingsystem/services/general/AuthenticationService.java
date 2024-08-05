@@ -1,7 +1,7 @@
 package com.accenture.academico.bankingsystem.services.general;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.dto.AuthenticationDTO;
-import com.accenture.academico.bankingsystem.dto.ResponseToken;
+import com.accenture.academico.bankingsystem.dto.ResponseTokenDTO;
 import com.accenture.academico.bankingsystem.exception.InternalLogicException;
 import com.accenture.academico.bankingsystem.repositories.UserRepository;
 import com.accenture.academico.bankingsystem.security.TokenService;
@@ -22,7 +22,7 @@ public class AuthenticationService {
         this.tokenService = tokenService;
     }
 
-    public ResponseToken login(AuthenticationDTO authenticationDTO) {
+    public ResponseTokenDTO login(AuthenticationDTO authenticationDTO) {
         var userNamePassword = new UsernamePasswordAuthenticationToken(authenticationDTO.email(), authenticationDTO.password());
         try {
             var auth = authenticationManager.authenticate(userNamePassword);
@@ -39,7 +39,7 @@ public class AuthenticationService {
         }
     }
 
-    public ResponseToken tokenRefresh(String tokenRefresh) {
+    public ResponseTokenDTO tokenRefresh(String tokenRefresh) {
         return tokenService.genNewToken(tokenRefresh);
     }
 }

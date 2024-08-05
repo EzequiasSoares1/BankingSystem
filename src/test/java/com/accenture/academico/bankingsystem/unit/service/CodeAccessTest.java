@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.unit.security;
+package com.accenture.academico.bankingsystem.unit.service;
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.security.CodeAccess;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-public class CodeAccessTest implements ConfigSpringTest {
+public class CodeAccessTest {
 
     @Autowired
     private CodeAccess codeAccess;
