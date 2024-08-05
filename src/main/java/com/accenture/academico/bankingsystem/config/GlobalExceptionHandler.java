@@ -1,5 +1,5 @@
 package com.accenture.academico.bankingsystem.config;
-import com.accenture.academico.bankingsystem.exception.*;
+import com.accenture.academico.bankingsystem.exceptions.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;

@@ -1,10 +1,9 @@
 package com.accenture.academico.bankingsystem.domain.address;
 
+import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.util.UUID;
 
 @Entity
@@ -29,4 +28,11 @@ public class Address {
 
     @Column(nullable = false, length = 100)
     private String district;
+
+    public Address(AddressRequestDTO addressDTO){
+        this.cep = addressDTO.cep();
+        this.number = addressDTO.number();
+        this.street = addressDTO.street();
+        this.district = addressDTO.district();
+    }
 }
