@@ -3,6 +3,7 @@ import com.accenture.academico.bankingsystem.integrate.controller.Authentication
 import com.accenture.academico.bankingsystem.integrate.controller.UserControllerTest;
 import com.accenture.academico.bankingsystem.integrate.security.CryptServiceTest;
 import com.accenture.academico.bankingsystem.integrate.security.TokenServiceTest;
+import com.accenture.academico.bankingsystem.integrate.service.AddressServiceTest;
 import com.accenture.academico.bankingsystem.integrate.service.AuthenticationServiceTest;
 import com.accenture.academico.bankingsystem.integrate.service.UserServiceTest;
 import org.junit.platform.commons.annotation.Testable;
@@ -16,6 +17,7 @@ import org.junit.platform.suite.api.Suite;
     UserServiceTest.class,
     CryptServiceTest.class,
     TokenServiceTest.class,
+    AddressServiceTest.class,
     UserControllerTest.class,
     AuthenticationControllerTest.class,
 })
