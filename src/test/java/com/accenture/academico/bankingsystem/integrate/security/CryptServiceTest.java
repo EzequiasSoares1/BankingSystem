@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.unit.security;
+package com.accenture.academico.bankingsystem.integrate.security;
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.security.CryptService;

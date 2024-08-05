@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.unit.service.converter;
+package com.accenture.academico.bankingsystem.unit.converter;
 
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;

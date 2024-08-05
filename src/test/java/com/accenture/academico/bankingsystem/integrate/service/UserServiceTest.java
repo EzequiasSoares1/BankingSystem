@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.unit.service;
+package com.accenture.academico.bankingsystem.integrate.service;
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.enums.Role;

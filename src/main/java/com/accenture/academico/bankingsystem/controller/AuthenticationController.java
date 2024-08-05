@@ -1,6 +1,5 @@
 package com.accenture.academico.bankingsystem.controller;
 import com.accenture.academico.bankingsystem.dto.AuthenticationDTO;
-import com.accenture.academico.bankingsystem.dto.ResponseToken;
 import com.accenture.academico.bankingsystem.services.general.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -17,20 +16,21 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping
-    public ResponseEntity<ResponseToken> login(@RequestBody @Valid AuthenticationDTO authenticationDTO){
-        log.info("Login attempt for user: {}", authenticationDTO.email());
+    public ResponseEntity<Object> login(@RequestBody @Valid AuthenticationDTO authenticationDTO){
+        log.info("User authenticate in login: {}", authenticationDTO.email());
         return ResponseEntity.ok(authenticationService.login(authenticationDTO));
     }
 
     @PostMapping("/isValidToken")
     public ResponseEntity<Object> isValidToken(@RequestParam String token){
-        log.info("Validating token: {}", token);
+        log.info("Validation to token: {}", token);
         authenticationService.validateToken(token);
         return ResponseEntity.ok().build();
     }
+
     @PostMapping("/refreshToken")
-    public ResponseEntity<ResponseToken> tokenRefresh(@RequestParam String token){
-        log.info("Refreshing token for token: {}", token);
+    public ResponseEntity<Object> tokenRefresh(@RequestParam String token){
+        log.info("Generater to tokenRefresh: {}", token);
         return ResponseEntity.ok(authenticationService.tokenRefresh(token));
     }
 }

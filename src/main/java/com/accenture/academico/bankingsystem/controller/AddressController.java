@@ -38,7 +38,7 @@ public class AddressController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable UUID id){
+    public ResponseEntity<Object> delete(@PathVariable UUID id){
         this.addressService.delete(id);
         return ResponseEntity.noContent().build();
     }

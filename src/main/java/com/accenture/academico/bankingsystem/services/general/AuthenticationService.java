@@ -24,14 +24,18 @@ public class AuthenticationService {
 
     public ResponseToken login(AuthenticationDTO authenticationDTO) {
         var userNamePassword = new UsernamePasswordAuthenticationToken(authenticationDTO.email(), authenticationDTO.password());
-        var auth = authenticationManager.authenticate(userNamePassword);
-        var token = tokenService.generateToken((User) auth.getPrincipal());
-        return token;
+        try {
+            var auth = authenticationManager.authenticate(userNamePassword);
+            return tokenService.generateToken((User) auth.getPrincipal());
+
+        }catch (Exception e){
+            throw new InternalLogicException(e.getMessage());
+        }
     }
 
     public void validateToken(String token) {
         if(!tokenService.isValidToken(token)) {
-            throw new InternalLogicException("token invalid");
+            throw new InternalLogicException("Token inválido");
         }
     }
 
