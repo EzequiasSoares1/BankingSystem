@@ -1,9 +1,9 @@
-package com.accenture.academico.bankingsystem.services.general;
+package com.accenture.academico.bankingsystem.services;
 
 import com.accenture.academico.bankingsystem.domain.address.Address;
-import com.accenture.academico.bankingsystem.dto.address.AddressRequestDTO;
-import com.accenture.academico.bankingsystem.dto.address.AddressResponseDTO;
-import com.accenture.academico.bankingsystem.exception.NotFoundException;
+import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.address.AddressResponseDTO;
+import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,6 +30,18 @@ public class AddressService {
             );
         }).toList();
     }
+
+    public AddressResponseDTO getAddressById(UUID id){
+        Address address = this.findById(id);
+
+        return new AddressResponseDTO(
+                address.getId(),
+                address.getCep(),
+                address.getNumber(),
+                address.getStreet(),
+                address.getDistrict()
+        );
+    }
     public AddressResponseDTO create(AddressRequestDTO addressDTO){
         Address address = new Address(addressDTO);
 
@@ -44,7 +56,7 @@ public class AddressService {
     }
 
     public AddressResponseDTO update(UUID id, AddressRequestDTO addressDTO){
-        Address address = this.getAdressById(id);
+        Address address = this.findById(id);
 
         address.setCep(addressDTO.cep());
         address.setNumber(addressDTO.number());
@@ -63,10 +75,10 @@ public class AddressService {
     }
 
     public void delete(UUID addressId){
-        this.addressRepository.delete(this.getAdressById(addressId));
+        this.addressRepository.delete(this.findById(addressId));
     }
 
-    private Address getAdressById(UUID id){
+    private Address findById(UUID id){
         return this.addressRepository.findById(id).orElseThrow(
                 () -> new NotFoundException("Address not found with ID:" + id));
     }

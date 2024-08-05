@@ -1,5 +1,4 @@
 package com.accenture.academico.bankingsystem.unit;
-import com.accenture.academico.bankingsystem.middleware.UserTools;
 import com.accenture.academico.bankingsystem.unit.config.GlobalExceptionHandlerTest;
 import com.accenture.academico.bankingsystem.unit.converter.UserConverterTest;
 import com.accenture.academico.bankingsystem.unit.middleware.UserToolsTest;

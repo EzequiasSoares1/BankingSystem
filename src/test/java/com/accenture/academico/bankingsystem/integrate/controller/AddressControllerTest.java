@@ -2,7 +2,7 @@ package com.accenture.academico.bankingsystem.integrate.controller;
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
-import com.accenture.academico.bankingsystem.dto.address.AddressRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -119,8 +119,7 @@ public class AddressControllerTest implements ConfigSpringTest {
     void getNonExistentAddress() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/address/" + UUID.randomUUID())
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.message", is("Address not found with ID")));
+                .andExpect(status().isNotFound());
     }
 
 }

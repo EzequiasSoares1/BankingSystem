@@ -1,6 +1,6 @@
-package com.accenture.academico.bankingsystem.controller;
-import com.accenture.academico.bankingsystem.dto.AuthenticationDTO;
-import com.accenture.academico.bankingsystem.services.general.AuthenticationService;
+package com.accenture.academico.bankingsystem.controllers;
+import com.accenture.academico.bankingsystem.dtos.user.AuthenticationDTO;
+import com.accenture.academico.bankingsystem.services.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

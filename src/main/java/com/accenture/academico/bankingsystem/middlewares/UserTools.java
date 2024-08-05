@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.middleware;
+package com.accenture.academico.bankingsystem.middlewares;
 
 import com.accenture.academico.bankingsystem.domain.user.User;
 import org.springframework.security.core.Authentication;

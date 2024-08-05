@@ -2,7 +2,7 @@ package com.accenture.academico.bankingsystem.integrate.security;
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.user.User;
-import com.accenture.academico.bankingsystem.dto.ResponseTokenDTO;
+import com.accenture.academico.bankingsystem.dtos.user.ResponseTokenDTO;
 import com.accenture.academico.bankingsystem.repositories.UserRepository;
 import com.accenture.academico.bankingsystem.security.TokenService;
 import org.junit.jupiter.api.Test;

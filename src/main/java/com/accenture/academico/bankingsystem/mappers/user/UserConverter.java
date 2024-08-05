@@ -1,8 +1,8 @@
-package com.accenture.academico.bankingsystem.services.converter;
+package com.accenture.academico.bankingsystem.mappers.user;
 
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
-import com.accenture.academico.bankingsystem.dto.UserDTO;
+import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

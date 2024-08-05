@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.domain.address;
 
-import com.accenture.academico.bankingsystem.dto.address.AddressRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 

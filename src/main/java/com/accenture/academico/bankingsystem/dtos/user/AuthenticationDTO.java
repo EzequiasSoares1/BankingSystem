@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.dto;
+package com.accenture.academico.bankingsystem.dtos.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,8 +1,8 @@
 package com.accenture.academico.bankingsystem.integrate.controller;
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
-import com.accenture.academico.bankingsystem.dto.UserDTO;
-import com.accenture.academico.bankingsystem.services.general.UserService;
+import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
+import com.accenture.academico.bankingsystem.services.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

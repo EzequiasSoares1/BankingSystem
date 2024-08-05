@@ -1,6 +1,6 @@
-package com.accenture.academico.bankingsystem.controller;
-import com.accenture.academico.bankingsystem.dto.UserDTO;
-import com.accenture.academico.bankingsystem.services.general.UserService;
+package com.accenture.academico.bankingsystem.controllers;
+import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
+import com.accenture.academico.bankingsystem.services.UserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import lombok.extern.slf4j.Slf4j;

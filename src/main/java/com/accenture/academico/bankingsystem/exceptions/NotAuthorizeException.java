@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.exception;
+package com.accenture.academico.bankingsystem.exceptions;
 
 public class NotAuthorizeException extends RuntimeException{
     public NotAuthorizeException(String message) {

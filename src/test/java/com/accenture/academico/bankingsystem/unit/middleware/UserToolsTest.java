@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.unit.middleware;
 import com.accenture.academico.bankingsystem.domain.user.User;
-import com.accenture.academico.bankingsystem.middleware.UserTools;
+import com.accenture.academico.bankingsystem.middlewares.UserTools;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.core.Authentication;

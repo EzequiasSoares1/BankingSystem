@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.security;
-import com.accenture.academico.bankingsystem.exception.InternalErrorException;
-import com.accenture.academico.bankingsystem.exception.NotFoundException;
+import com.accenture.academico.bankingsystem.exceptions.InternalErrorException;
+import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.repositories.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;

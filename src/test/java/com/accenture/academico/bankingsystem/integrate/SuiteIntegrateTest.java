@@ -1,4 +1,5 @@
 package com.accenture.academico.bankingsystem.integrate;
+import com.accenture.academico.bankingsystem.integrate.controller.AddressControllerTest;
 import com.accenture.academico.bankingsystem.integrate.controller.AuthenticationControllerTest;
 import com.accenture.academico.bankingsystem.integrate.controller.UserControllerTest;
 import com.accenture.academico.bankingsystem.integrate.security.CryptServiceTest;
@@ -20,6 +21,7 @@ import org.junit.platform.suite.api.Suite;
     AddressServiceTest.class,
     UserControllerTest.class,
     AuthenticationControllerTest.class,
+    AddressControllerTest.class
 })
 public class SuiteIntegrateTest {
 }

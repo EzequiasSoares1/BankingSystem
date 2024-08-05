@@ -2,11 +2,11 @@ package com.accenture.academico.bankingsystem.integrate.service;
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
-import com.accenture.academico.bankingsystem.dto.address.AddressRequestDTO;
-import com.accenture.academico.bankingsystem.dto.address.AddressResponseDTO;
-import com.accenture.academico.bankingsystem.exception.NotFoundException;
+import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.address.AddressResponseDTO;
+import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
-import com.accenture.academico.bankingsystem.services.general.AddressService;
+import com.accenture.academico.bankingsystem.services.AddressService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

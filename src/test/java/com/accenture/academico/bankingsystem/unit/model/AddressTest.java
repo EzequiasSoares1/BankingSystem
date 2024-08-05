@@ -1,7 +1,7 @@
 package com.accenture.academico.bankingsystem.unit.model;
 
 import com.accenture.academico.bankingsystem.domain.address.Address;
-import com.accenture.academico.bankingsystem.dto.address.AddressRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

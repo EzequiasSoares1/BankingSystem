@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.dto.address;
+package com.accenture.academico.bankingsystem.dtos.address;
 
 import java.util.UUID;
 

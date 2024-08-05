@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.exception;
+package com.accenture.academico.bankingsystem.exceptions;
 
 public class NotFoundException extends RuntimeException{
     public NotFoundException(String message) {
