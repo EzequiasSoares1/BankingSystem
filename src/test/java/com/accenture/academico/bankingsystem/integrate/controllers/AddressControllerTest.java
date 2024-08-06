@@ -1,8 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.controllers;
-
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
-import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,30 +44,30 @@ public class AddressControllerTest implements ConfigSpringTest {
 
     @Test
     void create() throws Exception {
-        AddressRequestDTO request = new AddressRequestDTO("58703-000", "877", "Rua do Prado", "Liberdade");
+        Address request = new Address(UUID.randomUUID(),"58703-000", "877", "Rua do Prado", "Liberdade");
 
         mockMvc.perform(MockMvcRequestBuilders.post("/address")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{ \"cep\": \"58703-000\", \"number\": \"877\", \"street\": \"Rua do Prado\", \"district\": \"Liberdade\" }"))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.cep", is(request.cep())))
-                .andExpect(jsonPath("$.number", is(request.number())))
-                .andExpect(jsonPath("$.street", is(request.street())))
-                .andExpect(jsonPath("$.district", is(request.district())));
+                .andExpect(jsonPath("$.cep", is(request.getCep())))
+                .andExpect(jsonPath("$.number", is(request.getNumber())))
+                .andExpect(jsonPath("$.street", is(request.getStreet())))
+                .andExpect(jsonPath("$.district", is(request.getDistrict())));
     }
 
     @Test
     void update() throws Exception {
-        AddressRequestDTO request = new AddressRequestDTO("58703-001", "878", "Rua Nova", "Liberdade Nova");
+        Address request = new Address(UUID.randomUUID(),"58703-001", "878", "Rua Nova", "Liberdade Nova");
 
         mockMvc.perform(MockMvcRequestBuilders.put("/address/" + address.getId())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{ \"cep\": \"58703-001\", \"number\": \"878\", \"street\": \"Rua Nova\", \"district\": \"Liberdade Nova\" }"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.cep", is(request.cep())))
-                .andExpect(jsonPath("$.number", is(request.number())))
-                .andExpect(jsonPath("$.street", is(request.street())))
-                .andExpect(jsonPath("$.district", is(request.district())));
+                .andExpect(jsonPath("$.cep", is(request.getCep())))
+                .andExpect(jsonPath("$.number", is(request.getNumber())))
+                .andExpect(jsonPath("$.street", is(request.getStreet())))
+                .andExpect(jsonPath("$.district", is(request.getDistrict())));
     }
 
     @Test
@@ -89,7 +87,7 @@ public class AddressControllerTest implements ConfigSpringTest {
 
     @Test
     void updateNonExistentAddress() throws Exception {
-        AddressRequestDTO request = new AddressRequestDTO("58703-001", "878", "Rua Nova", "Liberdade Nova");
+        Address request = new Address(UUID.randomUUID(),"58703-001", "878", "Rua Nova", "Liberdade Nova");
 
         mockMvc.perform(MockMvcRequestBuilders.put("/address/" + UUID.randomUUID())
                         .contentType(MediaType.APPLICATION_JSON)

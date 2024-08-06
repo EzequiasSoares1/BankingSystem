@@ -1,9 +1,7 @@
 package com.accenture.academico.bankingsystem.domain.address;
-
-import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
 import java.util.UUID;
 
 @Entity
@@ -18,21 +16,18 @@ public class Address {
     private UUID id;
 
     @Column(nullable = false, length = 10)
+    @NotBlank
     private String cep;
 
     @Column(nullable = false, length = 10)
+    @NotBlank
     private String number;
 
     @Column(nullable = false, length = 100)
+    @NotBlank
     private String street;
 
     @Column(nullable = false, length = 100)
+    @NotBlank
     private String district;
-
-    public Address(AddressRequestDTO addressDTO){
-        this.cep = addressDTO.cep();
-        this.number = addressDTO.number();
-        this.street = addressDTO.street();
-        this.district = addressDTO.district();
-    }
 }

@@ -1,8 +1,6 @@
 package com.accenture.academico.bankingsystem.services;
 
 import com.accenture.academico.bankingsystem.domain.address.Address;
-import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
-import com.accenture.academico.bankingsystem.dtos.address.AddressResponseDTO;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,69 +15,35 @@ public class AddressService {
 
     private final AddressRepository addressRepository;
 
-    public List<AddressResponseDTO> getAllAddress() {
-        List<Address> addressList = this.addressRepository.findAll();
-
-        return addressList.stream().map(address -> {
-            return new AddressResponseDTO(
-                    address.getId(),
-                    address.getCep(),
-                    address.getNumber(),
-                    address.getStreet(),
-                    address.getDistrict()
-            );
-        }).toList();
+    public List<Address> getAllAddress() {
+        return addressRepository.findAll();
     }
 
-    public AddressResponseDTO getAddressById(UUID id){
-        Address address = this.findById(id);
-
-        return new AddressResponseDTO(
-                address.getId(),
-                address.getCep(),
-                address.getNumber(),
-                address.getStreet(),
-                address.getDistrict()
-        );
-    }
-    public AddressResponseDTO create(AddressRequestDTO addressDTO){
-        Address address = new Address(addressDTO);
-
-        this.addressRepository.save(address);
-        return new AddressResponseDTO(
-                address.getId(),
-                address.getCep(),
-                address.getNumber(),
-                address.getStreet(),
-                address.getDistrict()
-        );
-    }
-
-    public AddressResponseDTO update(UUID id, AddressRequestDTO addressDTO){
-        Address address = this.findById(id);
-
-        address.setCep(addressDTO.cep());
-        address.setNumber(addressDTO.number());
-        address.setStreet(addressDTO.street());
-        address.setDistrict(addressDTO.district());
-
-        this.addressRepository.save(address);
-
-        return new AddressResponseDTO(
-                address.getId(),
-                address.getCep(),
-                address.getNumber(),
-                address.getStreet(),
-                address.getDistrict()
-        );
-    }
-
-    public void delete(UUID addressId){
-        this.addressRepository.delete(this.findById(addressId));
-    }
-
-    private Address findById(UUID id){
+    public Address getAddressById(UUID id){
         return this.addressRepository.findById(id).orElseThrow(
                 () -> new NotFoundException("Address not found with ID:" + id));
     }
+
+    public Address create(Address address){
+        return addressRepository.save(address);
+    }
+
+    public Address update(UUID id, Address address){
+        Address myAddress = this.getAddressById(id);
+
+        if (address.getCep() != null) myAddress.setCep(address.getCep());
+
+        if (address.getNumber() != null) myAddress.setNumber(address.getNumber());
+
+        if (address.getStreet() != null) myAddress.setStreet(address.getStreet());
+
+        if (address.getDistrict() != null) myAddress.setDistrict(address.getDistrict());
+
+        return addressRepository.save(myAddress);
+    }
+
+    public void delete(UUID addressId){
+        this.addressRepository.delete(this.getAddressById(addressId));
+    }
+
 }

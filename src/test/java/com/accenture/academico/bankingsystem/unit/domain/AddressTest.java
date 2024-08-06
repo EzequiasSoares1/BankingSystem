@@ -1,7 +1,6 @@
 package com.accenture.academico.bankingsystem.unit.domain;
 
 import com.accenture.academico.bankingsystem.domain.address.Address;
-import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -57,14 +56,4 @@ public class AddressTest {
         assertEquals(district, address.getDistrict());
     }
 
-    @Test
-    void testConstructorFromDTO() {
-        AddressRequestDTO addressDTO = new AddressRequestDTO("12345678", "789", "Third St", "Midtown");
-        Address address = new Address(addressDTO);
-
-        assertEquals(addressDTO.cep(), address.getCep());
-        assertEquals(addressDTO.number(), address.getNumber());
-        assertEquals(addressDTO.street(), address.getStreet());
-        assertEquals(addressDTO.district(), address.getDistrict());
-    }
 }

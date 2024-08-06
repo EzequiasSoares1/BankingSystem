@@ -2,8 +2,6 @@ package com.accenture.academico.bankingsystem.integrate.services;
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
-import com.accenture.academico.bankingsystem.dtos.address.AddressRequestDTO;
-import com.accenture.academico.bankingsystem.dtos.address.AddressResponseDTO;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
 import com.accenture.academico.bankingsystem.services.AddressService;
@@ -12,6 +10,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -34,44 +33,44 @@ public class AddressServiceTest implements ConfigSpringTest {
     @Test
 
     void getAllAddress() {
-        List<AddressResponseDTO> addressResponseDTOList = addressService.getAllAddress();
+        List<Address> addressResponseDTOList = addressService.getAllAddress();
 
         Assertions.assertFalse(addressResponseDTOList.isEmpty());
-        Assertions.assertEquals("58700-010", addressResponseDTOList.get(0).cep());
+        Assertions.assertEquals("58700-010", addressResponseDTOList.get(0).getCep());
     }
 
     @Test
     @Order(1)
     void create() {
-        AddressRequestDTO request = new AddressRequestDTO("58703-000", "877", "Rua do Prado", "Liberdade");
+        Address request = new Address(UUID.randomUUID(),"58703-000", "877", "Rua do Prado", "Liberdade");
 
-        AddressResponseDTO response = addressService.create(request);
+        Address response = addressService.create(request);
 
-        Assertions.assertNotNull(response.id());
-        Assertions.assertEquals(request.cep(), response.cep());
-        Assertions.assertEquals(request.number(), response.number());
-        Assertions.assertEquals(request.street(), response.street());
-        Assertions.assertEquals(request.district(), response.district());
+        Assertions.assertNotNull(response.getId());
+        Assertions.assertEquals(request.getCep(), response.getCep());
+        Assertions.assertEquals(request.getNumber(), response.getNumber());
+        Assertions.assertEquals(request.getStreet(), response.getStreet());
+        Assertions.assertEquals(request.getDistrict(), response.getDistrict());
     }
 
     @Test
     @Order(2)
     void update() {
-        AddressRequestDTO request = new AddressRequestDTO("58703-001", "878", "Rua Nova", "Liberdade Nova");
+        Address request = new Address(UUID.randomUUID(),"58703-001", "878", "Rua Nova", "Liberdade Nova");
 
-        AddressResponseDTO response = addressService.update(address.getId(), request);
+        Address response = addressService.update(address.getId(), request);
 
-        Assertions.assertEquals(request.cep(), response.cep());
-        Assertions.assertEquals(request.number(), response.number());
-        Assertions.assertEquals(request.street(), response.street());
-        Assertions.assertEquals(request.district(), response.district());
+        Assertions.assertEquals(request.getCep(), response.getCep());
+        Assertions.assertEquals(request.getNumber(), response.getNumber());
+        Assertions.assertEquals(request.getStreet(), response.getStreet());
+        Assertions.assertEquals(request.getDistrict(), response.getDistrict());
     }
 
     @Test
     @Order(3)
     void updateAddressNotFound() {
         UUID invalidId = UUID.randomUUID();
-        AddressRequestDTO request = new AddressRequestDTO("58703-001", "878", "Rua Nova", "Liberdade Nova");
+        Address request = new Address(UUID.randomUUID(),"58703-001", "878", "Rua Nova", "Liberdade Nova");
 
         NotFoundException exception = Assertions.assertThrows(NotFoundException.class, () -> {
             addressService.update(invalidId, request);
