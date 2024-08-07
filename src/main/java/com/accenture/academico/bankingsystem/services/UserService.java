@@ -5,7 +5,7 @@ import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
 import com.accenture.academico.bankingsystem.exceptions.ConflictException;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.repositories.UserRepository;
-import com.accenture.academico.bankingsystem.mappers.user.UserConverter;
+import com.accenture.academico.bankingsystem.mappers.user.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,16 +36,19 @@ public class UserService {
         if(u == null){
             throw new NotFoundException("User not found");
         }
-        return UserConverter.convertToUserDTO(u);
+        return UserMapper.convertToUserDTO(u);
     }
     public UserDTO getUserById(UUID id){
-        User u =  userRepository.findById(id).orElseThrow(() -> new NotFoundException("User not found"));
-        return  UserConverter.convertToUserDTO(u);
+        return UserMapper.convertToUserDTO(this.getUserInternalById(id));
+    }
+
+    public User getUserInternalById(UUID id){
+        return userRepository.findById(id).orElseThrow(() -> new NotFoundException("User not found"));
     }
 
     public List<UserDTO> getAllUsers() {
         List<User> u = userRepository.findAll();
-        return u != null ? UserConverter.convertToUserDTOList(u): null;
+        return u != null ? UserMapper.convertToUserDTOList(u): null;
     }
 
     public UserDTO saveUser(UserDTO userDTO) {
@@ -53,10 +56,10 @@ public class UserService {
        if(userRepository.findByEmail(userDTO.email()) != null){
            throw new ConflictException("User already exists");
        }
-        User newUser = UserConverter.convertToUser(userDTO);
+        User newUser = UserMapper.convertToUser(userDTO);
 
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-        return  UserConverter.convertToUserDTO(userRepository.save(newUser));
+        return  UserMapper.convertToUserDTO(userRepository.save(newUser));
     }
 
     public void deleteUser(UUID id){
@@ -77,6 +80,6 @@ public class UserService {
         if (userDTO.password() != null) {user.setPassword(passwordEncoder.encode(userDTO.password()));}
         if (userDTO.role() != null) {user.setRole(Role.valueOf(userDTO.role()));}
 
-       return UserConverter.convertToUserDTO(userRepository.save(user));
+       return UserMapper.convertToUserDTO(userRepository.save(user));
     }
 }

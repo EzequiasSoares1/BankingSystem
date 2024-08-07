@@ -1,6 +1,7 @@
 package com.accenture.academico.bankingsystem.middlewares;
 
 import com.accenture.academico.bankingsystem.domain.user.User;
+import com.accenture.academico.bankingsystem.exceptions.NotAuthorizeException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -13,10 +14,7 @@ public class UserTools {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.isAuthenticated()) {
-            User user = (User) authentication.getPrincipal();
-            UUID userId = user.getId();
-
-            if(id != userId) {throw new RuntimeException("Nao autorizado");}
+            if(!id.equals(getUserContextId())) {throw new NotAuthorizeException("access denied");}
         }
     }
 

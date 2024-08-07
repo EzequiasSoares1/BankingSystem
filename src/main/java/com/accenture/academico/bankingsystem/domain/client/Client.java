@@ -29,7 +29,7 @@ public class Client {
     @Column(nullable = false, length = 100)
     private String telephone;
 
-    @OneToOne
+    @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
