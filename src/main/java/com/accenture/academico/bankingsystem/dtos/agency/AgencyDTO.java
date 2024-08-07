@@ -14,6 +14,5 @@ public record AgencyDTO(
         String telephone,
         @NotBlank
         String number,
-        @NotNull
         UUID address_id
 ){}

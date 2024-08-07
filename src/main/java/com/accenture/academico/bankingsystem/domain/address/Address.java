@@ -17,6 +17,7 @@ import java.util.UUID;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @JsonIgnore
     private UUID id;
 
     @Column(nullable = false, length = 10)
@@ -36,9 +37,11 @@ public class Address {
     private String district;
 
     @Column(nullable = false)
+    @JsonIgnore
     private LocalDateTime createdDate;
 
     @Column(nullable = false)
+    @JsonIgnore
     private LocalDateTime updatedDate;
 
     @PreUpdate

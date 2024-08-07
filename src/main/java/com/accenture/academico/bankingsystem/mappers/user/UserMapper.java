@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 
 @Component
-public class UserConverter {
+public class UserMapper {
 
     public static User convertToUser(UserDTO registrerDTO) {
         return new User(
@@ -25,13 +25,13 @@ public class UserConverter {
         return new UserDTO(
                 user.getId(),
                 user.getEmail(),
-                user.getPassword(),
+                null,
                 user.getRole().toString()
         );
     }
     public static List<UserDTO> convertToUserDTOList(List<User> users) {
         return users.stream()
-                .map(UserConverter::convertToUserDTO)
+                .map(UserMapper::convertToUserDTO)
                 .collect(Collectors.toList());
     }
 

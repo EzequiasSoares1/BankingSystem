@@ -4,7 +4,7 @@ import com.accenture.academico.bankingsystem.dtos.agency.AgencyRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.agency.AgencyDTO;
 import com.accenture.academico.bankingsystem.exceptions.ConflictException;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
-import com.accenture.academico.bankingsystem.mappers.agency.AgencyConverter;
+import com.accenture.academico.bankingsystem.mappers.agency.AgencyMapper;
 import com.accenture.academico.bankingsystem.repositories.AgencyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class AgencyService {
 
     public List<AgencyDTO> getAllAgencies() {
         List<Agency> agencyList = this.agencyRepository.findAll();
-        return AgencyConverter.convertToAgencyResponseDTOList(agencyList);
+        return AgencyMapper.convertToAgencyResponseDTOList(agencyList);
     }
 
     public AgencyDTO getAgencyById(UUID id) {
         Agency agency = this.findById(id);
-        return AgencyConverter.convertToAgencyResponseDTO(agency);
+        return AgencyMapper.convertToAgencyResponseDTO(agency);
     }
 
     public AgencyDTO createAgency(AgencyRequestDTO agencyDTO) {
@@ -41,7 +41,7 @@ public class AgencyService {
 
         this.agencyRepository.save(agency);
 
-        return AgencyConverter.convertToAgencyResponseDTO(agency);
+        return AgencyMapper.convertToAgencyResponseDTO(agency);
     }
 
     public AgencyDTO updateAgency(UUID id, AgencyDTO agencyDTO) {
@@ -56,7 +56,7 @@ public class AgencyService {
         if (agencyDTO.address_id() != null) agency.setAddress(addressService.getAddressById(agencyDTO.address_id()));
 
         this.agencyRepository.save(agency);
-        return AgencyConverter.convertToAgencyResponseDTO(agency);
+        return AgencyMapper.convertToAgencyResponseDTO(agency);
     }
 
     public void deleteAgency(UUID id) {

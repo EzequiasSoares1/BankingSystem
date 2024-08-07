@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class AgencyConverter {
+public class AgencyMapper {
 
     public static Agency convertToAgency(AgencyRequestDTO agencyDTO) {
         Agency agency = new Agency();
@@ -32,7 +32,7 @@ public class AgencyConverter {
 
     public static List<AgencyDTO> convertToAgencyResponseDTOList(List<Agency> agencies) {
         return agencies.stream()
-                .map(AgencyConverter::convertToAgencyResponseDTO)
+                .map(AgencyMapper::convertToAgencyResponseDTO)
                 .collect(Collectors.toList());
     }
 
