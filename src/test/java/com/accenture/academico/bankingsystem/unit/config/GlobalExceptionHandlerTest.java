@@ -1,27 +1,23 @@
 package com.accenture.academico.bankingsystem.unit.config;
-
+import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.config.GlobalExceptionHandler;
 import com.accenture.academico.bankingsystem.exceptions.*;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.CannotCreateTransactionException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.servlet.NoHandlerFoundException;
-
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.sql.SQLException;
 import java.sql.SQLTransientConnectionException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
-public class GlobalExceptionHandlerTest {
+public class GlobalExceptionHandlerTest implements ConfigSpringTest {
 
     @Autowired
     private GlobalExceptionHandler globalExceptionHandler;

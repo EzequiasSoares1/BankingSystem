@@ -5,6 +5,8 @@ CREATE TABLE account (
     balance DECIMAL(19, 4),
     agency_id BINARY(16) NOT NULL,
     client_id BINARY(16) NOT NULL,
+    created_date DATETIME,
+    updated_date DATETIME,
     CONSTRAINT account_agency_id_fkey FOREIGN KEY (agency_id) REFERENCES agency (id) ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT account_client_id_fkey FOREIGN KEY (client_id) REFERENCES client (id) ON DELETE RESTRICT ON UPDATE CASCADE
 );

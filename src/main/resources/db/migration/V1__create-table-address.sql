@@ -4,7 +4,9 @@ CREATE TABLE address
     cep      VARCHAR(10)  NOT NULL,
     number   VARCHAR(10),
     street   VARCHAR(100) NOT NULL,
-    district VARCHAR(100) NOT NULL
+    district VARCHAR(100) NOT NULL,
+    created_date DATETIME,
+    updated_date DATETIME
 );
 
 

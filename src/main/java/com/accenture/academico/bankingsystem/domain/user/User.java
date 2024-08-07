@@ -1,5 +1,6 @@
 package com.accenture.academico.bankingsystem.domain.user;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -9,16 +10,16 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Entity
 @Table(name = "bank_user")
 @Getter
 @Builder
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -37,14 +38,29 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 100)
     private String password;
 
+    @Column(nullable = false)
+    private LocalDateTime createdDate;
+
+    @Column(nullable = false)
+    private LocalDateTime updatedDate;
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedDate = LocalDateTime.now();
+    }
+
+    @PrePersist
+    public void prePersist() {
+        final LocalDateTime date = LocalDateTime.now();
+        createdDate = date;
+        updatedDate = date;
+    }
+
     public User(UUID id, String email, Role role, String password) {
         this.id = id;
         this.email = email;
         this.role = role;
         this.password = password;
-    }
-
-    public User() {
     }
 
     @Override
