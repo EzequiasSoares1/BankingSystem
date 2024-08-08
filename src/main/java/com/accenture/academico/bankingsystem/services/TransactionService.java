@@ -1,18 +1,12 @@
 package com.accenture.academico.bankingsystem.services;
 
-import com.accenture.academico.bankingsystem.domain.account.Account;
-import com.accenture.academico.bankingsystem.domain.enums.TransactionType;
-import com.accenture.academico.bankingsystem.dtos.account.AccountResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.OperationRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransactionRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransactionTransferResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction_history.TransactionHistoryRequestDTO;
-import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
-import com.accenture.academico.bankingsystem.mappers.account.AccountMapper;
-import com.accenture.academico.bankingsystem.repositories.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.math.BigDecimal;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -25,23 +19,53 @@ public class TransactionService {
         transactionHistoryService.createTransactionHistory(
                 new TransactionHistoryRequestDTO(
                         transactionDTO.accountId(),
-                        TransactionType.DEPOSIT,
+                        transactionDTO.transactionType(),
                         transactionDTO.valueTransaction(),
                         transactionDTO.balance()
                 )
         );
         return transactionDTO;
     }
-    public void sac(OperationRequestDTO operationDTO){
+    public TransactionResponseDTO sac(OperationRequestDTO operationDTO){
+        TransactionResponseDTO transactionDTO = accountService.sac(operationDTO.accountId(), operationDTO.value());
 
-//        transactionHistoryService.createTransactionHistory(
-//                new TransactionHistoryRequestDTO(
-//                        account.getId(),
-//                        TransactionType.PAYMENT,
-//                        operationDTO.value(),
-//                        account.getBalance()
-//                )
-//        );
-        //return AccountMapper.convertToAccountResponseDTO(account);
+        transactionHistoryService.createTransactionHistory(
+                new TransactionHistoryRequestDTO(
+                        transactionDTO.accountId(),
+                        transactionDTO.transactionType(),
+                        transactionDTO.valueTransaction(),
+                        transactionDTO.balance()
+               )
+        );
+        return transactionDTO;
+    }
+    public TransactionResponseDTO transfer(TransactionRequestDTO request){
+        TransactionTransferResponseDTO transactionTransferResponseDTO = accountService.transfer(request.receiverId(), request.senderId(), request.value());
+
+        transactionHistoryService.createTransactionHistory(
+                new TransactionHistoryRequestDTO(
+                        transactionTransferResponseDTO.senderId(),
+                        transactionTransferResponseDTO.transactionType(),
+                        transactionTransferResponseDTO.valueTransaction().negate(),
+                        transactionTransferResponseDTO.senderBalance()
+                )
+        );
+        transactionHistoryService.createTransactionHistory(
+                new TransactionHistoryRequestDTO(
+                        transactionTransferResponseDTO.receiverId(),
+                        transactionTransferResponseDTO.transactionType(),
+                        transactionTransferResponseDTO.valueTransaction(),
+                        transactionTransferResponseDTO.receiverBalance()
+                )
+        );
+        return new TransactionResponseDTO(
+                transactionTransferResponseDTO.accountType(),
+                transactionTransferResponseDTO.transactionType(),
+                transactionTransferResponseDTO.agencyId(),
+                transactionTransferResponseDTO.senderId(),
+                transactionTransferResponseDTO.senderBalance(),
+                transactionTransferResponseDTO.dataTransaction(),
+                transactionTransferResponseDTO.valueTransaction()
+        );
     }
 }
