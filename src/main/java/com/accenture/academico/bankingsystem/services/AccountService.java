@@ -7,6 +7,7 @@ import com.accenture.academico.bankingsystem.dtos.account.AccountRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountUpdateDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransactionTransferResponseDTO;
 import com.accenture.academico.bankingsystem.exceptions.AmountNegativeException;
 import com.accenture.academico.bankingsystem.exceptions.ConflictException;
 import com.accenture.academico.bankingsystem.exceptions.InsufficientFundsException;
@@ -19,6 +20,7 @@ import com.accenture.academico.bankingsystem.repositories.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -141,7 +143,7 @@ public class AccountService {
 
     }
 
-    public TransactionResponseDTO transfer(UUID fromAccountId, UUID toAccountId, BigDecimal amount) {
+    public TransactionTransferResponseDTO transfer(UUID fromAccountId, UUID toAccountId, BigDecimal amount) {
         validateAmount(amount);
 
         Account fromAccount = getById(fromAccountId);
@@ -152,11 +154,20 @@ public class AccountService {
         fromAccount.setBalance(fromAccount.getBalance().subtract(amount));
         toAccount.setBalance(toAccount.getBalance().add(amount));
 
-       Account myAccount = accountRepository.save(fromAccount);
+       accountRepository.save(fromAccount);
        accountRepository.save(toAccount);
 
-       return TransactionMapper.convertToAccountTransactionResponseDTO(myAccount, TransactionType.TRANSFER, amount);
-
+        return new TransactionTransferResponseDTO(
+                fromAccount.getId(),
+                toAccount.getId(),
+                fromAccount.getBalance(),
+                toAccount.getBalance(),
+                fromAccount.getAccountType(),
+                TransactionType.TRANSFER,
+                fromAccount.getAgency().getId(),
+                fromAccount.getUpdatedDate(),
+                amount
+        );
     }
 
 
