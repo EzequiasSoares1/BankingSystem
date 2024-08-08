@@ -18,7 +18,7 @@ public class AccountTest {
     void testAccountBuilder() {
         UUID id = UUID.randomUUID();
         String number = "1234567890";
-        AccountType accountType = AccountType.CHECKING;
+        AccountType accountType = AccountType.CURRENT;
         Agency agency = new Agency();
         BigDecimal balance = BigDecimal.valueOf(1000.00);
         Client client = new Client();
@@ -45,7 +45,7 @@ public class AccountTest {
         Account account = new Account();
         UUID id = UUID.randomUUID();
         String number = "0987654321";
-        AccountType accountType = AccountType.SAVING;
+        AccountType accountType = AccountType.SAVINGS;
         Agency agency = new Agency();
         BigDecimal balance = BigDecimal.valueOf(500.00);
         Client client = new Client();

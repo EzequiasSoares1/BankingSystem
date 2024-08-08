@@ -1,8 +1,5 @@
 package com.accenture.academico.bankingsystem.integrate;
-import com.accenture.academico.bankingsystem.integrate.controllers.AddressControllerTest;
-import com.accenture.academico.bankingsystem.integrate.controllers.AgencyControllerTest;
-import com.accenture.academico.bankingsystem.integrate.controllers.AuthenticationControllerTest;
-import com.accenture.academico.bankingsystem.integrate.controllers.UserControllerTest;
+import com.accenture.academico.bankingsystem.integrate.controllers.*;
 import com.accenture.academico.bankingsystem.integrate.security.CryptServiceTest;
 import com.accenture.academico.bankingsystem.integrate.security.TokenServiceTest;
 import com.accenture.academico.bankingsystem.integrate.services.*;
@@ -20,9 +17,11 @@ import org.junit.platform.suite.api.Suite;
     AddressServiceTest.class,
     AgencyServiceTest.class,
     ClientServiceTest.class,
+    AccountServiceTest.class,
     UserControllerTest.class,
     AgencyControllerTest.class,
     AgencyControllerTest.class,
+    AccountControllerTest.class,
     AuthenticationControllerTest.class,
     AddressControllerTest.class
 })

@@ -7,8 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 public record AccountRequestDTO (
-                  @NotBlank
-                  String number,
                   @NotNull
                   AccountType accountType,
                   @NotNull

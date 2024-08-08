@@ -115,6 +115,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 
+    @ExceptionHandler({AmountNegativeException.class, InsufficientFundsException.class})
+    public ResponseEntity<String> handleMovimentationException(Exception ex) {
+        log.warn("Transaction failed due to: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+
     @ExceptionHandler(ConflictException.class)
     public ResponseEntity<String> handleConflictException(ConflictException ex) {
         log.warn("Conflict: {}", ex.getMessage(), ex);

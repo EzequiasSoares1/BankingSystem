@@ -141,4 +141,20 @@ public class GlobalExceptionHandlerTest implements ConfigSpringTest {
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());
         assertEquals(null, responseEntity.getBody());
     }
+
+    @Test
+    void handleAmountNegativeException() {
+        AmountNegativeException ex = new AmountNegativeException("Amount cannot be negative");
+        ResponseEntity<String> responseEntity = globalExceptionHandler.handleMovimentationException(ex);
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        assertEquals("Amount cannot be negative", responseEntity.getBody());
+    }
+
+    @Test
+    void handleInsufficientFundsException() {
+        InsufficientFundsException ex = new InsufficientFundsException("Insufficient funds");
+        ResponseEntity<String> responseEntity = globalExceptionHandler.handleMovimentationException(ex);
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+        assertEquals("Insufficient funds", responseEntity.getBody());
+    }
 }

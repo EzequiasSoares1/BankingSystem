@@ -32,14 +32,14 @@ public class Account {
     @Column(name = "account_type", nullable = false)
     private AccountType accountType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "agency_id", nullable = false)
     private Agency agency;
 
     @Column(precision = 19, scale = 4)
     private BigDecimal balance;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
