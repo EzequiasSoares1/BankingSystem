@@ -28,6 +28,10 @@ public class AgencyService {
         return AgencyMapper.convertToAgencyResponseDTO(agency);
     }
 
+    public Agency getAgencyInternalById(UUID id) {
+        return this.findById(id);
+    }
+
     public AgencyDTO createAgency(AgencyRequestDTO agencyDTO) {
         if (agencyRepository.existsAgencyByNumberAndName(agencyDTO.number(), agencyDTO.name()))
             throw new ConflictException("Agency already exists ");
