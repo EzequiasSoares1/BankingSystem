@@ -31,6 +31,8 @@ public class TransactionHistory {
     private BigDecimal amount;
     @Column(name = "transaction_date", nullable = false)
     private LocalDateTime transactionDate;
+    @Column(precision = 19, scale = 4, name = "balance_current", nullable = false)
+    private BigDecimal balanceCurrent;
     @PrePersist
     public void prePersist() {this.transactionDate = LocalDateTime.now();}
 }
