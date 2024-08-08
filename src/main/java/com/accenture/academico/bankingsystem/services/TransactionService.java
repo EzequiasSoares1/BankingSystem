@@ -4,68 +4,44 @@ import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.enums.TransactionType;
 import com.accenture.academico.bankingsystem.dtos.account.AccountResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.OperationRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction_history.TransactionHistoryRequestDTO;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.mappers.account.AccountMapper;
 import com.accenture.academico.bankingsystem.repositories.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class TransactionService {
-
-    private final AccountRepository accountRepository;
+    private final AccountService accountService;
     private final TransactionHistoryService transactionHistoryService;
-
-    public AccountResponseDTO createDeposit(OperationRequestDTO operationDTO){
-        this.validateAmount(operationDTO.value());
-
-        Account account = this.findById(operationDTO.accountId());
-        account.setBalance(account.getBalance().add(operationDTO.value()));
-        accountRepository.save(account);
+    public TransactionResponseDTO deposit(OperationRequestDTO operationDTO){
+        TransactionResponseDTO transactionDTO = accountService.deposit(operationDTO.accountId(), operationDTO.value());
 
         transactionHistoryService.createTransactionHistory(
                 new TransactionHistoryRequestDTO(
-                        account.getId(),
+                        transactionDTO.accountId(),
                         TransactionType.DEPOSIT,
-                        operationDTO.value()
+                        transactionDTO.valueTransaction(),
+                        transactionDTO.balance()
                 )
         );
-        return AccountMapper.convertToAccountResponseDTO(account);
+        return transactionDTO;
     }
+    public void sac(OperationRequestDTO operationDTO){
 
-    public AccountResponseDTO createWithdraw(OperationRequestDTO operationDTO){
-        this.validateAmount(operationDTO.value());
-
-        Account account = this.findById(operationDTO.accountId());
-
-        if (account.getBalance().compareTo(operationDTO.value()) < 0)
-            throw new IllegalArgumentException("Insufficient funds");
-
-        account.setBalance(account.getBalance().subtract(operationDTO.value()));
-        accountRepository.save(account);
-
-        transactionHistoryService.createTransactionHistory(
-                new TransactionHistoryRequestDTO(
-                        account.getId(),
-                        TransactionType.PAYMENT,
-                        operationDTO.value()
-                )
-        );
-        return AccountMapper.convertToAccountResponseDTO(account);
-    }
-
-    private Account findById(UUID id){
-        return accountRepository.findById(id).orElseThrow(() -> new NotFoundException("Account not found with ID:" + id));
-    }
-
-    private void validateAmount(BigDecimal amount) {
-        if (amount == null || amount.signum() <= 0) {
-            throw new IllegalArgumentException("Amount must be positive");
-        }
+//        transactionHistoryService.createTransactionHistory(
+//                new TransactionHistoryRequestDTO(
+//                        account.getId(),
+//                        TransactionType.PAYMENT,
+//                        operationDTO.value(),
+//                        account.getBalance()
+//                )
+//        );
+        //return AccountMapper.convertToAccountResponseDTO(account);
     }
 }

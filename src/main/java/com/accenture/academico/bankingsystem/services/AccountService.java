@@ -5,13 +5,14 @@ import com.accenture.academico.bankingsystem.domain.client.Client;
 import com.accenture.academico.bankingsystem.domain.enums.TransactionType;
 import com.accenture.academico.bankingsystem.dtos.account.AccountRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountResponseDTO;
-import com.accenture.academico.bankingsystem.dtos.account.AccountTransactionResponseDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountUpdateDTO;
 import com.accenture.academico.bankingsystem.exceptions.AmountNegativeException;
 import com.accenture.academico.bankingsystem.exceptions.ConflictException;
 import com.accenture.academico.bankingsystem.exceptions.InsufficientFundsException;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.mappers.account.AccountMapper;
+import com.accenture.academico.bankingsystem.mappers.transaction.TransactionMapper;
 import com.accenture.academico.bankingsystem.middlewares.AccountNumberGenerator;
 import com.accenture.academico.bankingsystem.middlewares.UserTools;
 import com.accenture.academico.bankingsystem.repositories.AccountRepository;
@@ -109,7 +110,7 @@ public class AccountService {
         return getAccountsByClientId(getMyClient().getId());
     }
 
-    public Client getMyClient(){
+    private Client getMyClient(){
         return clientService.findByUser(UserTools.getUserContextId());
     }
 
@@ -118,16 +119,16 @@ public class AccountService {
                 .orElseThrow(() -> new NotFoundException("Agency not found"));
     }
 
-    public AccountTransactionResponseDTO deposit(UUID accountId, BigDecimal amount) {
+    public TransactionResponseDTO deposit(UUID accountId, BigDecimal amount) {
         Account account = getById(accountId);
         validateAmount(amount);
 
         account.setBalance(account.getBalance().add(amount));
         Account updatedAccount = accountRepository.save(account);
-        return AccountMapper.convertToAccountTransactionResponseDTO(updatedAccount, TransactionType.DEPOSIT, amount);
+        return TransactionMapper.convertToAccountTransactionResponseDTO(updatedAccount, TransactionType.DEPOSIT, amount);
     }
 
-    public AccountTransactionResponseDTO sac(UUID accountId, BigDecimal amount) {
+    public TransactionResponseDTO sac(UUID accountId, BigDecimal amount) {
         validateAmount(amount);
 
         Account account = getById(accountId);
@@ -136,11 +137,11 @@ public class AccountService {
 
         account.setBalance(account.getBalance().subtract(amount));
         Account updatedAccount = accountRepository.save(account);
-        return AccountMapper.convertToAccountTransactionResponseDTO(updatedAccount, TransactionType.SAC, amount);
+        return TransactionMapper.convertToAccountTransactionResponseDTO(updatedAccount, TransactionType.SAC, amount);
 
     }
 
-    public AccountTransactionResponseDTO transfer(UUID fromAccountId, UUID toAccountId, BigDecimal amount) {
+    public TransactionResponseDTO transfer(UUID fromAccountId, UUID toAccountId, BigDecimal amount) {
         validateAmount(amount);
 
         Account fromAccount = getById(fromAccountId);
@@ -154,7 +155,7 @@ public class AccountService {
        Account myAccount = accountRepository.save(fromAccount);
        accountRepository.save(toAccount);
 
-       return AccountMapper.convertToAccountTransactionResponseDTO(myAccount, TransactionType.TRANSFER, amount);
+       return TransactionMapper.convertToAccountTransactionResponseDTO(myAccount, TransactionType.TRANSFER, amount);
 
     }
 
