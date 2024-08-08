@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.dtos.user;
+package com.accenture.academico.bankingsystem.dtos.transaction;
 
 import java.math.BigDecimal;
 import java.util.UUID;

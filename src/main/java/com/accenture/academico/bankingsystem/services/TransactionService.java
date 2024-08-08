@@ -1,8 +1,10 @@
 package com.accenture.academico.bankingsystem.services;
 
 import com.accenture.academico.bankingsystem.domain.account.Account;
+import com.accenture.academico.bankingsystem.domain.enums.TransactionType;
 import com.accenture.academico.bankingsystem.dtos.account.AccountResponseDTO;
-import com.accenture.academico.bankingsystem.dtos.user.OperationRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.OperationRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction_history.TransactionHistoryRequestDTO;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.mappers.account.AccountMapper;
 import com.accenture.academico.bankingsystem.repositories.AccountRepository;
@@ -17,6 +19,7 @@ import java.util.UUID;
 public class TransactionService {
 
     private final AccountRepository accountRepository;
+    private final TransactionHistoryService transactionHistoryService;
 
     public AccountResponseDTO createDeposit(OperationRequestDTO operationDTO){
         this.validateAmount(operationDTO.value());
@@ -25,6 +28,13 @@ public class TransactionService {
         account.setBalance(account.getBalance().add(operationDTO.value()));
         accountRepository.save(account);
 
+        transactionHistoryService.createTransactionHistory(
+                new TransactionHistoryRequestDTO(
+                        account.getId(),
+                        TransactionType.DEPOSIT,
+                        operationDTO.value()
+                )
+        );
         return AccountMapper.convertToAccountResponseDTO(account);
     }
 
@@ -39,6 +49,13 @@ public class TransactionService {
         account.setBalance(account.getBalance().subtract(operationDTO.value()));
         accountRepository.save(account);
 
+        transactionHistoryService.createTransactionHistory(
+                new TransactionHistoryRequestDTO(
+                        account.getId(),
+                        TransactionType.PAYMENT,
+                        operationDTO.value()
+                )
+        );
         return AccountMapper.convertToAccountResponseDTO(account);
     }
 
