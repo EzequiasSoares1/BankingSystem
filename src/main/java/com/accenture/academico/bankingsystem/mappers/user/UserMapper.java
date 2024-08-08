@@ -16,7 +16,7 @@ public class UserMapper {
         return new User(
                 registrerDTO.id(),
                 registrerDTO.email(),
-                converterRole(registrerDTO.role()),
+                registrerDTO.role().equals("ADMIN")? Role.ADMIN:Role.CLIENT,
                 registrerDTO.password()
         );
     }

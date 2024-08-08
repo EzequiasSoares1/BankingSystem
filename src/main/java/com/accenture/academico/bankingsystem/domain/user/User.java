@@ -16,10 +16,8 @@ import java.util.*;
 @Entity
 @Table(name = "bank_user")
 @Getter
-@Builder
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id

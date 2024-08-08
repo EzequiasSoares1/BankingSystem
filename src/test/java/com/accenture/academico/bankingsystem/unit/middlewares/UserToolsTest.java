@@ -1,4 +1,5 @@
 package com.accenture.academico.bankingsystem.unit.middlewares;
+import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.middlewares.UserTools;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,11 +27,12 @@ public class UserToolsTest {
         authentication = mock(Authentication.class);
         when(securityContext.getAuthentication()).thenReturn(authentication);
 
-        user = User.builder()
-                .id(UUID.randomUUID())
-                .email("test@example.com")
-                .password("password123")
-                .build();
+        user = new User();
+        user.setId(UUID.randomUUID());
+        user.setEmail("test@example.com");
+        user.setPassword("Password");
+        user.setRole(Role.ADMIN);
+
         when(authentication.getPrincipal()).thenReturn(user);
         when(authentication.isAuthenticated()).thenReturn(true);
     }

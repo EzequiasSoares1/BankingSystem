@@ -41,11 +41,10 @@ public class AuthenticationServiceTest implements ConfigSpringTest {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode("password123");
 
-        testUser = User.builder()
-                .email("test@example.com")
-                .password(encodedPassword)
-                .role(Role.ADMIN)
-                .build();
+        testUser = new User();
+        testUser.setEmail("test@example.com");
+        testUser.setPassword(encodedPassword);
+        testUser.setRole(Role.ADMIN);
         userRepository.save(testUser);
     }
 
