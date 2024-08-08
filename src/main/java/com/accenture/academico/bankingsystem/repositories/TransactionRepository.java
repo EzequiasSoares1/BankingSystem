@@ -3,5 +3,5 @@ import com.accenture.academico.bankingsystem.domain.transation.TransactionHistor
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
-public interface TransationRepository extends JpaRepository<TransactionHistory, UUID> {
+public interface TransactionRepository extends JpaRepository<TransactionHistory, UUID> {
 }

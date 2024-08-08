@@ -1,7 +1,7 @@
 package com.accenture.academico.bankingsystem.domain.transation;
+
 import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.enums.TransactionType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,56 +9,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "transaction")
+@Table(name = "transaction_history")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class TransactionHistory {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)
     private Account account;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "transaction_type", nullable = false)
     private TransactionType transactionType;
-
     @Column(name = "amount", precision = 19, scale = 4, nullable = false)
     private BigDecimal amount;
-
     @Column(name = "transaction_date", nullable = false)
     private LocalDateTime transactionDate;
-    @Column(nullable = false)
-    private LocalDateTime createdDate;
-    @Column(nullable = false)
-    private LocalDateTime updatedDate;
-
-    @PreUpdate
-    public void preUpdate() {
-        updatedDate = LocalDateTime.now();
-    }
-
     @PrePersist
-    public void prePersist() {
-        final LocalDateTime date = LocalDateTime.now();
-        createdDate = date;
-        updatedDate = date;
-    }
-
-    public TransactionHistory(UUID id, Account account, TransactionType transactionType, BigDecimal amount, LocalDateTime transactionDate) {
-        this.id = id;
-        this.account = account;
-        this.transactionType = transactionType;
-        this.amount = amount;
-        this.transactionDate = transactionDate;
-    }
+    public void prePersist() {this.transactionDate = LocalDateTime.now();}
 }
