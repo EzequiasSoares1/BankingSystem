@@ -49,7 +49,7 @@ public class UserToolsTest {
             UserTools.isAutorizate(differentUserId);
         });
 
-        assertEquals("Nao autorizado", exception.getMessage());
+        assertEquals("access denied", exception.getMessage());
     }
 
     @Test

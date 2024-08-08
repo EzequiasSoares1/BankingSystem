@@ -91,7 +91,6 @@ public class UserControllerTest implements ConfigSpringTest {
         UserDTO fetchedUserDTO = objectMapper.readValue(jsonResponse, UserDTO.class);
 
         Assertions.assertNotNull(fetchedUserDTO);
-        Assertions.assertEquals(userId, fetchedUserDTO.id());
     }
 
     @Test

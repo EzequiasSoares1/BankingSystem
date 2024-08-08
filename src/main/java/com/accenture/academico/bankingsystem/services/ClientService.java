@@ -71,4 +71,8 @@ public class ClientService {
         return this.clientRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Client not found with ID: " + id));
     }
+    public Client findByUser(UUID id){
+        return this.clientRepository.findByUserId(id)
+                .orElseThrow(() -> new NotFoundException("Client not found with ID: " + id));
+    }
 }

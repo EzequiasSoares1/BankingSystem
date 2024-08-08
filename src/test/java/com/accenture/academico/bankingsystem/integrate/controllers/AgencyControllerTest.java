@@ -1,15 +1,20 @@
 package com.accenture.academico.bankingsystem.integrate.controllers;
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
+import com.accenture.academico.bankingsystem.domain.enums.Role;
+import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.dtos.agency.AgencyRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.agency.AgencyDTO;
 import com.accenture.academico.bankingsystem.services.AddressService;
 import com.accenture.academico.bankingsystem.services.AgencyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -40,6 +45,16 @@ public class AgencyControllerTest implements ConfigSpringTest {
 
         AgencyRequestDTO requestDTO = new AgencyRequestDTO(UUID.randomUUID(), "Agência Centro", "123456789","436234534", address);
         agency = agencyService.createAgency(requestDTO);
+
+        User user = new User();
+        user.setEmail("testUser@email.com");
+        user.setPassword("password");
+        user.setRole(Role.ADMIN);
+
+        Authentication mockAuthentication = Mockito.mock(Authentication.class);
+        Mockito.when(mockAuthentication.isAuthenticated()).thenReturn(true);
+        Mockito.when(mockAuthentication.getPrincipal()).thenReturn(user);
+        SecurityContextHolder.getContext().setAuthentication(mockAuthentication);
     }
 
     @Test

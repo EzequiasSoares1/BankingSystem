@@ -50,7 +50,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteClient(@PathVariable UUID id){
+    public ResponseEntity<Object> deleteClient(@PathVariable UUID id){
         log.info("Deleting client with id: {}", id);
         this.clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
