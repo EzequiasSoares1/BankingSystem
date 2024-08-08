@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.domain.transation;
+package com.accenture.academico.bankingsystem.domain.transation_history;
 
 import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.enums.TransactionType;

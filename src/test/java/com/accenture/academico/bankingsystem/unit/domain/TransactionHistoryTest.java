@@ -2,7 +2,7 @@ package com.accenture.academico.bankingsystem.unit.domain;
 
 import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.enums.TransactionType;
-import com.accenture.academico.bankingsystem.domain.transation.TransactionHistory;
+import com.accenture.academico.bankingsystem.domain.transation_history.TransactionHistory;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
