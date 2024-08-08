@@ -43,7 +43,7 @@ public class TransactionHistoryTest {
         TransactionHistory transactionHistory = new TransactionHistory();
         UUID id = UUID.randomUUID();
         Account account = new Account();
-        TransactionType transactionType = TransactionType.WITHDRAWAL;
+        TransactionType transactionType = TransactionType.DEPOSIT;
         BigDecimal amount = new BigDecimal("50.00");
         LocalDateTime transactionDate = LocalDateTime.now();
 
