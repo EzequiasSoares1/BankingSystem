@@ -1,5 +1,5 @@
 CREATE TABLE agency (
-    id CHAR(16) NOT NULL PRIMARY KEY,
+    id CHAR(36) NOT NULL PRIMARY KEY,
     name VARCHAR(45) NOT NULL,
     telephone VARCHAR(20) NOT NULL,
     number VARCHAR(10) NOT NULL,

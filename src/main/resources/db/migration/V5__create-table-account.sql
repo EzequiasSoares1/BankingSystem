@@ -1,5 +1,5 @@
 CREATE TABLE account (
-    id CHAR(16) NOT NULL PRIMARY KEY,
+    id CHAR(36) NOT NULL PRIMARY KEY,
     number VARCHAR(10) NOT NULL,
     account_type VARCHAR(255) NOT NULL,
     balance DECIMAL(19, 4),
