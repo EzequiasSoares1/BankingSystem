@@ -1,6 +1,6 @@
 CREATE TABLE transaction_history (
                              id CHAR(36) NOT NULL PRIMARY KEY,
-                             account_id CHAR(16) NOT NULL,
+                             account_id CHAR(36) NOT NULL,
                              transaction_type VARCHAR(50) NOT NULL,
                              amount DECIMAL(19, 4) NOT NULL,
                              transaction_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

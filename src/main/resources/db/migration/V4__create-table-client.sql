@@ -4,7 +4,7 @@ CREATE TABLE client (
     cpf VARCHAR(20) NOT NULL,
     telephone VARCHAR(20) NOT NULL,
     address_id CHAR(36) NOT NULL,
-    bank_user_id CHAR(16) NOT NULL,
+    bank_user_id CHAR(36) NOT NULL,
     created_date DATETIME,
     updated_date DATETIME,
     CONSTRAINT client_address_id_fkey FOREIGN KEY (address_id) REFERENCES address (id) ON DELETE RESTRICT ON UPDATE CASCADE,
