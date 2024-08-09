@@ -40,7 +40,7 @@ public class TransactionService {
         return transactionDTO;
     }
     public TransactionResponseDTO transfer(TransactionRequestDTO request){
-        TransactionTransferResponseDTO transactionTransferResponseDTO = accountService.transfer(request.receiverId(), request.senderId(), request.value());
+        TransactionTransferResponseDTO transactionTransferResponseDTO = accountService.transfer(request.senderId(), request.receiverId(), request.value());
 
         transactionHistoryService.createTransactionHistory(
                 new TransactionHistoryRequestDTO(

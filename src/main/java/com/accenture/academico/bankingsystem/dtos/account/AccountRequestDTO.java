@@ -10,8 +10,6 @@ public record AccountRequestDTO (
                   @NotNull
                   AccountType accountType,
                   @NotNull
-                  UUID agencyId,
-                  @NotNull
-                  UUID clientId
+                  UUID agencyId
 ){
 }

@@ -41,7 +41,7 @@ public class AgencyService {
         agency.setTelephone(agencyDTO.telephone());
         agency.setNumber(agencyDTO.number());
 
-        agency.setAddress(addressService.create(agencyDTO.address()));
+        agency.setAddress(addressService.getAddressById(agencyDTO.addressId()));
 
         this.agencyRepository.save(agency);
 
