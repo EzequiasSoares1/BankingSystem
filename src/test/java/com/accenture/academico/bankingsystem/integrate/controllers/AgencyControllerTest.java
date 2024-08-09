@@ -43,7 +43,7 @@ public class AgencyControllerTest implements ConfigSpringTest {
         address = new Address(UUID.randomUUID(), "58700-010", "872", "Rua do Prado", "Centro");
         address = addressService.create(new Address(UUID.randomUUID(),"58700-010", "872", "Rua do Prado", "Centro"));
 
-        AgencyRequestDTO requestDTO = new AgencyRequestDTO(UUID.randomUUID(), "Agência Centro", "123456789","436234534", address);
+        AgencyRequestDTO requestDTO = new AgencyRequestDTO(UUID.randomUUID(), "Agência Centro", "123456789","436234534", address.getId());
         agency = agencyService.createAgency(requestDTO);
 
         User user = new User();
@@ -77,7 +77,7 @@ public class AgencyControllerTest implements ConfigSpringTest {
         Address addressRequest = new Address(UUID.randomUUID(),"58703-000", "877", "Rua do Prado", "Liberdade");
         Address address = addressService.create(addressRequest);
 
-        String newAgencyJson = "{ \"number\": \"002\", \"name\": \"Agência Novo\", \"telephone\": \"987654321\", \"address\": { \"cep\": \"58703-000\", \"number\": \"877\", \"street\": \"Rua do Prado\", \"district\": \"Liberdade\" } }";
+        String newAgencyJson = "{ \"number\": \"002\", \"name\": \"Agência Novo\", \"telephone\": \"987654321\", \"addressId\": \"" + address.getId() + "\" }";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/agency")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -130,7 +130,10 @@ public class AgencyControllerTest implements ConfigSpringTest {
 
     @Test
     void createAgency_WithExistingNumber() throws Exception {
-        String existingNumberJson = "{ \"number\": \"436234534\", \"name\": \"Agência Centro\", \"telephone\": \"987654321\", \"address\": { \"cep\": \"58703-000\", \"number\": \"436234534\", \"street\": \"Rua do Prado\", \"district\": \"Liberdade\" } }";
+        Address addressRequest = new Address(UUID.randomUUID(),"58703-000", "877", "Rua do Prado", "Liberdade");
+        Address address = addressService.create(addressRequest);
+
+        String existingNumberJson = "{ \"number\": \"436234534\", \"name\": \"Agência Centro\", \"telephone\": \"987654321\", \"addressId\": \"" + address.getId() + "\" }";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/agency")
                         .contentType(MediaType.APPLICATION_JSON)

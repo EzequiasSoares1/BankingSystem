@@ -63,8 +63,9 @@ public class AgencyServiceTest implements ConfigSpringTest {
     @Test
     void createAgency() {
         Address addressRequest = new Address(UUID.randomUUID(),"58703-000", "877", "Rua do Prado", "Liberdade");
-        AgencyRequestDTO request = new AgencyRequestDTO(UUID.randomUUID(), "Agência Liberdade", "987654321","436354", addressRequest);
+        var createdAddress = addressService.create(addressRequest);
 
+        AgencyRequestDTO request = new AgencyRequestDTO(UUID.randomUUID(), "Agência Liberdade", "987654321","436354", createdAddress.getId());
         var createdAgency = agencyService.createAgency(request);
 
         assertNotNull(createdAgency);
@@ -75,7 +76,7 @@ public class AgencyServiceTest implements ConfigSpringTest {
 
     @Test
     void createAgency_Conflict() {
-        AgencyRequestDTO request = new AgencyRequestDTO(UUID.randomUUID(), agency.getName(), agency.getTelephone(),agency.getNumber(),address);
+        AgencyRequestDTO request = new AgencyRequestDTO(UUID.randomUUID(), agency.getName(), agency.getTelephone(),agency.getNumber(), address.getId());
 
         assertThrows(ConflictException.class, () -> {
             agencyService.createAgency(request);
