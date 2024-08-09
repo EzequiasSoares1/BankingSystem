@@ -18,11 +18,12 @@ public class TransactionHistoryTest {
     void testTransactionHistoryBuilder() {
         UUID id = UUID.randomUUID();
         Account account = new Account();
+        account.setBalance(BigDecimal.ZERO);
         TransactionType transactionType = TransactionType.DEPOSIT;
         BigDecimal amount = new BigDecimal("100.00");
         LocalDateTime transactionDate = LocalDateTime.now();
 
-        TransactionHistory transactionHistory = new TransactionHistory(id, account, transactionType, amount, transactionDate);
+        TransactionHistory transactionHistory = new TransactionHistory(id, account, transactionType, amount, transactionDate, account.getBalance());
 
         assertEquals(id, transactionHistory.getId());
         assertEquals(account, transactionHistory.getAccount());

@@ -208,7 +208,7 @@ public class AccountServiceTest implements ConfigSpringTest {
     @Order(9)
     void createAccount_ValidRequest() {
         AccountRequestDTO requestDTO = new AccountRequestDTO(
-                AccountType.SAVINGS, agency.getId(), client.getId()
+                AccountType.SAVINGS, agency.getId()
         );
 
         var createdAccount = accountService.createAccount(requestDTO);
@@ -222,7 +222,7 @@ public class AccountServiceTest implements ConfigSpringTest {
     @Order(10)
     void createAccount_Conflict() {
         AccountRequestDTO requestDTO = new AccountRequestDTO(
-                account.getAccountType(), agency.getId(), client.getId()
+                account.getAccountType(), agency.getId()
         );
 
         assertThrows(ConflictException.class, () -> {
@@ -235,7 +235,7 @@ public class AccountServiceTest implements ConfigSpringTest {
     void createAccount_InvalidAgency() {
         UUID invalidAgencyId = UUID.randomUUID();
         AccountRequestDTO requestDTO = new AccountRequestDTO(
-                 AccountType.SAVINGS, invalidAgencyId, client.getId()
+                 AccountType.SAVINGS, invalidAgencyId
         );
 
         assertThrows(NotFoundException.class, () -> {
