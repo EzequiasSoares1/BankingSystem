@@ -1,5 +1,6 @@
 package com.accenture.academico.bankingsystem.services;
 
+import com.accenture.academico.bankingsystem.dtos.pix_key.PixRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.OperationRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
@@ -41,6 +42,36 @@ public class TransactionService {
     }
     public TransactionResponseDTO transfer(TransactionRequestDTO request){
         TransactionTransferResponseDTO transactionTransferResponseDTO = accountService.transfer(request.senderId(), request.receiverId(), request.value());
+
+        transactionHistoryService.createTransactionHistory(
+                new TransactionHistoryRequestDTO(
+                        transactionTransferResponseDTO.senderId(),
+                        transactionTransferResponseDTO.transactionType(),
+                        transactionTransferResponseDTO.valueTransaction().negate(),
+                        transactionTransferResponseDTO.senderBalance()
+                )
+        );
+        transactionHistoryService.createTransactionHistory(
+                new TransactionHistoryRequestDTO(
+                        transactionTransferResponseDTO.receiverId(),
+                        transactionTransferResponseDTO.transactionType(),
+                        transactionTransferResponseDTO.valueTransaction(),
+                        transactionTransferResponseDTO.receiverBalance()
+                )
+        );
+        return new TransactionResponseDTO(
+                transactionTransferResponseDTO.accountType(),
+                transactionTransferResponseDTO.transactionType(),
+                transactionTransferResponseDTO.agencyId(),
+                transactionTransferResponseDTO.senderId(),
+                transactionTransferResponseDTO.senderBalance(),
+                transactionTransferResponseDTO.dataTransaction(),
+                transactionTransferResponseDTO.valueTransaction()
+        );
+    }
+
+    public TransactionResponseDTO pix(PixRequestDTO pixDTO){
+        TransactionTransferResponseDTO transactionTransferResponseDTO = this.accountService.pix(pixDTO);
 
         transactionHistoryService.createTransactionHistory(
                 new TransactionHistoryRequestDTO(
