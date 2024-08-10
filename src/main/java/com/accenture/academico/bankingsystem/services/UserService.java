@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -32,11 +33,11 @@ public class UserService {
     }
 
     public UserDTO getUserByEmail(String email){
-        User u = userRepository.findUserByEmail(email);
-        if(u == null){
+        Optional<User> user = userRepository.findUserByEmail(email);
+        if(user.isEmpty()){
             throw new NotFoundException("User not found");
         }
-        return UserMapper.convertToUserDTO(u);
+        return UserMapper.convertToUserDTO(user.get());
     }
     public UserDTO getUserById(UUID id){
         return UserMapper.convertToUserDTO(this.getUserInternalById(id));

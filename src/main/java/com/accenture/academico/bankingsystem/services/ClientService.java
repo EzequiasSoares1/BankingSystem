@@ -3,6 +3,7 @@ package com.accenture.academico.bankingsystem.services;
 import com.accenture.academico.bankingsystem.domain.client.Client;
 import com.accenture.academico.bankingsystem.dtos.client.ClientRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.client.ClientResponseDTO;
+import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
 import com.accenture.academico.bankingsystem.exceptions.ConflictException;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.mappers.client.ClientMapper;
@@ -28,6 +29,11 @@ public class ClientService {
         Client client = this.findById(id);
         UserTools.isAutorizate(client.getUser().getId());
         return ClientMapper.convertToClientResponseDTO(client);
+    }
+
+    public ClientResponseDTO getClientByEmail(String email){
+        UserDTO userDTO = this.userService.getUserByEmail(email);
+        return ClientMapper.convertToClientResponseDTO(this.findByUser(userDTO.id()));
     }
 
     public ClientResponseDTO createClient(ClientRequestDTO clientDTO){
