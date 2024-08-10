@@ -29,8 +29,14 @@ public class ClientController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ClientResponseDTO> getClientById(@PathVariable UUID id){
-        log.info("Fetching address with id: {}", id);
+        log.info("Fetching client with id: {}", id);
         return ResponseEntity.ok(this.clientService.getClientById(id));
+    }
+
+    @GetMapping("/user/{email}")
+    public ResponseEntity<ClientResponseDTO> getClientByEmail(@PathVariable String email){
+        log.info("Fetching client with email: {}", email);
+        return ResponseEntity.ok(this.clientService.getClientByEmail(email));
     }
 
     @PostMapping

@@ -2,6 +2,7 @@ package com.accenture.academico.bankingsystem.controllers;
 import com.accenture.academico.bankingsystem.dtos.account.AccountRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountUpdateDTO;
+import com.accenture.academico.bankingsystem.mappers.account.AccountMapper;
 import com.accenture.academico.bankingsystem.services.AccountService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,12 @@ public class AccountController {
     public ResponseEntity<AccountResponseDTO> getAccountById(@PathVariable UUID id) {
         log.info("Fetching account with id: {}", id);
         return ResponseEntity.ok().body(accountService.getAccountById(id));
+    }
+
+    @GetMapping("/client/{id}")
+    public ResponseEntity<List<AccountResponseDTO>> getAccountsByClientId(@PathVariable UUID id){
+        log.info("Fetching account with client_id: {}", id);
+        return ResponseEntity.ok(AccountMapper.convertToAccountResponseDTOList(this.accountService.getAccountsByClientId(id)));
     }
 
     @PostMapping
