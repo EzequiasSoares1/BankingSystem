@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public record UserDTO(
-      @JsonIgnore
       UUID id,
 
       @NotBlank(message = "Email cannot be blank")

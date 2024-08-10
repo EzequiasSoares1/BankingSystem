@@ -1,5 +1,6 @@
 package com.accenture.academico.bankingsystem.controllers;
 
+import com.accenture.academico.bankingsystem.dtos.pix_key.PixRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.OperationRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
@@ -34,6 +35,11 @@ public class TransactionController {
     @PostMapping("/transfer")
     public ResponseEntity<TransactionResponseDTO> transfer(@RequestBody @Valid TransactionRequestDTO body){
         return ResponseEntity.ok(transactionService.transfer(body));
+    }
+
+    @PostMapping("/pix")
+    public ResponseEntity<TransactionResponseDTO> transfer(@RequestBody @Valid PixRequestDTO body){
+        return ResponseEntity.ok(transactionService.pix(body));
     }
 
     @GetMapping("/{id}")

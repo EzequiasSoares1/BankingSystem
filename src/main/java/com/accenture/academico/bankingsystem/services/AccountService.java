@@ -2,9 +2,12 @@ package com.accenture.academico.bankingsystem.services;
 import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.agency.Agency;
 import com.accenture.academico.bankingsystem.domain.client.Client;
+import com.accenture.academico.bankingsystem.domain.enums.AccountType;
 import com.accenture.academico.bankingsystem.domain.enums.TransactionType;
+import com.accenture.academico.bankingsystem.domain.pix_key.PixKey;
 import com.accenture.academico.bankingsystem.dtos.account.AccountRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountResponseDTO;
+import com.accenture.academico.bankingsystem.dtos.pix_key.PixRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountUpdateDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionTransferResponseDTO;
@@ -17,11 +20,13 @@ import com.accenture.academico.bankingsystem.mappers.transaction.TransactionMapp
 import com.accenture.academico.bankingsystem.middlewares.AccountNumberGenerator;
 import com.accenture.academico.bankingsystem.middlewares.UserTools;
 import com.accenture.academico.bankingsystem.repositories.AccountRepository;
+import com.accenture.academico.bankingsystem.repositories.PixKeyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -31,6 +36,7 @@ public class AccountService {
     private final AccountRepository accountRepository;
     private final ClientService clientService;
     private final AgencyService agencyService;
+    private final PixKeyRepository pixKeyRepository;
 
     public List<AccountResponseDTO> getAllAccounts(){
         return AccountMapper.convertToAccountResponseDTOList(accountRepository.findAll());
@@ -170,6 +176,40 @@ public class AccountService {
         );
     }
 
+    public TransactionTransferResponseDTO pix(PixRequestDTO pixDTO){
+        validateAmount(pixDTO.value());
+
+        Account senderAccount = this.findByClientIdAndAccountType(getMyClient().getId(), pixDTO.accountType());
+        Account receiverAccount = this.getById(this.getPixKeyByKeyValue(pixDTO.pixKey()).getAccount().getId());
+
+        validateSufficientFunds(senderAccount, pixDTO.value());
+
+        senderAccount.setBalance(senderAccount.getBalance().subtract(pixDTO.value()));
+        receiverAccount.setBalance(receiverAccount.getBalance().add(pixDTO.value()));
+
+        this.accountRepository.save(senderAccount);
+        this.accountRepository.save(receiverAccount);
+
+        return new TransactionTransferResponseDTO(
+                senderAccount.getId(),
+                receiverAccount.getId(),
+                senderAccount.getBalance(),
+                receiverAccount.getBalance(),
+                senderAccount.getAccountType(),
+                TransactionType.PIX,
+                senderAccount.getAgency().getId(),
+                senderAccount.getUpdatedDate(),
+                pixDTO.value()
+        );
+    }
+
+    private PixKey getPixKeyByKeyValue(String keyValue){
+        return this.pixKeyRepository.findByKeyValue(keyValue).orElseThrow(() -> new NotFoundException("PixKey not found with keyValue: " + keyValue));
+    }
+
+    private Account findByClientIdAndAccountType(UUID id, AccountType accountType){
+        return this.accountRepository.findByClientIdAndAccountType(id, accountType).orElseThrow(() -> new NotFoundException("Account not found with clientId:"+id+" and accountType:"+accountType));
+    }
 
     private void validateAmount(BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
