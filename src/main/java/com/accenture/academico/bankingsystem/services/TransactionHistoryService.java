@@ -8,6 +8,7 @@ import com.accenture.academico.bankingsystem.repositories.TransactionHistoryRepo
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +29,9 @@ public class TransactionHistoryService {
     }
 
     public List<TransactionHistoryResponseDTO> getAllTransactionHistoryByAccountId(UUID accountId){
-        return TransactionHistoryMapper.convertToTransactionHistoryResponseDTOList(transactionHistoryRepository.findByAccountId(accountId));
+        List<TransactionHistory> transactionHistoryList = transactionHistoryRepository.findByAccountId(accountId);
+        if (!transactionHistoryList.isEmpty())
+            transactionHistoryList.sort(Comparator.comparing(TransactionHistory::getTransactionDate).reversed());
+        return TransactionHistoryMapper.convertToTransactionHistoryResponseDTOList(transactionHistoryList);
     }
 }
