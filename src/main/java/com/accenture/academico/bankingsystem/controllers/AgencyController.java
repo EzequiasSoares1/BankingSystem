@@ -1,7 +1,7 @@
 package com.accenture.academico.bankingsystem.controllers;
 
 import com.accenture.academico.bankingsystem.dtos.agency.AgencyRequestDTO;
-import com.accenture.academico.bankingsystem.dtos.agency.AgencyDTO;
+import com.accenture.academico.bankingsystem.dtos.agency.AgencyResponseDTO;
 import com.accenture.academico.bankingsystem.services.AgencyService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -20,25 +20,25 @@ public class AgencyController {
     private AgencyService agencyService;
 
     @GetMapping
-    public ResponseEntity<List<AgencyDTO>> getAllAgencies() {
+    public ResponseEntity<List<AgencyResponseDTO>> getAllAgencies() {
         log.info("Fetching all agencies");
         return ResponseEntity.ok().body(agencyService.getAllAgencies());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AgencyDTO> getAgencyById(@PathVariable UUID id) {
+    public ResponseEntity<AgencyResponseDTO> getAgencyById(@PathVariable UUID id) {
         log.info("Fetching agency with id: {}", id);
         return ResponseEntity.ok().body(agencyService.getAgencyById(id));
     }
 
     @PostMapping
-    public ResponseEntity<AgencyDTO> createAgency(@RequestBody @Valid AgencyRequestDTO agencyDTO) {
+    public ResponseEntity<AgencyResponseDTO> createAgency(@RequestBody @Valid AgencyRequestDTO agencyDTO) {
         log.info("Creating agency with DTO: {}", agencyDTO.toString());
         return ResponseEntity.ok().body(agencyService.createAgency(agencyDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AgencyDTO> updateAgency(@PathVariable UUID id, @RequestBody @Valid AgencyDTO agencyDTO) {
+    public ResponseEntity<AgencyResponseDTO> updateAgency(@PathVariable UUID id, @RequestBody @Valid AgencyResponseDTO agencyDTO) {
         log.info("Updating agency with id {} and DTO: {}", id, agencyDTO);
         return ResponseEntity.ok().body(agencyService.updateAgency(id, agencyDTO));
     }

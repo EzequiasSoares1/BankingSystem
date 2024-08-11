@@ -1,5 +1,5 @@
 package com.accenture.academico.bankingsystem.controllers;
-import com.accenture.academico.bankingsystem.dtos.user.AuthenticationDTO;
+import com.accenture.academico.bankingsystem.dtos.user.AuthenticationRequestDTO;
 import com.accenture.academico.bankingsystem.services.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @PostMapping
-    public ResponseEntity<Object> login(@RequestBody @Valid AuthenticationDTO authenticationDTO){
+    public ResponseEntity<Object> login(@RequestBody @Valid AuthenticationRequestDTO authenticationDTO){
         log.info("User authenticate in login: {}", authenticationDTO.email());
         return ResponseEntity.ok(authenticationService.login(authenticationDTO));
     }

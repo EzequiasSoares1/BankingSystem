@@ -1,7 +1,7 @@
 package com.accenture.academico.bankingsystem.security;
 
 import com.accenture.academico.bankingsystem.domain.user.User;
-import com.accenture.academico.bankingsystem.dtos.user.ResponseTokenDTO;
+import com.accenture.academico.bankingsystem.dtos.user.TokenResponseDTO;
 import com.accenture.academico.bankingsystem.exceptions.InternalErrorException;
 import com.accenture.academico.bankingsystem.exceptions.InternalLogicException;
 import com.accenture.academico.bankingsystem.exceptions.NotAuthorizeException;
@@ -29,7 +29,7 @@ public class TokenService {
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseTokenDTO generateToken(User user){
+    public TokenResponseDTO generateToken(User user){
         try {
             Algorithm algorithm =  Algorithm.HMAC256(secret);
             String token = JWT.create()
@@ -38,7 +38,7 @@ public class TokenService {
                     .withExpiresAt(genExpirationToken())
                     .sign(algorithm);
 
-            return new ResponseTokenDTO(token,genTokenRefresh(user));
+            return new TokenResponseDTO(token,genTokenRefresh(user));
 
         }catch (JWTCreationException e){
             throw new InternalErrorException("Erro generating token: " + e.getMessage());
@@ -91,7 +91,7 @@ public class TokenService {
         }
     }
 
-    public ResponseTokenDTO genNewToken(String refreshToken){
+    public TokenResponseDTO genNewToken(String refreshToken){
         isValidRefreshToken(refreshToken);
 
         Algorithm algorithm = Algorithm.HMAC256(secret);

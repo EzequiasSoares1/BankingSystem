@@ -4,7 +4,7 @@ import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.domain.agency.Agency;
 import com.accenture.academico.bankingsystem.dtos.agency.AgencyRequestDTO;
-import com.accenture.academico.bankingsystem.dtos.agency.AgencyDTO;
+import com.accenture.academico.bankingsystem.dtos.agency.AgencyResponseDTO;
 import com.accenture.academico.bankingsystem.exceptions.ConflictException;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
@@ -85,7 +85,7 @@ public class AgencyServiceTest implements ConfigSpringTest {
 
     @Test
     void updateAgency() {
-        AgencyDTO updateRequest = new AgencyDTO(agency.getId(), "Agência Atualizada", "987654321", "002", address.getId());
+        AgencyResponseDTO updateRequest = new AgencyResponseDTO(agency.getId(), "Agência Atualizada", "987654321", "002", address.getId());
 
         var updatedAgency = agencyService.updateAgency(agency.getId(), updateRequest);
 
@@ -98,7 +98,7 @@ public class AgencyServiceTest implements ConfigSpringTest {
     @Test
     void updateNonExistentAgency() {
         UUID nonExistentId = UUID.randomUUID();
-        AgencyDTO updateRequest = new AgencyDTO(nonExistentId, "Agência Atualizada", "987654321", "002", address.getId());
+        AgencyResponseDTO updateRequest = new AgencyResponseDTO(nonExistentId, "Agência Atualizada", "987654321", "002", address.getId());
 
         assertThrows(NotFoundException.class, () -> {
             agencyService.updateAgency(nonExistentId, updateRequest);
