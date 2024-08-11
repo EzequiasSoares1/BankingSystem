@@ -8,9 +8,11 @@ import com.accenture.academico.bankingsystem.domain.pix_key.PixKey;
 import com.accenture.academico.bankingsystem.dtos.account.AccountRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.pix_key.PixRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.OperationRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransactionRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountUpdateDTO;
-import com.accenture.academico.bankingsystem.dtos.transaction.TransactionTransferResponseDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransferResponseDTO;
 import com.accenture.academico.bankingsystem.exceptions.AmountNegativeException;
 import com.accenture.academico.bankingsystem.exceptions.ConflictException;
 import com.accenture.academico.bankingsystem.exceptions.InsufficientFundsException;
@@ -125,43 +127,43 @@ public class AccountService {
                 .orElseThrow(() -> new NotFoundException("Agency not found"));
     }
 
-    public TransactionResponseDTO deposit(UUID accountId, BigDecimal amount) {
-        Account account = getById(accountId);
-        validateAmount(amount);
+    public TransactionResponseDTO deposit(OperationRequestDTO operationDTO) {
+        validateAmount(operationDTO.value());
 
-        account.setBalance(account.getBalance().add(amount));
+        Account account = this.findByClientIdAndAccountType(getMyClient().getId(), operationDTO.accountType());
+
+        account.setBalance(account.getBalance().add(operationDTO.value()));
         Account updatedAccount = accountRepository.save(account);
-        return TransactionMapper.convertToTransactionResponseDTO(updatedAccount, TransactionType.DEPOSIT, amount);
+        return TransactionMapper.convertToTransactionResponseDTO(updatedAccount, TransactionType.DEPOSIT, operationDTO.value());
     }
 
-    public TransactionResponseDTO sac(UUID accountId, BigDecimal amount) {
-        validateAmount(amount);
+    public TransactionResponseDTO withdraw(OperationRequestDTO operationDTO) {
+        validateAmount(operationDTO.value());
 
-        Account account = getById(accountId);
+        Account account = this.findByClientIdAndAccountType(getMyClient().getId(), operationDTO.accountType());
 
-        validateSufficientFunds(account,amount);
+        validateSufficientFunds(account,operationDTO.value());
 
-        account.setBalance(account.getBalance().subtract(amount));
+        account.setBalance(account.getBalance().subtract(operationDTO.value()));
         Account updatedAccount = accountRepository.save(account);
-        return TransactionMapper.convertToTransactionResponseDTO(updatedAccount, TransactionType.SAC, amount);
-
+        return TransactionMapper.convertToTransactionResponseDTO(updatedAccount, TransactionType.WITHDRAW, operationDTO.value());
     }
 
-    public TransactionTransferResponseDTO transfer(UUID fromAccountId, UUID toAccountId, BigDecimal amount) {
-        validateAmount(amount);
+    public TransferResponseDTO transfer(TransactionRequestDTO transactionDTO) {
+        validateAmount(transactionDTO.value());
 
-        Account fromAccount = getById(fromAccountId);
-        Account toAccount = getById(toAccountId);
+        Account fromAccount = this.findByClientIdAndAccountType(getMyClient().getId(), transactionDTO.accountType());
+        Account toAccount = getById(transactionDTO.receiverId());
 
-        validateSufficientFunds(fromAccount, amount);
+        validateSufficientFunds(fromAccount, transactionDTO.value());
 
-        fromAccount.setBalance(fromAccount.getBalance().subtract(amount));
-        toAccount.setBalance(toAccount.getBalance().add(amount));
+        fromAccount.setBalance(fromAccount.getBalance().subtract(transactionDTO.value()));
+        toAccount.setBalance(toAccount.getBalance().add(transactionDTO.value()));
 
-       accountRepository.save(fromAccount);
-       accountRepository.save(toAccount);
+        accountRepository.save(fromAccount);
+        accountRepository.save(toAccount);
 
-        return new TransactionTransferResponseDTO(
+        return new TransferResponseDTO(
                 fromAccount.getId(),
                 toAccount.getId(),
                 fromAccount.getBalance(),
@@ -170,11 +172,11 @@ public class AccountService {
                 TransactionType.TRANSFER,
                 fromAccount.getAgency().getId(),
                 fromAccount.getUpdatedDate(),
-                amount
+                transactionDTO.value()
         );
     }
 
-    public TransactionTransferResponseDTO pix(PixRequestDTO pixDTO){
+    public TransferResponseDTO pix(PixRequestDTO pixDTO){
         validateAmount(pixDTO.value());
 
         Account senderAccount = this.findByClientIdAndAccountType(getMyClient().getId(), pixDTO.accountType());
@@ -188,7 +190,7 @@ public class AccountService {
         this.accountRepository.save(senderAccount);
         this.accountRepository.save(receiverAccount);
 
-        return new TransactionTransferResponseDTO(
+        return new TransferResponseDTO(
                 senderAccount.getId(),
                 receiverAccount.getId(),
                 senderAccount.getBalance(),
@@ -204,21 +206,17 @@ public class AccountService {
     private PixKey getPixKeyByKeyValue(String keyValue){
         return this.pixKeyRepository.findByKeyValue(keyValue).orElseThrow(() -> new NotFoundException("PixKey not found with keyValue: " + keyValue));
     }
-
     private Account findByClientIdAndAccountType(UUID id, AccountType accountType){
         return this.accountRepository.findByClientIdAndAccountType(id, accountType).orElseThrow(() -> new NotFoundException("Account not found with clientId:"+id+" and accountType:"+accountType));
     }
-
     private void validateAmount(BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new AmountNegativeException("Amount must be greater than zero");
         }
     }
-
     private void validateSufficientFunds(Account account, BigDecimal amount) {
         if (account.getBalance().compareTo(amount) < 0) {
             throw new InsufficientFundsException("Insufficient funds");
         }
     }
-
 }
