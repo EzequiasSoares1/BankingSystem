@@ -1,7 +1,7 @@
 package com.accenture.academico.bankingsystem.services;
 import com.accenture.academico.bankingsystem.domain.agency.Agency;
 import com.accenture.academico.bankingsystem.dtos.agency.AgencyRequestDTO;
-import com.accenture.academico.bankingsystem.dtos.agency.AgencyDTO;
+import com.accenture.academico.bankingsystem.dtos.agency.AgencyResponseDTO;
 import com.accenture.academico.bankingsystem.exceptions.ConflictException;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.mappers.agency.AgencyMapper;
@@ -18,12 +18,12 @@ public class AgencyService {
     private final AgencyRepository agencyRepository;
     private final AddressService addressService;
 
-    public List<AgencyDTO> getAllAgencies() {
+    public List<AgencyResponseDTO> getAllAgencies() {
         List<Agency> agencyList = this.agencyRepository.findAll();
         return AgencyMapper.convertToAgencyResponseDTOList(agencyList);
     }
 
-    public AgencyDTO getAgencyById(UUID id) {
+    public AgencyResponseDTO getAgencyById(UUID id) {
         Agency agency = this.findById(id);
         return AgencyMapper.convertToAgencyResponseDTO(agency);
     }
@@ -32,7 +32,7 @@ public class AgencyService {
         return this.findById(id);
     }
 
-    public AgencyDTO createAgency(AgencyRequestDTO agencyDTO) {
+    public AgencyResponseDTO createAgency(AgencyRequestDTO agencyDTO) {
         if (agencyRepository.existsAgencyByNumberAndName(agencyDTO.number(), agencyDTO.name()))
             throw new ConflictException("Agency already exists ");
 
@@ -48,7 +48,7 @@ public class AgencyService {
         return AgencyMapper.convertToAgencyResponseDTO(agency);
     }
 
-    public AgencyDTO updateAgency(UUID id, AgencyDTO agencyDTO) {
+    public AgencyResponseDTO updateAgency(UUID id, AgencyResponseDTO agencyDTO) {
         Agency agency = this.findById(id);
 
         if (agencyDTO.name() != null) agency.setName(agencyDTO.name());

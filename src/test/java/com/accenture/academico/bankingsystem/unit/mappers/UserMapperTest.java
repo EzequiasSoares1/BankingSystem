@@ -7,12 +7,12 @@ import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
 import com.accenture.academico.bankingsystem.mappers.user.UserMapper;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class UserConverterTest {
+public class UserMapperTest {
 
     @Test
     void testConvertToUser() {
@@ -35,5 +35,22 @@ public class UserConverterTest {
         assertEquals(user.getId(), userDTO.id());
         assertEquals(user.getEmail(), userDTO.email());
         assertEquals(user.getRole().toString(), userDTO.role());
+    }
+
+    @Test
+    void testConvertToUserDTOList(){
+        User user1 = new User(UUID.randomUUID(), "test@example.com", Role.ADMIN, "password");
+        User user2 = new User(UUID.randomUUID(), "test@example.com", Role.ADMIN, "password");
+
+        List<User> userList = List.of(user1, user2);
+        List<UserDTO> userDTOList = UserMapper.convertToUserDTOList(userList);
+
+        assertNotEquals(userDTOList.size(), 0);
+        assertEquals(userDTOList.get(0).id(), userList.get(0).getId());
+        assertEquals(userDTOList.get(1).id(), userList.get(1).getId());
+        assertEquals(userDTOList.get(0).email(), userList.get(0).getEmail());
+        assertEquals(userDTOList.get(1).email(), userList.get(1).getEmail());
+        assertEquals(userDTOList.get(0).role(), userList.get(0).getRole().toString());
+        assertEquals(userDTOList.get(1).role(), userList.get(1).getRole().toString());
     }
 }

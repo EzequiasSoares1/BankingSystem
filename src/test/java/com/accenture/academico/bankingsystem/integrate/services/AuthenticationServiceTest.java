@@ -3,8 +3,8 @@ package com.accenture.academico.bankingsystem.integrate.services;
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
-import com.accenture.academico.bankingsystem.dtos.user.AuthenticationDTO;
-import com.accenture.academico.bankingsystem.dtos.user.ResponseTokenDTO;
+import com.accenture.academico.bankingsystem.dtos.user.AuthenticationRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.user.TokenResponseDTO;
 import com.accenture.academico.bankingsystem.exceptions.InternalLogicException;
 import com.accenture.academico.bankingsystem.repositories.UserRepository;
 import com.accenture.academico.bankingsystem.security.TokenService;
@@ -51,13 +51,13 @@ public class AuthenticationServiceTest implements ConfigSpringTest {
     @Test
     @Order(1)
     void testLoginSuccess() {
-        AuthenticationDTO authenticationDTO = new AuthenticationDTO("test@example.com", "password123");
+        AuthenticationRequestDTO authenticationDTO = new AuthenticationRequestDTO("test@example.com", "password123");
         Authentication authentication = new UsernamePasswordAuthenticationToken(authenticationDTO.email(), authenticationDTO.password());
 
         Authentication authResult = authenticationManager.authenticate(authentication);
         assertEquals(testUser.getEmail(), ((User) authResult.getPrincipal()).getEmail());
 
-        ResponseTokenDTO responseTokenDTO = authenticationService.login(authenticationDTO);
+        TokenResponseDTO responseTokenDTO = authenticationService.login(authenticationDTO);
         assertNotNull(responseTokenDTO);
         assertNotNull(responseTokenDTO.token());
         assertNotNull(responseTokenDTO.tokenRefresh());
@@ -66,7 +66,7 @@ public class AuthenticationServiceTest implements ConfigSpringTest {
     @Test
     @Order(2)
     void testLoginFailure() {
-        AuthenticationDTO authenticationDTO = new AuthenticationDTO("test@example.com", "wrongpassword");
+        AuthenticationRequestDTO authenticationDTO = new AuthenticationRequestDTO("test@example.com", "wrongpassword");
 
         assertThrows(InternalLogicException.class, () -> authenticationService.login(authenticationDTO));
     }
@@ -92,7 +92,7 @@ public class AuthenticationServiceTest implements ConfigSpringTest {
     void testTokenRefresh() {
         String oldToken = tokenService.generateToken(testUser).tokenRefresh();
 
-        ResponseTokenDTO responseTokenDTO = authenticationService.tokenRefresh(oldToken);
+        TokenResponseDTO responseTokenDTO = authenticationService.tokenRefresh(oldToken);
 
         assertNotNull(responseTokenDTO);
         assertNotNull(responseTokenDTO.token());

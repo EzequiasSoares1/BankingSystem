@@ -4,7 +4,7 @@ import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.dtos.agency.AgencyRequestDTO;
-import com.accenture.academico.bankingsystem.dtos.agency.AgencyDTO;
+import com.accenture.academico.bankingsystem.dtos.agency.AgencyResponseDTO;
 import com.accenture.academico.bankingsystem.services.AddressService;
 import com.accenture.academico.bankingsystem.services.AgencyService;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,7 +36,7 @@ public class AgencyControllerTest implements ConfigSpringTest {
     private AddressService addressService;
 
     private Address address;
-    private AgencyDTO agency;
+    private AgencyResponseDTO agency;
 
     @BeforeEach
     void setUp() {

@@ -1,8 +1,8 @@
 package com.accenture.academico.bankingsystem.integrate.controllers;
 
 import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
-import com.accenture.academico.bankingsystem.dtos.user.AuthenticationDTO;
-import com.accenture.academico.bankingsystem.dtos.user.ResponseTokenDTO;
+import com.accenture.academico.bankingsystem.dtos.user.AuthenticationRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.user.TokenResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
 import com.accenture.academico.bankingsystem.services.AuthenticationService;
 import com.accenture.academico.bankingsystem.services.UserService;
@@ -47,8 +47,8 @@ public class AuthenticationControllerTest implements ConfigSpringTest {
         testUser = new UserDTO(UUID.randomUUID(), "user@example.com", "password", "ADMIN");
         userService.saveUser(testUser);
 
-        AuthenticationDTO authenticationDTO = new AuthenticationDTO(testUser.email(), testUser.password());
-        ResponseTokenDTO responseTokenDTO = authenticationService.login(authenticationDTO);
+        AuthenticationRequestDTO authenticationDTO = new AuthenticationRequestDTO(testUser.email(), testUser.password());
+        TokenResponseDTO responseTokenDTO = authenticationService.login(authenticationDTO);
         validToken = responseTokenDTO.token();
         validTokenRefresh = responseTokenDTO.tokenRefresh();
     }
@@ -57,7 +57,7 @@ public class AuthenticationControllerTest implements ConfigSpringTest {
     @Order(1)
     @DisplayName("LoginSuccessTest")
     void loginSuccessTest() throws Exception {
-        AuthenticationDTO authenticationDTO = new AuthenticationDTO(testUser.email(), testUser.password());
+        AuthenticationRequestDTO authenticationDTO = new AuthenticationRequestDTO(testUser.email(), testUser.password());
         String json = objectMapper.writeValueAsString(authenticationDTO);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/auth")
@@ -74,7 +74,7 @@ public class AuthenticationControllerTest implements ConfigSpringTest {
     @Order(2)
     @DisplayName("LoginFailureTest")
     void loginFailureTest() throws Exception {
-        AuthenticationDTO authenticationDTO = new AuthenticationDTO(testUser.email(), "wrongpassword");
+        AuthenticationRequestDTO authenticationDTO = new AuthenticationRequestDTO(testUser.email(), "wrongpassword");
         String json = objectMapper.writeValueAsString(authenticationDTO);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/auth")

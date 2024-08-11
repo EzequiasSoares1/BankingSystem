@@ -24,9 +24,7 @@ import com.accenture.academico.bankingsystem.repositories.PixKeyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -133,7 +131,7 @@ public class AccountService {
 
         account.setBalance(account.getBalance().add(amount));
         Account updatedAccount = accountRepository.save(account);
-        return TransactionMapper.convertToAccountTransactionResponseDTO(updatedAccount, TransactionType.DEPOSIT, amount);
+        return TransactionMapper.convertToTransactionResponseDTO(updatedAccount, TransactionType.DEPOSIT, amount);
     }
 
     public TransactionResponseDTO sac(UUID accountId, BigDecimal amount) {
@@ -145,7 +143,7 @@ public class AccountService {
 
         account.setBalance(account.getBalance().subtract(amount));
         Account updatedAccount = accountRepository.save(account);
-        return TransactionMapper.convertToAccountTransactionResponseDTO(updatedAccount, TransactionType.SAC, amount);
+        return TransactionMapper.convertToTransactionResponseDTO(updatedAccount, TransactionType.SAC, amount);
 
     }
 

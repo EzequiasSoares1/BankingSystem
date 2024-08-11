@@ -7,7 +7,7 @@ import com.accenture.academico.bankingsystem.dtos.transaction.TransactionRespons
 import java.math.BigDecimal;
 
 public class TransactionMapper {
-    public static TransactionResponseDTO convertToAccountTransactionResponseDTO(Account account, TransactionType transactionType, BigDecimal valueTransaction) {
+    public static TransactionResponseDTO convertToTransactionResponseDTO(Account account, TransactionType transactionType, BigDecimal valueTransaction) {
 
         return new TransactionResponseDTO(
                 account.getAccountType(),
