@@ -24,12 +24,14 @@ import com.accenture.academico.bankingsystem.middlewares.UserTools;
 import com.accenture.academico.bankingsystem.repositories.AccountRepository;
 import com.accenture.academico.bankingsystem.repositories.PixKeyRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class AccountService {
 
@@ -43,12 +45,16 @@ public class AccountService {
     }
 
     public AccountResponseDTO getAccountById(UUID id) {
+        log.debug("Fetching account with ID: {}", id);
+
         Account account = accountRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Account not found"));
         return AccountMapper.convertToAccountResponseDTO(account);
     }
 
     public AccountResponseDTO createAccount(AccountRequestDTO requestDTO) {
+        log.debug("Creating a new account for client");
+
         List<Account> accounts = getMyAccounts();
 
         if(!accounts.isEmpty()){
@@ -67,10 +73,14 @@ public class AccountService {
         account.setBalance(BigDecimal.ZERO);
         account.setClient(getMyClient());
         Account savedAccount = accountRepository.save(account);
+        log.debug("Account created successfully with ID: {}", savedAccount.getId());
+
         return AccountMapper.convertToAccountResponseDTO(savedAccount);
     }
 
     public AccountResponseDTO updateAccount(UUID id, AccountUpdateDTO requestDTO) {
+        log.debug("Updating account with ID: {}", id);
+
         Account account = getById(id);
         List<Account> myAccounts = getMyAccounts();
 
@@ -101,13 +111,21 @@ public class AccountService {
         }
 
         Account updatedAccount = accountRepository.save(account);
+
+        log.debug("Account updated successfully with ID: {}", updatedAccount.getId());
+
         return AccountMapper.convertToAccountResponseDTO(updatedAccount);
     }
 
     public void deleteAccount(UUID id) {
+        log.debug("Deleting account with ID: {}", id);
+
         Account account = accountRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Account not found"));
         accountRepository.delete(account);
+
+        log.debug("Account deleted successfully with ID: {}", id);
+
     }
 
     public List<Account> getAccountsByClientId(UUID id){
@@ -128,16 +146,23 @@ public class AccountService {
     }
 
     public TransactionResponseDTO deposit(OperationRequestDTO operationDTO) {
+        log.debug("Depositing amount {} to account ID: {}", operationDTO.value(), operationDTO.accountType());
+
         validateAmount(operationDTO.value());
 
         Account account = this.findByClientIdAndAccountType(getMyClient().getId(), operationDTO.accountType());
 
         account.setBalance(account.getBalance().add(operationDTO.value()));
         Account updatedAccount = accountRepository.save(account);
+
+        log.debug("Deposit successful. Updated balance: {}", updatedAccount.getBalance());
+
         return TransactionMapper.convertToTransactionResponseDTO(updatedAccount, TransactionType.DEPOSIT, operationDTO.value());
     }
 
     public TransactionResponseDTO withdraw(OperationRequestDTO operationDTO) {
+        log.debug("Withdrawing amount {} from account ID: {}", operationDTO.value(), operationDTO.accountType());
+
         validateAmount(operationDTO.value());
 
         Account account = this.findByClientIdAndAccountType(getMyClient().getId(), operationDTO.accountType());
@@ -146,14 +171,22 @@ public class AccountService {
 
         account.setBalance(account.getBalance().subtract(operationDTO.value()));
         Account updatedAccount = accountRepository.save(account);
+
+        log.debug("Withdrawal successful. Updated balance: {}", updatedAccount.getBalance());
+
         return TransactionMapper.convertToTransactionResponseDTO(updatedAccount, TransactionType.WITHDRAW, operationDTO.value());
+
     }
 
     public TransferResponseDTO transfer(TransactionRequestDTO transactionDTO) {
+
         validateAmount(transactionDTO.value());
 
         Account fromAccount = this.findByClientIdAndAccountType(getMyClient().getId(), transactionDTO.accountType());
         Account toAccount = getById(transactionDTO.receiverId());
+
+        log.debug("Transferring amount {} from account ID: {} to account ID: {}", transactionDTO.value(),
+                fromAccount.getId(), toAccount.getId());
 
         validateSufficientFunds(fromAccount, transactionDTO.value());
 
@@ -163,17 +196,9 @@ public class AccountService {
         accountRepository.save(fromAccount);
         accountRepository.save(toAccount);
 
-        return new TransferResponseDTO(
-                fromAccount.getId(),
-                toAccount.getId(),
-                fromAccount.getBalance(),
-                toAccount.getBalance(),
-                fromAccount.getAccountType(),
-                TransactionType.TRANSFER,
-                fromAccount.getAgency().getId(),
-                fromAccount.getUpdatedDate(),
-                transactionDTO.value()
-        );
+        log.debug("Transfer successful. Updated balances - From Account: {}, To Account: {}", fromAccount.getBalance(),
+                toAccount.getBalance());
+        return TransactionMapper.convertToTransferResponseDTO(fromAccount,toAccount,transactionDTO, TransactionType.TRANSFER);
     }
 
     public TransferResponseDTO pix(PixRequestDTO pixDTO){
@@ -190,33 +215,30 @@ public class AccountService {
         this.accountRepository.save(senderAccount);
         this.accountRepository.save(receiverAccount);
 
-        return new TransferResponseDTO(
-                senderAccount.getId(),
-                receiverAccount.getId(),
-                senderAccount.getBalance(),
-                receiverAccount.getBalance(),
-                senderAccount.getAccountType(),
-                TransactionType.PIX,
-                senderAccount.getAgency().getId(),
-                senderAccount.getUpdatedDate(),
-                pixDTO.value()
-        );
+        log.debug("PIX transaction successful. Updated balances - Sender Account: {}, Receiver Account: {}", senderAccount.getBalance(), receiverAccount.getBalance());
+        return TransactionMapper.convertToPIXResponseDTO(senderAccount,receiverAccount,pixDTO, TransactionType.PIX);
+
     }
 
     private PixKey getPixKeyByKeyValue(String keyValue){
         return this.pixKeyRepository.findByKeyValue(keyValue).orElseThrow(() -> new NotFoundException("PixKey not found with keyValue: " + keyValue));
     }
+
     private Account findByClientIdAndAccountType(UUID id, AccountType accountType){
-        return this.accountRepository.findByClientIdAndAccountType(id, accountType).orElseThrow(() -> new NotFoundException("Account not found with clientId:"+id+" and accountType:"+accountType));
+        return accountRepository.findByClientIdAndAccountType(id, accountType).orElseThrow(() ->
+                new NotFoundException("Account not found with clientId: "+ id +" and accountType: "+ accountType));
     }
+
     private void validateAmount(BigDecimal amount) {
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new AmountNegativeException("Amount must be greater than zero");
         }
     }
+
     private void validateSufficientFunds(Account account, BigDecimal amount) {
         if (account.getBalance().compareTo(amount) < 0) {
             throw new InsufficientFundsException("Insufficient funds");
         }
     }
+
 }

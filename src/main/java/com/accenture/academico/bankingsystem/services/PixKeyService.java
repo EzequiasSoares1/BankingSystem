@@ -16,12 +16,15 @@ import java.util.UUID;
 public class PixKeyService {
     private final PixKeyRepository pixKeyRepository;
     private final AccountService accountService;
+
     public List<PixKeyResponseDTO> getAllPixKeyByAccountId(UUID accountId){
         return PixKeyMapper.convertToPixKeyResponseDTOList(this.pixKeyRepository.findByAccountId(accountId));
     }
+
     public PixKeyResponseDTO getPixKeyById(UUID pixKeyId){
         return PixKeyMapper.convertToPixKeyResponseDTO(this.findById(pixKeyId));
     }
+
     public PixKeyResponseDTO createPixKey(UUID accountId, PixKeyRequestDTO pixKeyDTO){
         PixKey pixKey = new PixKey();
 
@@ -32,9 +35,11 @@ public class PixKeyService {
         pixKeyRepository.save(pixKey);
         return PixKeyMapper.convertToPixKeyResponseDTO(pixKey);
     }
+
     public void deletePixKey(UUID pixKeyId){
         pixKeyRepository.delete(this.findById(pixKeyId));
     }
+
     private PixKey findById(UUID id){
         return this.pixKeyRepository.findById(id).orElseThrow(() -> new NotFoundException("PixKey not found with ID:" + id));
     }

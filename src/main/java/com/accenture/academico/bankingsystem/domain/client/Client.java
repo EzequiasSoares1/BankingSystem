@@ -33,7 +33,7 @@ public class Client {
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bank_user_id", nullable = false)
     private User user;
 
