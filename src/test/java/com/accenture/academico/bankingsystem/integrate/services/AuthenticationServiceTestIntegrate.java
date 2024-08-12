@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.services;
 
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.dtos.user.AuthenticationRequestDTO;
@@ -17,10 +17,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-
-public class AuthenticationServiceTest implements ConfigSpringTest {
+public class AuthenticationServiceTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private AuthenticationService authenticationService;

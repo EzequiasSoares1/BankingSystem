@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.services;
 
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.domain.agency.Agency;
 import com.accenture.academico.bankingsystem.dtos.agency.AgencyRequestDTO;
@@ -14,10 +14,10 @@ import com.accenture.academico.bankingsystem.services.AgencyService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
-
-public class AgencyServiceTest implements ConfigSpringTest {
+public class AgencyServiceTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private AgencyService agencyService;

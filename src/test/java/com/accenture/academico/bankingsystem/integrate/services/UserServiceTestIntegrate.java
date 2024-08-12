@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.services;
 
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
@@ -16,7 +16,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UserServiceTest implements ConfigSpringTest {
+public class UserServiceTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private UserRepository userRepository;

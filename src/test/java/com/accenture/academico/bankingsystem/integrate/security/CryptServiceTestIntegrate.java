@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.security;
 
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.security.CryptService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CryptServiceTest implements ConfigSpringTest {
+public class CryptServiceTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private CryptService cryptService;

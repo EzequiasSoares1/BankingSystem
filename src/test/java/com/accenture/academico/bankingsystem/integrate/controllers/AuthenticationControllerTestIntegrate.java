@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.controllers;
 
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.dtos.user.AuthenticationRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.user.TokenResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
@@ -22,7 +22,7 @@ import java.util.UUID;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc(addFilters = false)
-public class AuthenticationControllerTest implements ConfigSpringTest {
+public class AuthenticationControllerTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private MockMvc mockMvc;

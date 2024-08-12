@@ -1,5 +1,5 @@
 package com.accenture.academico.bankingsystem.integrate.controllers;
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc(addFilters = false)
 @SpringBootTest
-public class AddressControllerTest implements ConfigSpringTest {
+public class AddressControllerTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private MockMvc mockMvc;

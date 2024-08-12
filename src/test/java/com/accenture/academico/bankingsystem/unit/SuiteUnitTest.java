@@ -1,5 +1,5 @@
 package com.accenture.academico.bankingsystem.unit;
-import com.accenture.academico.bankingsystem.unit.config.GlobalExceptionHandlerTest;
+import com.accenture.academico.bankingsystem.integrate.config.GlobalExceptionHandlerTestIntegrate;
 import com.accenture.academico.bankingsystem.unit.mappers.*;
 import com.accenture.academico.bankingsystem.unit.middlewares.AccountNumberGeneratorTest;
 import com.accenture.academico.bankingsystem.unit.middlewares.UserToolsTest;
@@ -20,15 +20,14 @@ import org.junit.platform.suite.api.Suite;
     TransactionHistoryTest.class,
     UserToolsTest.class,
     AccountNumberGeneratorTest.class,
-    GlobalExceptionHandlerTest.class,
     UserMapperTest.class,
     AccountMapperTest.class,
     AgencyMapperTest.class,
-        ClientMapperTest.class,
-        PixKeyMapperTest.class,
-        TransactionHistoryMapperTest.class,
-        TransactionMapperTest.class,
-    CodeAccessTest.class,
+    ClientMapperTest.class,
+    PixKeyMapperTest.class,
+    TransactionHistoryMapperTest.class,
+    TransactionMapperTest.class,
+    CodeAccessTest.class
 })
 public class SuiteUnitTest {
 }

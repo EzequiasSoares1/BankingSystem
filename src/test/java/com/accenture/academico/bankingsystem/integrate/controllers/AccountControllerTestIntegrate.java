@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.controllers;
 
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.domain.agency.Agency;
@@ -8,16 +8,8 @@ import com.accenture.academico.bankingsystem.domain.client.Client;
 import com.accenture.academico.bankingsystem.domain.enums.AccountType;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
-import com.accenture.academico.bankingsystem.dtos.account.AccountRequestDTO;
-import com.accenture.academico.bankingsystem.dtos.account.AccountResponseDTO;
-import com.accenture.academico.bankingsystem.dtos.account.AccountUpdateDTO;
-import com.accenture.academico.bankingsystem.dtos.client.ClientRequestDTO;
-import com.accenture.academico.bankingsystem.middlewares.UserTools;
 import com.accenture.academico.bankingsystem.repositories.*;
 import com.accenture.academico.bankingsystem.services.AccountService;
-import com.accenture.academico.bankingsystem.services.AddressService;
-import com.accenture.academico.bankingsystem.services.AgencyService;
-import com.accenture.academico.bankingsystem.services.ClientService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -36,7 +28,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @AutoConfigureMockMvc(addFilters = false)
-public class AccountControllerTest implements ConfigSpringTest {
+public class AccountControllerTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private MockMvc mockMvc;

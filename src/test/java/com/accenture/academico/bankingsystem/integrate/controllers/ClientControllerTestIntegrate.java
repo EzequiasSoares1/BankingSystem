@@ -1,26 +1,23 @@
 package com.accenture.academico.bankingsystem.integrate.controllers;
 
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.dtos.client.ClientRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.client.ClientResponseDTO;
-import com.accenture.academico.bankingsystem.exceptions.NotAuthorizeException;
 import com.accenture.academico.bankingsystem.middlewares.UserTools;
 import com.accenture.academico.bankingsystem.repositories.UserRepository;
 import com.accenture.academico.bankingsystem.services.AddressService;
 import com.accenture.academico.bankingsystem.services.ClientService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -28,11 +25,10 @@ import java.util.UUID;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@AutoConfigureMockMvc(addFilters = false)
-public class ClientControllerTest implements ConfigSpringTest {
+@AutoConfigureMockMvc
+public class ClientControllerTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private MockMvc mockMvc;

@@ -1,6 +1,5 @@
 package com.accenture.academico.bankingsystem.integrate.services;
-
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.domain.client.Client;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
@@ -22,10 +21,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextImpl;
 
 import java.util.UUID;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ClientServiceTest implements ConfigSpringTest {
+public class ClientServiceTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private ClientService clientService;

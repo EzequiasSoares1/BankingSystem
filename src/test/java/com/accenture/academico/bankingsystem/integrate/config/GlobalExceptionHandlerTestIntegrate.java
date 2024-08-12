@@ -1,7 +1,7 @@
-package com.accenture.academico.bankingsystem.unit.config;
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+package com.accenture.academico.bankingsystem.integrate.config;
 import com.accenture.academico.bankingsystem.config.GlobalExceptionHandler;
 import com.accenture.academico.bankingsystem.exceptions.*;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.sql.SQLTransientConnectionException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GlobalExceptionHandlerTest implements ConfigSpringTest {
+public class GlobalExceptionHandlerTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private GlobalExceptionHandler globalExceptionHandler;

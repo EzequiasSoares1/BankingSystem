@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 public class CodeAccessTest {
 
-    @Autowired
-    private CodeAccess codeAccess;
+
+    private CodeAccess codeAccess = new CodeAccess();
 
     @Test
     void testGenCode() {

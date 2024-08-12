@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.config;
+package com.accenture.academico.bankingsystem.integrate.config.config;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 @AutoConfigureMockMvc(addFilters = false)
 @ActiveProfiles("test")
 @TestPropertySource(locations = "classpath:test.properties")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @Transactional
-public interface ConfigSpringTest {
+public interface ConfigIntegrateSpringTest {
 }

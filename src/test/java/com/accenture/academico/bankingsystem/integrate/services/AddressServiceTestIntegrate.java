@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.services;
 
-import com.accenture.academico.bankingsystem.config.ConfigSpringTest;
+import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.exceptions.NotFoundException;
 import com.accenture.academico.bankingsystem.repositories.AddressRepository;
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.UUID;
 
-public class AddressServiceTest implements ConfigSpringTest {
+public class AddressServiceTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private AddressService addressService;
