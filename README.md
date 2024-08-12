@@ -18,7 +18,7 @@
 ![lombok][LOMBOK_BADGE]
 ![jpa][JPA_BADGE]
 ![junit][JUNIT_BADGE]
-![flyway][JUNIT_BADGE]
+![flyway][FLYWAY_BADGE]
 ![springsecurity][SPRING_SECURITY_BADGE]
 ![docker][DOCKER_BADGE]
 
