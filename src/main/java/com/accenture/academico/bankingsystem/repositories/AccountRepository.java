@@ -1,6 +1,7 @@
 package com.accenture.academico.bankingsystem.repositories;
 
 import com.accenture.academico.bankingsystem.domain.account.Account;
+import com.accenture.academico.bankingsystem.domain.client.Client;
 import com.accenture.academico.bankingsystem.domain.enums.AccountType;
 import com.accenture.academico.bankingsystem.mappers.account.AccountMapper;
 import org.springframework.data.jpa.repository.JpaRepository;

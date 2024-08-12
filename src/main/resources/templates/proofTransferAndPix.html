@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprovante</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            margin: 20px auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0;
+        }
+        .header p {
+            font-size: 18px;
+            margin: 5px 0;
+            color: #555;
+        }
+        .content {
+            line-height: 1.6;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .content .highlight {
+            font-weight: bold;
+            color: #4285f4;
+        }
+        .data-section {
+            padding: 20px;
+            border-left: 5px solid #4285f4;
+            margin-bottom: 25px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .data-section:last-child {
+            margin-bottom: 0;
+        }
+        .data-section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Comprovante</h1>
+    </div>
+    <div class="content">
+        <div class="data-section">
+            <h2>Origem</h2>
+            <p>Nome do pagador: <span class="highlight">{{namePayer}}</span></p>
+            <p>Agencia: <span class="highlight">{{numbAgencyPayer}}</span></p>
+            <p>Conta: <span class="highlight">{{numbAccountPayer}}</span></p>
+            <p>Tipo de conta: <span class="highlight">{{accountTypePayer}}</span></p>
+        </div>
+        <div class="data-section">
+            <h2>Destino</h2>
+            <p>Nome do destinatario: <span class="highlight">{{nameRecipient}}</span></p>
+            <p>Agencia: <span class="highlight">{{numbAgencyRecipient}}</span></p>
+            <p>Conta: <span class="highlight">{{numbAccountRecipient}}</span></p>
+            <p>Tipo de conta: <span class="highlight">{{accountTypeRecipient}}</span></p>
+        </div>
+        <div class="data-section">
+            <h2>Movimentação</h2>
+            <p>Valor: <span class="highlight">{{amount}}</span></p>
+            <p>Tipo de Movimentacao: <span class="highlight">{{typeTransaction}}</span></p>
+            <p>Data da Movimentacao: <span class="highlight">{{datePayment}}</span></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
