@@ -44,7 +44,7 @@
 <h3>Cloning</h3>
 
 ```bash
-https://github.com/Gabrielgln/BankingSystem.git
+git clone https://github.com/Gabrielgln/BankingSystem.git
 ```
 
 <h3>Starting</h3>
