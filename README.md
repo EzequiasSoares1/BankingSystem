@@ -73,16 +73,16 @@ run BankingSystemApplication
 {
   "email": "gabriel@gmail.com",
   "password": "12345",
-	"role": "ADMIN"
+  "role": "ADMIN"
 }
 ```
 
 **RESPONSE**
 ```json
 {
-	"email": "gabriel@gmail.com",
-	"password": null,
-	"role": "ADMIN"
+  "email": "gabriel@gmail.com",
+  "password": null,
+  "role": "ADMIN"
 }
 ```
 
@@ -99,8 +99,8 @@ run BankingSystemApplication
 **RESPONSE**
 ```json
 {
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImV6ZXF1aWFzQGdtYWlsLmNvbSIsImV4cCI6MTcyMzIxMjI1OH0.uKB2fcg3BS7-niaZf8iIccLJA0Zk-XK_3DZgbHMQxLc",
-	"tokenRefresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInVzZXIiOiJlemVxdWlhc0BnbWFpbC5jb20iLCJjb2RlQWNjZXNzIjoiOGQxMGEyYjQtNjZmZS04NzIyLTE5NGItNWJjNjU1NTRkZTE5IiwiZXhwIjoxNzI0NDY1MDU4LCJpc1JlZnJlc2hUb2tlbiI6dHJ1ZX0.7JJq7C8LSHDIVkJIejhbrLnfBnULOvkOvOM0pszjHgU"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImV6ZXF1aWFzQGdtYWlsLmNvbSIsImV4cCI6MTcyMzIxMjI1OH0.uKB2fcg3BS7-niaZf8iIccLJA0Zk-XK_3DZgbHMQxLc",
+  "tokenRefresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInVzZXIiOiJlemVxdWlhc0BnbWFpbC5jb20iLCJjb2RlQWNjZXNzIjoiOGQxMGEyYjQtNjZmZS04NzIyLTE5NGItNWJjNjU1NTRkZTE5IiwiZXhwIjoxNzI0NDY1MDU4LCJpc1JlZnJlc2hUb2tlbiI6dHJ1ZX0.7JJq7C8LSHDIVkJIejhbrLnfBnULOvkOvOM0pszjHgU"
 }
 ```
 
@@ -109,21 +109,21 @@ run BankingSystemApplication
 **REQUEST**
 ```json
 {
-	"cep": "58700-010",
-	"number": "872",
-	"street": "Rua do Prado",
-	"district": "Centro"
+  "cep": "58700-010",
+  "number": "872",
+  "street": "Rua do Prado",
+  "district": "Centro"
 }
 ```
 
 **RESPONSE**
 ```json
 {
-	"id": "22d5a7d8-0f38-4f23-8715-3a340daded9d",
-	"cep": "58700-010",
-	"number": "872",
-	"street": "Rua do Prado",
-	"district": "Centro"
+  "id": "22d5a7d8-0f38-4f23-8715-3a340daded9d",
+  "cep": "58700-010",
+  "number": "872",
+  "street": "Rua do Prado",
+  "district": "Centro"
 }
 ```
 
@@ -142,11 +142,11 @@ run BankingSystemApplication
 **RESPONSE**
 ```json
 {
-	"id": "b7f95a5e-38fd-42ce-a4d1-ccee3635c151",
-	"name": "Sede",
-	"telephone": "83988997766",
-	"number": "45890120",
-	"address_id": "22d5a7d8-0f38-4f23-8715-3a340daded9d"
+  "id": "b7f95a5e-38fd-42ce-a4d1-ccee3635c151",
+  "name": "Sede",
+  "telephone": "83988997766",
+  "number": "45890120",
+  "address_id": "22d5a7d8-0f38-4f23-8715-3a340daded9d"
 }
 ```
 
@@ -165,12 +165,12 @@ run BankingSystemApplication
 **RESPONSE**
 ```json
 {
-	"id": "310b6d0e-4d15-48c5-821e-791e58acae5d",
-	"name": "Ezequias",
-	"cpf": "12374951480",
-	"telephone": "83987164734",
-	"address_id": "22d5a7d8-0f38-4f23-8715-3a340daded9d",
-	"user_id": "fed1022f-6767-468e-8b68-bfd5ac91b096"
+  "id": "310b6d0e-4d15-48c5-821e-791e58acae5d",
+  "name": "Ezequias",
+  "cpf": "12374951480",
+  "telephone": "83987164734",
+  "address_id": "22d5a7d8-0f38-4f23-8715-3a340daded9d",
+  "user_id": "fed1022f-6767-468e-8b68-bfd5ac91b096"
 }
 ```
 
