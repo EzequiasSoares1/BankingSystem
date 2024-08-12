@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record TransactionTransferResponseDTO(
+public record TransferResponseDTO(
         UUID senderId,
         UUID receiverId,
         BigDecimal senderBalance,

@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.rabbitMQ.consumers;
+package com.accenture.academico.bankingsystem.domain.consumers;
 import com.accenture.academico.bankingsystem.email.dto.EmailMessageDTO;
 import com.accenture.academico.bankingsystem.email.service.EmailService;
 import lombok.extern.slf4j.Slf4j;

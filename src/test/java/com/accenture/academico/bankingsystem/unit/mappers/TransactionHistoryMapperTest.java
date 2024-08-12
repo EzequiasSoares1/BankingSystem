@@ -31,7 +31,7 @@ public class TransactionHistoryMapperTest {
         Account account = new Account(UUID.randomUUID(), "1111", AccountType.CURRENT, agency, BigDecimal.ZERO, client, LocalDateTime.now(), LocalDateTime.now());
 
         TransactionHistory transactionHistory1 = new TransactionHistory(UUID.randomUUID(), account, TransactionType.DEPOSIT, BigDecimal.TEN, LocalDateTime.now(), account.getBalance());
-        TransactionHistory transactionHistory2 = new TransactionHistory(UUID.randomUUID(), account, TransactionType.SAC, BigDecimal.ONE, LocalDateTime.now(), account.getBalance());
+        TransactionHistory transactionHistory2 = new TransactionHistory(UUID.randomUUID(), account, TransactionType.WITHDRAW, BigDecimal.ONE, LocalDateTime.now(), account.getBalance());
 
         List<TransactionHistory> transactionHistoryList = List.of(transactionHistory1, transactionHistory2);
         List<TransactionHistoryResponseDTO> transactionHistoryResponseDTOList = TransactionHistoryMapper.convertToTransactionHistoryResponseDTOList(transactionHistoryList);

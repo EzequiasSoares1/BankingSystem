@@ -27,9 +27,9 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.deposit(body));
     }
 
-    @PostMapping("/sac")
-    public ResponseEntity<TransactionResponseDTO> sac(@RequestBody @Valid OperationRequestDTO body){
-        return ResponseEntity.ok(transactionService.sac(body));
+    @PostMapping("/withdraw")
+    public ResponseEntity<TransactionResponseDTO> withdraw(@RequestBody @Valid OperationRequestDTO body){
+        return ResponseEntity.ok(transactionService.withdraw(body));
     }
 
     @PostMapping("/transfer")
@@ -38,7 +38,7 @@ public class TransactionController {
     }
 
     @PostMapping("/pix")
-    public ResponseEntity<TransactionResponseDTO> transfer(@RequestBody @Valid PixRequestDTO body){
+    public ResponseEntity<TransactionResponseDTO> pix(@RequestBody @Valid PixRequestDTO body){
         return ResponseEntity.ok(transactionService.pix(body));
     }
 

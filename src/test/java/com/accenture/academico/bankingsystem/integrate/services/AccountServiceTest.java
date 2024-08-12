@@ -10,6 +10,8 @@ import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.dtos.account.AccountRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountUpdateDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.OperationRequestDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransactionRequestDTO;
 import com.accenture.academico.bankingsystem.exceptions.AmountNegativeException;
 import com.accenture.academico.bankingsystem.exceptions.ConflictException;
 import com.accenture.academico.bankingsystem.exceptions.InsufficientFundsException;
@@ -99,7 +101,7 @@ public class AccountServiceTest implements ConfigSpringTest {
     @Order(1)
     void deposit_ValidAmount() {
         BigDecimal depositAmount = BigDecimal.valueOf(500);
-        var updatedAccount = accountService.deposit(account.getId(), depositAmount);
+        var updatedAccount = accountService.deposit(new OperationRequestDTO(AccountType.CURRENT, depositAmount));
 
         assertNotNull(updatedAccount);
         assertEquals(account.getBalance(), updatedAccount.balance());
@@ -111,15 +113,15 @@ public class AccountServiceTest implements ConfigSpringTest {
         BigDecimal negativeAmount = BigDecimal.valueOf(-100);
 
         assertThrows(AmountNegativeException.class, () -> {
-            accountService.deposit(account.getId(), negativeAmount);
+            accountService.deposit(new OperationRequestDTO(AccountType.CURRENT, negativeAmount));
         });
     }
 
     @Test
     @Order(3)
-    void sac_ValidAmount() {
-        BigDecimal withdrawalAmount = BigDecimal.valueOf(200);
-        var updatedAccount = accountService.sac(account.getId(), withdrawalAmount);
+    void withdraw_ValidAmount() {
+        BigDecimal withdrawAmount = BigDecimal.valueOf(200);
+        var updatedAccount = accountService.withdraw(new OperationRequestDTO(AccountType.CURRENT, withdrawAmount));
 
         assertNotNull(updatedAccount);
         assertEquals(account.getBalance(), updatedAccount.balance());
@@ -127,21 +129,21 @@ public class AccountServiceTest implements ConfigSpringTest {
 
     @Test
     @Order(4)
-    void sac_InsufficientFunds() {
+    void withdraw_InsufficientFunds() {
         BigDecimal excessiveAmount = BigDecimal.valueOf(5000);
 
         assertThrows(InsufficientFundsException.class, () -> {
-            accountService.sac(account.getId(), excessiveAmount);
+            accountService.withdraw(new OperationRequestDTO(AccountType.CURRENT, excessiveAmount));
         });
     }
 
     @Test
     @Order(5)
-    void sac_NegativeAmount() {
+    void withdraw_NegativeAmount() {
         BigDecimal negativeAmount = BigDecimal.valueOf(-100);
 
         assertThrows(AmountNegativeException.class, () -> {
-            accountService.sac(account.getId(), negativeAmount);
+            accountService.withdraw(new OperationRequestDTO(AccountType.CURRENT, negativeAmount));
         });
     }
 
@@ -157,7 +159,7 @@ public class AccountServiceTest implements ConfigSpringTest {
         toAccount = accountRepository.save(toAccount);
 
         BigDecimal transferAmount = BigDecimal.valueOf(300);
-        accountService.transfer(account.getId(), toAccount.getId(), transferAmount);
+        accountService.transfer(new TransactionRequestDTO(AccountType.CURRENT, toAccount.getId(), transferAmount));
 
         Account updatedFromAccount = accountRepository.findById(account.getId()).orElseThrow();
         Account updatedToAccount = accountRepository.findById(toAccount.getId()).orElseThrow();
@@ -177,11 +179,11 @@ public class AccountServiceTest implements ConfigSpringTest {
         toAccount.setAgency(agency);
         toAccount = accountRepository.save(toAccount);
 
-        BigDecimal excessiveAmount = BigDecimal.valueOf(1500);
+        BigDecimal excessiveAmount = BigDecimal.valueOf(3000);
 
         Account finalToAccount = toAccount;
         assertThrows(InsufficientFundsException.class, () -> {
-            accountService.transfer(finalToAccount.getId(),account.getId(), excessiveAmount);
+            accountService.transfer(new TransactionRequestDTO(AccountType.CURRENT, finalToAccount.getId(), excessiveAmount));
         });
     }
 
@@ -201,7 +203,7 @@ public class AccountServiceTest implements ConfigSpringTest {
 
         Account finalToAccount = toAccount;
         assertThrows(AmountNegativeException.class, () -> {
-            accountService.transfer(account.getId(), finalToAccount.getId(), negativeAmount);
+            accountService.transfer(new TransactionRequestDTO(AccountType.CURRENT, finalToAccount.getId(), negativeAmount));
         });
     }
     @Test

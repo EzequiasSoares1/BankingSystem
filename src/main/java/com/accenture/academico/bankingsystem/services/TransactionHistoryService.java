@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,8 +39,9 @@ public class TransactionHistoryService {
     public List<TransactionHistoryResponseDTO> getAllTransactionHistoryByAccountId(UUID accountId){
         log.debug("Retrieving transaction history for account ID: {}", accountId);
 
-        return TransactionHistoryMapper.convertToTransactionHistoryResponseDTOList(
-                transactionHistoryRepository.findByAccountId(accountId)
-        );
+        List<TransactionHistory> transactionHistoryList = transactionHistoryRepository.findByAccountId(accountId);
+        if (!transactionHistoryList.isEmpty())
+            transactionHistoryList.sort(Comparator.comparing(TransactionHistory::getTransactionDate).reversed());
+        return TransactionHistoryMapper.convertToTransactionHistoryResponseDTOList(transactionHistoryList);
     }
 }

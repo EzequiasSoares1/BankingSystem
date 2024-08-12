@@ -4,7 +4,7 @@ import com.accenture.academico.bankingsystem.dtos.pix_key.PixRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.OperationRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
-import com.accenture.academico.bankingsystem.dtos.transaction.TransactionTransferResponseDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransferResponseDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction_history.TransactionHistoryRequestDTO;
 import com.accenture.academico.bankingsystem.email.service.NotificationEmailService;
 import com.accenture.academico.bankingsystem.mappers.transaction.TransactionMapper;
@@ -22,7 +22,7 @@ public class TransactionService {
     private final NotificationEmailService notificationEmailService;
 
     public TransactionResponseDTO deposit(OperationRequestDTO operationDTO){
-        TransactionResponseDTO transactionDTO = accountService.deposit(operationDTO.accountId(), operationDTO.value());
+        TransactionResponseDTO transactionDTO = accountService.deposit(operationDTO);
         log.info("Deposit completed: {}", transactionDTO);
 
         notificationEmailService.sendReceipt(transactionDTO);
@@ -35,9 +35,8 @@ public class TransactionService {
 
         return transactionDTO;
     }
-
-    public TransactionResponseDTO sac(OperationRequestDTO operationDTO){
-        TransactionResponseDTO transactionDTO = accountService.sac(operationDTO.accountId(), operationDTO.value());
+    public TransactionResponseDTO withdraw(OperationRequestDTO operationDTO){
+        TransactionResponseDTO transactionDTO = accountService.withdraw(operationDTO);
 
         log.info("Withdrawal completed: {}", transactionDTO);
 
@@ -51,36 +50,65 @@ public class TransactionService {
 
         return transactionDTO;
     }
+    public TransactionResponseDTO transfer(TransactionRequestDTO transactionDTO){
+        TransferResponseDTO transferDTO = accountService.transfer(transactionDTO);
 
-    public TransactionResponseDTO transfer(TransactionRequestDTO request){
-        TransactionTransferResponseDTO transactionTransferResponseDTO = accountService.transfer(request.senderId(), request.receiverId(), request.value());
+        this.createTransactionHistoryByTransfer(transferDTO);
 
-        log.info("Transfer completed: {}", transactionTransferResponseDTO);
+        log.info("Transfer completed: {}", transferDTO);
 
-        notificationEmailService.sendReceiptTransfer(transactionTransferResponseDTO);
+        notificationEmailService.sendReceiptTransfer(transferDTO);
 
-        transactionHistoryService.createTransactionHistory(
-                TransactionMapper.convertToTransactionHistoryRequestDTOFromSender(transactionTransferResponseDTO)
+        log.debug("Transaction history recorded for sender account ID: {}", transferDTO.senderId());
+
+        return new TransactionResponseDTO(
+                transferDTO.accountType(),
+                transferDTO.transactionType(),
+                transferDTO.agencyId(),
+                transferDTO.senderId(),
+                transferDTO.senderBalance(),
+                transferDTO.dataTransaction(),
+                transferDTO.valueTransaction()
         );
-
-        log.debug("Transaction history recorded for sender account ID: {}", transactionTransferResponseDTO.senderId());
-
-        return TransactionMapper.convertToTransactionResponseDTO(transactionTransferResponseDTO);
     }
 
     public TransactionResponseDTO pix(PixRequestDTO pixDTO){
-        TransactionTransferResponseDTO transactionTransferResponseDTO = this.accountService.pix(pixDTO);
+        TransferResponseDTO transferDTO = this.accountService.pix(pixDTO);
+        this.createTransactionHistoryByTransfer(transferDTO);
 
-        log.info("PIX transfer completed: {}", transactionTransferResponseDTO);
+        log.info("PIX transfer completed: {}", pixDTO);
 
-        notificationEmailService.sendReceiptTransfer(transactionTransferResponseDTO);
+        notificationEmailService.sendReceiptTransfer(transferDTO);
 
-        transactionHistoryService.createTransactionHistory(
-                TransactionMapper.convertToTransactionHistoryRequestDTOFromSender(transactionTransferResponseDTO)
+        log.debug("Transaction history recorded for sender account ID: {}", transferDTO.senderId());
+
+      return new TransactionResponseDTO(
+                transferDTO.accountType(),
+                transferDTO.transactionType(),
+                transferDTO.agencyId(),
+                transferDTO.senderId(),
+                transferDTO.senderBalance(),
+                transferDTO.dataTransaction(),
+                transferDTO.valueTransaction()
         );
+    }
 
-        log.debug("Transaction history recorded for sender account ID: {}", transactionTransferResponseDTO.senderId());
-
-        return TransactionMapper.convertToTransactionResponseDTO(transactionTransferResponseDTO);
+    private void createTransactionHistoryByTransfer(TransferResponseDTO transferDTO){
+        transactionHistoryService.createTransactionHistory(
+                new TransactionHistoryRequestDTO(
+                        transferDTO.senderId(),
+                        transferDTO.transactionType(),
+                        transferDTO.valueTransaction().negate(),
+                        transferDTO.senderBalance()
+                )
+        );
+        transactionHistoryService.createTransactionHistory(
+                new TransactionHistoryRequestDTO(
+                        transferDTO.receiverId(),
+                        transferDTO.transactionType(),
+                        transferDTO.valueTransaction(),
+                        transferDTO.receiverBalance()
+                )
+        );
     }
 }

@@ -1,14 +1,9 @@
 package com.accenture.academico.bankingsystem.email.service;
 import com.accenture.academico.bankingsystem.domain.account.Account;
-import com.accenture.academico.bankingsystem.domain.client.Client;
-import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionResponseDTO;
-import com.accenture.academico.bankingsystem.dtos.transaction.TransactionTransferResponseDTO;
+import com.accenture.academico.bankingsystem.dtos.transaction.TransferResponseDTO;
 import com.accenture.academico.bankingsystem.email.dto.EmailMessageDTO;
-import com.accenture.academico.bankingsystem.middlewares.UserTools;
 import com.accenture.academico.bankingsystem.repositories.AccountRepository;
-import com.accenture.academico.bankingsystem.repositories.ClientRepository;
-import com.accenture.academico.bankingsystem.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,7 +46,7 @@ public class NotificationEmailService {
         toSendEmail(userEmail,"Comprovante de Movimentação Bancaria", receiptHtml);
     }
 
-    public void sendReceiptTransfer(TransactionTransferResponseDTO transactionDTO) {
+    public void sendReceiptTransfer(TransferResponseDTO transactionDTO) {
         Account accountPayer = accountRepository.getReferenceById(transactionDTO.senderId());
         Account accountRecevied = accountRepository.getReferenceById(transactionDTO.receiverId());
 
