@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.controllers;
 
-import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
+import com.accenture.academico.bankingsystem.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.dtos.user.UserDTO;
 import com.accenture.academico.bankingsystem.services.UserService;
 import com.fasterxml.jackson.core.type.TypeReference;

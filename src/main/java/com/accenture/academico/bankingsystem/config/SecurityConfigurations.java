@@ -1,8 +1,10 @@
 package com.accenture.academico.bankingsystem.config;
+import com.accenture.academico.bankingsystem.domain.enums.Role;
 import com.accenture.academico.bankingsystem.security.SecurityFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,7 +32,9 @@ public class SecurityConfigurations {
                     requestMatchers("/actuator/health","/actuator/info" ).permitAll().
                     requestMatchers( "/auth","/auth/**",
                     "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll().
-                    anyRequest().permitAll()
+                    requestMatchers(HttpMethod.POST,"/user").permitAll().
+                    requestMatchers(HttpMethod.GET,"/user").hasRole(Role.ADMIN.toString()).
+                    anyRequest().authenticated()
                  )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class).build();
     }

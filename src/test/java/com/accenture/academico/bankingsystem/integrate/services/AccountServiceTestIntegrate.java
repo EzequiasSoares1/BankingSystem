@@ -1,15 +1,18 @@
 package com.accenture.academico.bankingsystem.integrate.services;
 
-import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
+import com.accenture.academico.bankingsystem.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.domain.agency.Agency;
 import com.accenture.academico.bankingsystem.domain.client.Client;
 import com.accenture.academico.bankingsystem.domain.enums.AccountType;
+import com.accenture.academico.bankingsystem.domain.enums.PixKeyType;
 import com.accenture.academico.bankingsystem.domain.enums.Role;
+import com.accenture.academico.bankingsystem.domain.pix_key.PixKey;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import com.accenture.academico.bankingsystem.dtos.account.AccountRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.account.AccountUpdateDTO;
+import com.accenture.academico.bankingsystem.dtos.pix_key.PixRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.OperationRequestDTO;
 import com.accenture.academico.bankingsystem.dtos.transaction.TransactionRequestDTO;
 import com.accenture.academico.bankingsystem.exceptions.AmountNegativeException;
@@ -50,6 +53,10 @@ public class AccountServiceTestIntegrate implements ConfigIntegrateSpringTest {
 
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private PixKeyRepository pixKeyRepository;
+
 
     @Autowired
     private UserRepository userRepository;
@@ -299,5 +306,129 @@ public class AccountServiceTestIntegrate implements ConfigIntegrateSpringTest {
             accountService.deleteAccount(nonExistentId);
         });
     }
+    @Test
+    @Order(15)
+    void transfer_Conflict() {
+        Account toAccount = new Account();
+        toAccount.setNumber("654322"); // Different number to avoid duplicate
+        toAccount.setAccountType(AccountType.SAVINGS);
+        toAccount.setBalance(BigDecimal.valueOf(500));
+        toAccount.setClient(client);
+        toAccount.setAgency(agency);
+        toAccount = accountRepository.save(toAccount);
+
+        // Create an account with the same account type and agency to simulate conflict
+        Account conflictingAccount = new Account();
+        conflictingAccount.setNumber("654323");
+        conflictingAccount.setAccountType(AccountType.CURRENT);
+        conflictingAccount.setBalance(BigDecimal.valueOf(1000));
+        conflictingAccount.setClient(client);
+        conflictingAccount.setAgency(agency);
+        conflictingAccount = accountRepository.save(conflictingAccount);
+
+        // Test conflict when updating the account with the same type in the same agency
+        AccountUpdateDTO updateDTO = new AccountUpdateDTO(AccountType.CURRENT, agency.getId());
+        Account finalConflictingAccount = conflictingAccount;
+
+        assertThrows(ConflictException.class, () -> {
+            accountService.updateAccount(finalConflictingAccount.getId(), updateDTO);
+        });
+    }
+
+    @Test
+    @Order(16)
+    void pix_ValidRequest() {
+        Account receiverAccount = new Account();
+        receiverAccount.setNumber("654321");
+        receiverAccount.setAccountType(AccountType.SAVINGS);
+        receiverAccount.setBalance(BigDecimal.valueOf(500));
+        receiverAccount.setClient(client);
+        receiverAccount.setAgency(agency);
+        receiverAccount = accountRepository.save(receiverAccount);
+
+        PixKey pixKey = new PixKey();
+        pixKey.setKeyValue("test-pix-key");
+        pixKey.setAccount(receiverAccount);
+        pixKey.setKeyType(PixKeyType.EMAIL);
+        pixKeyRepository.save(pixKey);
+
+        BigDecimal pixAmount = BigDecimal.valueOf(200);
+        PixRequestDTO pixRequestDTO = new PixRequestDTO("test-pix-key", AccountType.SAVINGS, pixAmount);
+
+        var response = accountService.pix(pixRequestDTO);
+
+        assertNotNull(response);
+        assertEquals(pixAmount, response.valueTransaction());
+
+        // Verify balance updates
+        Account updatedSenderAccount = accountRepository.findById(account.getId()).orElseThrow();
+        Account updatedReceiverAccount = accountRepository.findById(receiverAccount.getId()).orElseThrow();
+
+        assertEquals(BigDecimal.valueOf(1500), updatedSenderAccount.getBalance());
+        assertEquals(BigDecimal.valueOf(500), updatedReceiverAccount.getBalance());
+    }
+
+    @Test
+    @Order(17)
+    void pix_InsufficientFunds() {
+        // Setup
+        Account receiverAccount = new Account();
+        receiverAccount.setNumber("654321");
+        receiverAccount.setAccountType(AccountType.SAVINGS);
+        receiverAccount.setBalance(BigDecimal.valueOf(500));
+        receiverAccount.setClient(client);
+        receiverAccount.setAgency(agency);
+        receiverAccount = accountRepository.save(receiverAccount);
+
+        PixKey pixKey = new PixKey();
+        pixKey.setKeyValue("test-pix-key");
+        pixKey.setAccount(receiverAccount);
+        pixKey.setKeyType(PixKeyType.EMAIL);
+        pixKeyRepository.save(pixKey);
+
+        BigDecimal excessiveAmount = BigDecimal.valueOf(2000);
+        PixRequestDTO pixRequestDTO = new PixRequestDTO("test-pix-key", AccountType.SAVINGS, excessiveAmount);
+
+        assertThrows(InsufficientFundsException.class, () -> {
+            accountService.pix(pixRequestDTO);
+        });
+    }
+
+    @Test
+    @Order(18)
+    void pix_NegativeAmount() {
+        // Setup
+        Account receiverAccount = new Account();
+        receiverAccount.setNumber("654321");
+        receiverAccount.setAccountType(AccountType.SAVINGS);
+        receiverAccount.setBalance(BigDecimal.valueOf(500));
+        receiverAccount.setClient(client);
+        receiverAccount.setAgency(agency);
+        receiverAccount = accountRepository.save(receiverAccount);
+
+        PixKey pixKey = new PixKey();
+        pixKey.setKeyValue("test-pix-key");
+        pixKey.setAccount(receiverAccount);
+        pixKeyRepository.save(pixKey);
+
+        BigDecimal negativeAmount = BigDecimal.valueOf(-100);
+        PixRequestDTO pixRequestDTO = new PixRequestDTO("test-pix-key", AccountType.SAVINGS,negativeAmount);
+
+        assertThrows(AmountNegativeException.class, () -> {
+            accountService.pix(pixRequestDTO);
+        });
+    }
+
+    @Test
+    @Order(19)
+    void pix_NotFoundPixKey() {
+        BigDecimal pixAmount = BigDecimal.valueOf(200);
+        PixRequestDTO pixRequestDTO = new PixRequestDTO("test-pix-key", AccountType.SAVINGS, pixAmount);
+
+        assertThrows(NotFoundException.class, () -> {
+            accountService.pix(pixRequestDTO);
+        });
+    }
+
 }
 

@@ -1,6 +1,6 @@
 package com.accenture.academico.bankingsystem.integrate.controllers;
 
-import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
+import com.accenture.academico.bankingsystem.config.ConfigIntegrateSpringTest;
 import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.domain.agency.Agency;

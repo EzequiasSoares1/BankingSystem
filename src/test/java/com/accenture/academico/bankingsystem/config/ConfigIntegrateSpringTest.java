@@ -1,4 +1,4 @@
-package com.accenture.academico.bankingsystem.integrate.config.config;
+package com.accenture.academico.bankingsystem.config;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;

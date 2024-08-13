@@ -25,8 +25,11 @@ import org.junit.platform.suite.api.Suite;
     AccountControllerTestIntegrate.class,
     AuthenticationControllerTestIntegrate.class,
     AddressControllerTestIntegrate.class,
-    GlobalExceptionHandlerTestIntegrate.class
-
+    GlobalExceptionHandlerTestIntegrate.class,
+    TransactionHistoryServiceTestIntegrate.class,
+    PixKeyServiceTestIntegrate.class,
+    PixKeyControllerTestIntegrate.class,
+    TransactionControllerTestIntegrate.class
 })
 public class SuiteIntegrateTest {
 }

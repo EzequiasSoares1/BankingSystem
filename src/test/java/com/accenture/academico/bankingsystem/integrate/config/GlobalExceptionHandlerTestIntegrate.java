@@ -1,7 +1,7 @@
 package com.accenture.academico.bankingsystem.integrate.config;
 import com.accenture.academico.bankingsystem.config.GlobalExceptionHandler;
 import com.accenture.academico.bankingsystem.exceptions.*;
-import com.accenture.academico.bankingsystem.integrate.config.config.ConfigIntegrateSpringTest;
+import com.accenture.academico.bankingsystem.config.ConfigIntegrateSpringTest;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

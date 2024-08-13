@@ -10,11 +10,16 @@ import com.accenture.academico.bankingsystem.email.service.NotificationEmailServ
 import com.accenture.academico.bankingsystem.mappers.transaction.TransactionMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@EnableAsync
+@Transactional
 public class TransactionService {
 
     private final AccountService accountService;
@@ -25,7 +30,7 @@ public class TransactionService {
         TransactionResponseDTO transactionDTO = accountService.deposit(operationDTO);
         log.info("Deposit completed: {}", transactionDTO);
 
-        notificationEmailService.sendReceipt(transactionDTO);
+        sendEmail(transactionDTO);
 
         transactionHistoryService.createTransactionHistory(
                 TransactionMapper.convertToTransactionHistoryRequestDTO(transactionDTO)
@@ -40,7 +45,7 @@ public class TransactionService {
 
         log.info("Withdrawal completed: {}", transactionDTO);
 
-        notificationEmailService.sendReceipt(transactionDTO);
+        sendEmail(transactionDTO);
 
         transactionHistoryService.createTransactionHistory(
                 TransactionMapper.convertToTransactionHistoryRequestDTO(transactionDTO)
@@ -50,6 +55,7 @@ public class TransactionService {
 
         return transactionDTO;
     }
+
     public TransactionResponseDTO transfer(TransactionRequestDTO transactionDTO){
         TransferResponseDTO transferDTO = accountService.transfer(transactionDTO);
 
@@ -57,7 +63,7 @@ public class TransactionService {
 
         log.info("Transfer completed: {}", transferDTO);
 
-        notificationEmailService.sendReceiptTransfer(transferDTO);
+        sendEmail(transferDTO);
 
         log.debug("Transaction history recorded for sender account ID: {}", transferDTO.senderId());
 
@@ -78,7 +84,7 @@ public class TransactionService {
 
         log.info("PIX transfer completed: {}", pixDTO);
 
-        notificationEmailService.sendReceiptTransfer(transferDTO);
+        sendEmail(transferDTO);
 
         log.debug("Transaction history recorded for sender account ID: {}", transferDTO.senderId());
 
@@ -91,6 +97,16 @@ public class TransactionService {
                 transferDTO.dataTransaction(),
                 transferDTO.valueTransaction()
         );
+    }
+
+    @Async
+    protected void sendEmail(TransactionResponseDTO transactionDTO){
+        notificationEmailService.sendReceipt(transactionDTO);
+    }
+
+    @Async
+    protected void sendEmail(TransferResponseDTO transactionDTO){
+        notificationEmailService.sendReceiptTransfer(transactionDTO);
     }
 
     private void createTransactionHistoryByTransfer(TransferResponseDTO transferDTO){
