@@ -1,14 +1,15 @@
 package com.accenture.academico.bankingsystem.unit.domain;
 
+import com.accenture.academico.bankingsystem.domain.agency.Agency;
 import com.accenture.academico.bankingsystem.domain.client.Client;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import com.accenture.academico.bankingsystem.domain.user.User;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ClientTest {
 
@@ -61,5 +62,26 @@ public class ClientTest {
         assertEquals(telephone, client.getTelephone());
         assertEquals(address, client.getAddress());
         assertEquals(user, client.getUser());
+    }
+
+    @Test
+    void testPrePersist() {
+        Client client = new Client();
+        client.prePersist();
+
+        assertNotNull(client.getCreatedDate());
+        assertTrue(client.getCreatedDate().isBefore(LocalDateTime.now().plusSeconds(1)));
+    }
+
+    @Test
+    void testPreUpdate() {
+        Client client = new Client();
+        client.prePersist();
+        LocalDateTime initialUpdatedDate = client.getUpdatedDate();
+
+        client.preUpdate();
+
+        assertEquals(initialUpdatedDate, client.getUpdatedDate());
+        assertTrue(client.getUpdatedDate().isBefore(LocalDateTime.now().plusSeconds(1)));
     }
 }

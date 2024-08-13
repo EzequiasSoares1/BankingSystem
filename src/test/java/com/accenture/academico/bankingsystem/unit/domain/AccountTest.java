@@ -7,10 +7,10 @@ import com.accenture.academico.bankingsystem.domain.enums.AccountType;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountTest {
 
@@ -64,4 +64,26 @@ public class AccountTest {
         assertEquals(balance, account.getBalance());
         assertEquals(client, account.getClient());
     }
+
+    @Test
+    void testPrePersist() {
+        Account account = new Account();
+        account.prePersist();
+
+        assertNotNull(account.getCreatedDate());
+        assertTrue(account.getCreatedDate().isBefore(LocalDateTime.now().plusSeconds(1)));
+    }
+
+    @Test
+    void testPreUpdate() {
+        Account account = new Account();
+        account.prePersist();
+        LocalDateTime initialUpdatedDate = account.getUpdatedDate();
+
+        account.preUpdate();
+
+        assertEquals(initialUpdatedDate, account.getUpdatedDate());
+        assertTrue(account.getUpdatedDate().isBefore(LocalDateTime.now().plusSeconds(1)));
+    }
+
 }

@@ -17,6 +17,7 @@ import org.junit.platform.suite.api.Suite;
     AddressTest.class,
     AgencyTest.class,
     ClientTest.class,
+    PixKeyTest.class,
     TransactionHistoryTest.class,
     UserToolsTest.class,
     AccountNumberGeneratorTest.class,

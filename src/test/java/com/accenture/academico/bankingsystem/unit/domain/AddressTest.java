@@ -1,12 +1,13 @@
 package com.accenture.academico.bankingsystem.unit.domain;
 
+import com.accenture.academico.bankingsystem.domain.account.Account;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AddressTest {
 
@@ -54,6 +55,27 @@ public class AddressTest {
         assertEquals(number, address.getNumber());
         assertEquals(street, address.getStreet());
         assertEquals(district, address.getDistrict());
+    }
+
+    @Test
+    void testPrePersist() {
+        Address address = new Address();
+        address.prePersist();
+
+        assertNotNull(address.getCreatedDate());
+        assertTrue(address.getCreatedDate().isBefore(LocalDateTime.now().plusSeconds(1)));
+    }
+
+    @Test
+    void testPreUpdate() {
+        Address address = new Address();
+        address.prePersist();
+        LocalDateTime initialUpdatedDate = address.getUpdatedDate();
+
+        address.preUpdate();
+
+        assertEquals(initialUpdatedDate, address.getUpdatedDate());
+        assertTrue(address.getUpdatedDate().isBefore(LocalDateTime.now().plusSeconds(1)));
     }
 
 }

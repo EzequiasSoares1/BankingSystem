@@ -4,10 +4,10 @@ import com.accenture.academico.bankingsystem.domain.agency.Agency;
 import com.accenture.academico.bankingsystem.domain.address.Address;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AgencyTest {
 
@@ -55,5 +55,26 @@ public class AgencyTest {
         assertEquals(telephone, agency.getTelephone());
         assertEquals(number, agency.getNumber());
         assertEquals(address, agency.getAddress());
+    }
+
+    @Test
+    void testPrePersist() {
+        Agency agency = new Agency();
+        agency.prePersist();
+
+        assertNotNull(agency.getCreatedDate());
+        assertTrue(agency.getCreatedDate().isBefore(LocalDateTime.now().plusSeconds(1)));
+    }
+
+    @Test
+    void testPreUpdate() {
+        Agency agency = new Agency();
+        agency.prePersist();
+        LocalDateTime initialUpdatedDate = agency.getUpdatedDate();
+
+        agency.preUpdate();
+
+        assertEquals(initialUpdatedDate, agency.getUpdatedDate());
+        assertTrue(agency.getUpdatedDate().isBefore(LocalDateTime.now().plusSeconds(1)));
     }
 }
