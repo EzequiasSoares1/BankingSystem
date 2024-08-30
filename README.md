@@ -31,7 +31,7 @@
 </p>
 
 <p align="center">
-  <b>Bank account management with features for customer registration and financial operations, including withdrawals, deposits, transfers and PIX.</b>
+  <b>Bank account management system with features for customer registration and financial operations, including withdrawals, deposits, transfers, PIX, and an email notification system.</b>
 </p>
 
 <h2 id="started">🚀 Getting started</h2>
@@ -44,7 +44,7 @@
 - [RabbitMQ](https://www.cloudamqp.com/)
 
 
-<h3  id="documentation" >Documentation API</h3>
+<h3  id="documentation" >Documentation Project</h3>
 
 - [Documentação API Banking System.pdf](https://github.com/user-attachments/files/16820004/Documentacao.API.Banking.System.pdf)
 
