@@ -8,6 +8,7 @@
 [FLYWAY_BADGE]:https://img.shields.io/badge/Flyway-%2300A6A0.svg?style=for-the-badge&logo=flyway&logoColor=white
 [SPRING_SECURITY_BADGE]:https://img.shields.io/badge/Spring%20Security-6DB33F.svg?style=for-the-badge&logo=Spring-Security&logoColor=white
 [DOCKER_BADGE]:https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white
+[RABBITMQ_BADGE]:https://img.shields.io/badge/Rabbitmq-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white
 
 <h1 align="center" style="font-weight: bold;">Banking System 💻</h1>
 
@@ -21,10 +22,11 @@
 ![flyway][FLYWAY_BADGE]
 ![springsecurity][SPRING_SECURITY_BADGE]
 ![docker][DOCKER_BADGE]
+![rabbitmq][RABBITMQ_BADGE]
 
 <p align="center">
  <a href="#started">Getting Started</a> • 
-  <a href="#routes">API Endpoints</a> •
+  <a href="#documentation">Documentation API</a> •
  <a href="#colab">Collaborators</a> •
 </p>
 
@@ -39,7 +41,12 @@
 - [Java](https://download.oracle.com/java/17/archive/jdk-17.0.6_windows-x64_bin.msi)
 - [Spring Boot](https://start.spring.io/)
 - [MySQL](https://dev.mysql.com/downloads/installer/)
-- [Git 2](https://github.com)
+- [RabbitMQ](https://www.cloudamqp.com/)
+
+
+<h3  id="documentation" >Documentation API</h3>
+
+- [Documentação API Banking System.pdf](https://github.com/user-attachments/files/16820004/Documentacao.API.Banking.System.pdf)
 
 <h3>Cloning</h3>
 
@@ -54,171 +61,6 @@ cd BankingSystem
 run BankingSystemApplication
 ```
 
-<h2 id="routes">📍 API Endpoints</h2>
-
-| route                                 | description                                          
-|---------------------------------------|---------------------------------------------------------------------------------------------------------
-| <kbd>POST /user</kbd>                 | register a user, see [request details](#post-user-detail)
-| <kbd>POST /auth</kbd>                 | authenticate user into the api, see [request details](#post-auth-detail)
-| <kbd>POST /address</kbd>              | create address in API, see [request details](#post-address-detail)
-| <kbd>POST /agency</kbd>               | create agency in API, see [request details](#post-agency-detail)
-| <kbd>POST /client</kbd>               | create client in API, see [request details](#post-client-detail)
-| <kbd>POST /account</kbd>              | create account in API, see [request details](#post-account-detail)
-| <kbd>POST /transaction/transfer</kbd> | create tranfer in API, see [request details](#post-transaction-transfer-detail)
-
-<h3 id="post-user-detail">POST /user</h3>
-
-**REQUEST**
-```json
-{
-  "email": "gabriel@gmail.com",
-  "password": "12345",
-  "role": "ADMIN"
-}
-```
-
-**RESPONSE**
-```json
-{
-  "email": "gabriel@gmail.com",
-  "password": null,
-  "role": "ADMIN"
-}
-```
-
-<h3 id="post-auth-detail">POST /auth</h3>
-
-**REQUEST**
-```json
-{
-  "email": "ezequias@gmail.com",
-  "password": "12345"
-}
-```
-
-**RESPONSE**
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImV6ZXF1aWFzQGdtYWlsLmNvbSIsImV4cCI6MTcyMzIxMjI1OH0.uKB2fcg3BS7-niaZf8iIccLJA0Zk-XK_3DZgbHMQxLc",
-  "tokenRefresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInVzZXIiOiJlemVxdWlhc0BnbWFpbC5jb20iLCJjb2RlQWNjZXNzIjoiOGQxMGEyYjQtNjZmZS04NzIyLTE5NGItNWJjNjU1NTRkZTE5IiwiZXhwIjoxNzI0NDY1MDU4LCJpc1JlZnJlc2hUb2tlbiI6dHJ1ZX0.7JJq7C8LSHDIVkJIejhbrLnfBnULOvkOvOM0pszjHgU"
-}
-```
-
-<h3 id="post-address-detail">POST /address</h3>
-
-**REQUEST**
-```json
-{
-  "cep": "58700-010",
-  "number": "872",
-  "street": "Rua do Prado",
-  "district": "Centro"
-}
-```
-
-**RESPONSE**
-```json
-{
-  "id": "22d5a7d8-0f38-4f23-8715-3a340daded9d",
-  "cep": "58700-010",
-  "number": "872",
-  "street": "Rua do Prado",
-  "district": "Centro"
-}
-```
-
-<h3 id="post-agency-detail">POST /agency</h3>
-
-**REQUEST**
-```json
-{
-  "name": "Sede",
-  "telephone": "83988997766",
-  "number": "45890120",
-  "addressId": "22d5a7d8-0f38-4f23-8715-3a340daded9d"
-}
-```
-
-**RESPONSE**
-```json
-{
-  "id": "b7f95a5e-38fd-42ce-a4d1-ccee3635c151",
-  "name": "Sede",
-  "telephone": "83988997766",
-  "number": "45890120",
-  "address_id": "22d5a7d8-0f38-4f23-8715-3a340daded9d"
-}
-```
-
-<h3 id="post-client-detail">POST /client</h3>
-
-**REQUEST**
-```json
-{
-  "name": "Ezequias",
-  "cpf": "12374951480",
-  "telephone": "83987164734",
-  "address_id": "22d5a7d8-0f38-4f23-8715-3a340daded9d"
-}
-```
-
-**RESPONSE**
-```json
-{
-  "id": "310b6d0e-4d15-48c5-821e-791e58acae5d",
-  "name": "Ezequias",
-  "cpf": "12374951480",
-  "telephone": "83987164734",
-  "address_id": "22d5a7d8-0f38-4f23-8715-3a340daded9d",
-  "user_id": "fed1022f-6767-468e-8b68-bfd5ac91b096"
-}
-```
-
-<h3 id="post-account-detail">POST /account</h3>
-
-**REQUEST**
-```json
-{
-  "accountType": "CURRENT",
-  "agencyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-}
-```
-
-**RESPONSE**
-```json
-{
-  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "number": "string",
-  "accountType": "CURRENT",
-  "agencyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "balance": 0,
-  "clientId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-}
-```
-
-<h3 id="post-transaction-transfer-detail">POST /transaction/transfer</h3>
-
-**REQUEST**
-```json
-{
-  "accountType": "CURRENT",
-  "receiverId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "value": 0
-}
-```
-
-**RESPONSE**
-```json
-{
-  "accountType": "CURRENT",
-  "transactionType": "DEPOSIT",
-  "agencyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "accountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "balance": 0,
-  "dataTransaction": "2024-08-12T15:19:16.683Z",
-  "valueTransaction": 0
-}
-```
 
 <h2 id="colab">🤝 Collaborators</h2>
 
